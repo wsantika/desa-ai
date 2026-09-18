@@ -1,254 +1,171 @@
-Welcome to your new TanStack Start app!
+# 🏛️ DesaAI — AI-Powered Operating System for Smart Villages
 
-# Getting Started
+<div align="center">
 
-To run this application:
+[![CI Pipeline](https://github.com/wsantika/desa-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/wsantika/desa-ai/actions/workflows/ci.yml)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
+[![TanStack Start](https://img.shields.io/badge/Framework-TanStack%20Start-FF4154.svg)](https://tanstack.com/start)
+[![React 19](https://img.shields.io/badge/React-19-61DAFB.svg)](https://react.dev/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-v4.1-38B2AC.svg)](https://tailwindcss.com/)
+[![Prisma ORM](https://img.shields.io/badge/ORM-Prisma%207-2D3748.svg)](https://www.prisma.io/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://www.docker.com/)
+
+**Karya Inovasi Teknologi Desa untuk APTIKOM Hackathon 2026**  
+*Kategori: Smart Village Technology*
+
+</div>
+
+---
+
+## 📌 Tentang DesaAI
+
+Transformasi digital desa di Indonesia selama ini kerap hanya berfokus pada keberadaan situs web profil desa statis yang pasif. Ketika warga memerlukan informasi surat atau ingin mengadukan kerusakan fasilitas umum, prosesnya masih terfragmentasi melalui antrean fisik atau grup pesan singkat tanpa kepastian tindak lanjut.
+
+**DesaAI** hadir sebagai **AI-Powered Operating System** terpadu yang menjembatani masyarakat desa (*Citizen*) dengan pemerintah desa (*Government*) melalui siklus pelayanan tertutup (*closed-loop workflow*):
+
+1. **Bukan Sekadar Chatbot**: AI dihubungkan langsung ke *pipeline* pelayanan administrasi dan pelaporan keluhan nyata.
+2. **Knowledge Base Terverifikasi (RAG)**: Seluruh jawaban panduan birokrasi mengacu pada dokumen resmi desa (Perdes, SOP layanan, dan profil desa) guna mengeliminasi halusinasi model.
+3. **AI Complaint Intelligence**: Laporan keluhan warga secara otomatis dianalisis, dikelompokkan kategorinya (Infrastruktur, Kebersihan, Keamanan, dll.), dan ditentukan tingkat urgensinya (*Emergency*, *High*, *Medium*, *Low*) untuk mempermudah *triage* staf desa.
+4. **Digital Service Request**: Pengajuan surat administrasi mandiri secara digital dengan nomor tiket pelacakan transparan.
+5. **Government Dashboard & Village Analytics**: Dashboard kerja perangkat desa untuk verifikasi berkas, disposisi laporan, serta visualisasi data tren masalah desa berbasis bukti (*evidence-based policy*).
+
+---
+
+## 🚀 Fitur Utama
+
+```
+                      ┌────────────────────────────────────────┐
+                      │        DesaAI Ecosystem (Web/PWA)      │
+                      └───────────────────┬────────────────────┘
+                                          │
+                  ┌───────────────────────┴───────────────────────┐
+                  ▼                                               ▼
+     ┌────────────────────────┐                      ┌────────────────────────┐
+     │  Citizen Platform      │                      │  Government Dashboard  │
+     │  (Warga Desa)          │                      │  (Perangkat Desa)      │
+     ├────────────────────────┤                      ├────────────────────────┤
+     │ • AI Village Assistant │                      │ • Triage & Disposisi   │
+     │   (RAG Grounded SOP)   │                      │ • Verifikasi Surat     │
+     │ • Pengajuan Surat      │                      │ • Update Progres Tiket │
+     │ • Tracking No. Tiket   │                      │ • Analitik Tren Desa   │
+     │ • Lapor Pengaduan      │                      │ • Knowledge Base Admin │
+     └────────────┬───────────┘                      └────────────▲───────────┘
+                  │                                               │
+                  └─────────────► [AI Core Engine] ───────────────┘
+                                  - RAG Retrieval
+                                  - Intent Classification
+                                  - Severity Triage
+```
+
+### 1. 🤖 AI Village Assistant (RAG Grounded)
+Warga dapat berkonsultasi menggunakan bahasa sehari-hari mengenai syarat pengurusan berkas, jam buka kantor desa, dan prosedur administrasi. Jawaban divalidasi langsung dari basis data dokumen resmi desa.
+
+### 2. 📝 Digital Service Request (Pengajuan Surat Mandiri)
+Permohonan surat (Surat Keterangan Domisili, SKU, Pengantar SKCK, SKTM) dapat diajukan secara online dengan upload berkas pendukung dan menerima nomor pelacakan unik (`REQ-xxx`).
+
+### 3. 🚨 AI Complaint Intelligence (Pengaduan Cerdas)
+Warga melaporkan keluhan fasilitas (contoh: *"Lampu jalan di Banjar X mati sejak 3 hari"*). Sistem mengekstrak lokasi, mendeteksi kategori masalah, menghitung skor urgensi, dan membuat ringkasan eksekutif secara instan untuk perangkat desa.
+
+### 4. 📊 Government Dashboard & Village Analytics
+Perangkat desa memiliki pusat kendali terintegrasi untuk menyetujui permohonan surat, memperbarui status pengaduan warga, serta melihat analitik sebaran masalah per Banjar/Dusun.
+
+---
+
+## 🛠️ Tech Stack Modern
+
+- **Frontend & Fullstack Framework**: [TanStack Start](https://tanstack.com/start) (React 19 + TypeScript + Vite)
+- **Styling & UI**: [Tailwind CSS v4](https://tailwindcss.com/) + [Lucide Icons](https://lucide.dev/)
+- **Database & ORM**: PostgreSQL 16 + [Prisma ORM 7](https://www.prisma.io/)
+- **AI & RAG Engine**: [@tanstack/ai](https://tanstack.com/ai) + Google Gemini API / LLM Embeddings
+- **Containerization**: [Docker & Docker Compose](https://www.docker.com/) (Multi-platform: Windows & macOS ARM/x86)
+- **CI/CD & QA**: GitHub Actions, ESLint, Commitlint, Husky Git Hooks
+
+---
+
+## 💻 Panduan Menjalankan Proyek (Quickstart)
+
+Proyek ini telah dikonfigurasi agar berjalan mulus di sistem operasi **Windows** maupun **macOS** (termasuk Apple Silicon M1/M2/M3/M4).
+
+### Opsi 1: Menggunakan Docker Compose (Direkomendasikan)
+Menjalankan seluruh ekosistem (Aplikasi Web + Basis Data PostgreSQL) dalam kontainer:
 
 ```bash
-npm install
+# 1. Clone repositori
+git clone https://github.com/wsantika/desa-ai.git
+cd desa-ai
+
+# 2. Siapkan file konfigurasi environment
+cp .env.example .env.local
+
+# 3. Jalankan Docker Compose
+docker compose up -d --build
+
+# 4. Buka aplikasi di browser
+# Web: http://localhost:3000
+```
+
+### Opsi 2: Pengembangan Lokal (Hybrid Mode)
+Menjalankan database di Docker dan frontend/backend di host laptop untuk kecepatan Vite HMR maksimal:
+
+```bash
+# 1. Jalankan container database saja
+docker compose up -d db
+
+# 2. Salin environment dan generate Prisma client
+cp .env.example .env.local
+npm run db:generate
+
+# 3. Sinkronisasikan skema database
+npm run db:push
+
+# 4. Jalankan server pengembangan
 npm run dev
 ```
 
-# Building For Production
+---
 
-To build this application for production:
+## 🌿 Standar GitFlow & Kolaborasi Tim
 
-```bash
-npm run build
+Untuk menjaga stabilitas kode menjelang kompetisi hackathon, repositori ini menerapkan aturan percabangan ketat yang divalidasi otomatis oleh **GitHub Actions CI**:
+
+### Struktur Branch
+- **`master`** : Cabang produksi stabil. Dilarang push langsung. Hanya menerima PR dari branch `dev`.
+- **`dev`** : Cabang integrasi utama pengembangan.
+- **`feat/*`**, **`fix/*`**, **`chore/*`** : Dibuat dari `dev` dan **WAJIB membuka PR ke target branch `dev`**.
+
+> [!CAUTION]
+> GitHub Actions CI akan **otomatis membatalkan (FAIL)** Pull Request yang mencoba menggabungkan branch `feat/*` langsung ke `master`.
+
+### Format Conventional Commits
+Setiap pesan commit dan judul Pull Request wajib mengikuti konvensi:
+```text
+<type>(<scope>): <pesan dalam huruf kecil>
 ```
 
-## Styling
+*Contoh yang benar:*
+- `feat(complaint): implement ai classification prompt`
+- `fix(rag): handle empty query response gracefully`
+- `docs(prd): update kpi evaluation criteria`
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+---
 
-### Removing Tailwind CSS
+## 📚 Indeks Dokumentasi Lengkap
 
-If you prefer not to use Tailwind CSS:
+Dokumentasi arsitektur dan teknis mendalam tersedia di direktori [`docs/`](file:///D:/Project/desa-ai/docs/README.md):
+- 📄 [Product Requirements Document (PRD)](file:///D:/Project/desa-ai/docs/PRD.md)
+- 🧅 [Clean Architecture & Design Principles](file:///D:/Project/desa-ai/docs/CLEAN_ARCHITECTURE.md)
+- 📐 [Arsitektur Sistem, Use Case & Activity Diagram](file:///D:/Project/desa-ai/docs/ARCHITECTURE_AND_DIAGRAMS.md)
+- 🗄️ [Database Schema & ERD](file:///D:/Project/desa-ai/docs/DATABASE_SCHEMA.md)
+- 🔀 [GitFlow, Branching Rules & Conventional Commits](file:///D:/Project/desa-ai/docs/GITFLOW_AND_CONVENTIONS.md)
+- 🐳 [Infrastruktur Docker & Setup Windows/macOS](file:///D:/Project/desa-ai/docs/INFRASTRUCTURE_AND_DOCKER.md)
 
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Remove `@tailwindcss/vite` and `tailwindcss` from `package.json`
+---
 
-## Linting & Formatting
+## 👨‍💻 Tim Pengembang (Undiknas Denpasar)
 
+Karya ini dikembangkan oleh **Tim Desa AI** dari **Universitas Pendidikan Nasional (Undiknas) Denpasar**:
+1. **Benedito Nidio Da Rosa Maia Tilman**
+2. **Kadek Wahyu Santika Putra**
+3. **Renald Kevin Azzaky**
 
-This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
-
-```bash
-npm run lint
-npm run format
-npm run check
-```
-
-
-# TanStack Chat Application
-
-Am example chat application built with TanStack Start, TanStack Store, and Claude AI.
-
-## .env Updates
-
-```env
-ANTHROPIC_API_KEY=your_anthropic_api_key
-```
-
-## ✨ Features
-
-### AI Capabilities
-- 🤖 Powered by Claude 3.5 Sonnet 
-- 📝 Rich markdown formatting with syntax highlighting
-- 🎯 Customizable system prompts for tailored AI behavior
-- 🔄 Real-time message updates and streaming responses (coming soon)
-
-### User Experience
-- 🎨 Modern UI with Tailwind CSS and Lucide icons
-- 🔍 Conversation management and history
-- 🔐 Secure API key management
-- 📋 Markdown rendering with code highlighting
-
-### Technical Features
-- 📦 Centralized state management with TanStack Store
-- 🔌 Extensible architecture for multiple AI providers
-- 🛠️ TypeScript for type safety
-
-## Architecture
-
-### Tech Stack
-- **Frontend Framework**: TanStack Start
-- **Routing**: TanStack Router
-- **State Management**: TanStack Store
-- **Styling**: Tailwind CSS
-- **AI Integration**: Anthropic's Claude API
-
-## T3Env
-
-- You can use T3Env to add type safety to your environment variables.
-- Add Environment variables to the `src/env.mjs` file.
-- Use the environment variables in your code.
-
-### Usage
-
-```ts
-import { env } from "#/env";
-
-console.log(env.VITE_APP_TITLE);
-```
-
-
-
-
-
-
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
-```
-
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
-```
-
-This will create a link that will navigate to the `/about` route.
-
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
-```
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-## Server Functions
-
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
-
-## API Routes
-
-You can create API routes by using the `server` property in your route definitions:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
+*APTIKOM Hackathon 2026 — Smart Village Technology*
