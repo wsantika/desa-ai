@@ -27,7 +27,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Commitlint Dependencies
-        run: npm ci --ignore-scripts
+        run: npm ci --legacy-peer-deps --ignore-scripts
 
       - name: Validate PR Target Branch (GitFlow Rule)
         run: |
@@ -73,7 +73,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Generate Prisma Client
         env:
