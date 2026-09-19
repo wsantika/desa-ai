@@ -282,6 +282,7 @@ model KnowledgeChunk {
   document     KnowledgeDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
   chunkIndex   Int
   chunkContent String
+  embedding    Float[]           @default([])
 
   createdAt DateTime @default(now())
 
