@@ -2,7 +2,7 @@ export function getDatabaseUrl() {
   const databaseUrl = process.env.DATABASE_URL
 
   if (!databaseUrl) {
-    throw new Error('DATABASE_URL is required')
+    return 'postgresql://postgres:postgres@localhost:5432/desa_ai?schema=public'
   }
 
   return databaseUrl
