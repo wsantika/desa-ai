@@ -83,6 +83,9 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+      - name: Run Tests
+        run: npm run test
+
       - name: Run Production Build (TanStack Start / Vite)
         env:
           DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/desa_ai_test?schema=public"
