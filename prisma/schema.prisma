@@ -55,15 +55,6 @@ enum KnowledgeCategory {
   PROFIL_DESA
 }
 
-// ------------------------------------------------------
-// BACKWARD COMPATIBILITY
-// ------------------------------------------------------
-
-model Todo {
-  id        Int      @id @default(autoincrement())
-  title     String
-  createdAt DateTime @default(now())
-}
 
 // ------------------------------------------------------
 // USER & IDENTITY MANAGEMENT
