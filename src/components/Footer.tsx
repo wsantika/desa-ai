@@ -1,4 +1,11 @@
+import { useLocation } from '@tanstack/react-router'
+
 export default function Footer() {
+  const location = useLocation()
+  if (location.pathname.startsWith('/admin')) {
+    return null
+  }
+
   const year = new Date().getFullYear()
 
   return (
@@ -6,7 +13,7 @@ export default function Footer() {
       <div className="page-wrap flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
         <div>
           <p className="m-0 text-sm font-semibold text-[var(--sea-ink)]">
-            DesaAI — Sistem Operasi Desa Cerdas Tegal Tugu
+            DesaAI: Sistem Operasi Desa Cerdas Tegal Tugu
           </p>
           <p className="m-0 text-xs text-[var(--sea-ink-soft)]">
             Pemerintah Desa Tegal Tugu, Gianyar, Bali • APTIKOM Hackathon {year}
