@@ -75,3 +75,94 @@ export function rankChunksBySimilarity(
 
   return scoredResults.slice(0, topK)
 }
+
+/**
+ * Lexical text-matching fallback for chunks that do not yet have vector embeddings
+ * or when dense vector search returns 0 results.
+ */
+export function rankChunksByTextOverlap(
+  query: string,
+  chunks: KnowledgeChunkWithDocument[],
+  topK: number = 4,
+): KnowledgeSearchResult[] {
+  if (!query || !chunks || chunks.length === 0) {
+    return []
+  }
+
+  const stopWords = new Set([
+    'dan',
+    'di',
+    'ke',
+    'dari',
+    'yang',
+    'ini',
+    'itu',
+    'untuk',
+    'pada',
+    'adalah',
+    'bisa',
+    'apa',
+    'kapan',
+    'bagaimana',
+    'kenapa',
+    'mengapa',
+    'siapa',
+    'berapa',
+    'apakah',
+    'dalam',
+    'atas',
+    'oleh',
+    'dengan',
+    'atau',
+    'saat',
+    'saya',
+    'anda',
+    'warga',
+  ])
+
+  const tokens = query
+    .toLowerCase()
+    .replace(/[^\w\s]/g, ' ')
+    .split(/\s+/)
+    .filter((w) => w.length >= 2 && !stopWords.has(w))
+
+  if (tokens.length === 0) {
+    return []
+  }
+
+  const scoredResults: KnowledgeSearchResult[] = []
+
+  for (const chunk of chunks) {
+    const textLower =
+      `${chunk.document.title} ${chunk.chunkContent}`.toLowerCase()
+    let matchCount = 0
+
+    for (const token of tokens) {
+      if (textLower.includes(token)) {
+        matchCount++
+      }
+    }
+
+    if (matchCount > 0) {
+      const overlapRatio = matchCount / tokens.length
+      const similarityScore = Math.min(0.85, 0.35 + overlapRatio * 0.5)
+
+      scoredResults.push({
+        chunkId: chunk.id,
+        documentId: chunk.documentId,
+        documentTitle: chunk.document.title,
+        category: chunk.document.category,
+        chunkContent: chunk.chunkContent,
+        similarityScore,
+        metadata:
+          chunk.document.metadata && typeof chunk.document.metadata === 'object'
+            ? (chunk.document.metadata as Record<string, unknown>)
+            : null,
+      })
+    }
+  }
+
+  scoredResults.sort((a, b) => b.similarityScore - a.similarityScore)
+  return scoredResults.slice(0, topK)
+}
+
