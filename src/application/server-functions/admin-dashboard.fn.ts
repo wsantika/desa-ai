@@ -44,9 +44,7 @@ export interface AdminDashboardSummaryData {
   recentServiceRequests: RecentServiceRequestItem[]
 }
 
-export const getAdminDashboardSummaryServerFn = createServerFn({
-  method: 'GET',
-}).handler(async (): Promise<AdminDashboardSummaryData> => {
+export async function fetchAdminDashboardSummary(): Promise<AdminDashboardSummaryData> {
   // 1. Agregasi pengaduan
   const complaintsByStatus = await prisma.complaint.groupBy({
     by: ['status'],
@@ -144,7 +142,7 @@ export const getAdminDashboardSummaryServerFn = createServerFn({
     orderBy: { createdAt: 'desc' },
     take: 5,
     include: {
-      serviceType: { select: { name: true } },
+      serviceType: { select: { title: true } },
     },
   })
 
@@ -153,7 +151,7 @@ export const getAdminDashboardSummaryServerFn = createServerFn({
       id: item.id,
       trackingCode: item.trackingCode,
       applicantName: item.applicantName,
-      serviceName: item.serviceType?.name || 'Surat Administrasi',
+      serviceName: item.serviceType?.title || 'Surat Administrasi',
       status: item.status,
       purpose: item.purpose,
       createdAt: item.createdAt.toISOString(),
@@ -177,4 +175,10 @@ export const getAdminDashboardSummaryServerFn = createServerFn({
     urgentComplaints,
     recentServiceRequests,
   }
+}
+
+export const getAdminDashboardSummaryServerFn = createServerFn({
+  method: 'GET',
+}).handler(async () => {
+  return fetchAdminDashboardSummary()
 })
