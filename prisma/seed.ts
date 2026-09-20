@@ -3,6 +3,7 @@ import { getDatabaseUrl } from '../src/database-url.js'
 import { PrismaClient } from '../src/generated/prisma/client.js'
 import { banjarsSeedData } from './seed-data/banjars.data.js'
 import { knowledgeSeedData } from './seed-data/knowledge.data.js'
+import { GeminiEmbeddingService } from '../src/infrastructure/ai/gemini-embedding.service.js'
 import { serviceTypesSeedData } from './seed-data/service-types.data.js'
 import { usersSeedData } from './seed-data/users.data.js'
 
@@ -144,6 +145,11 @@ async function main() {
       },
     })
 
+    // Generate dense vector embeddings for chunks
+    const embeddingService = new GeminiEmbeddingService()
+    const embeddings =
+      await embeddingService.generateBatchEmbeddings(doc.chunks)
+
     // Bersihkan dan sinkronisasi chunks dokumen
     await prisma.knowledgeChunk.deleteMany({
       where: { documentId: upsertedDoc.id },
@@ -154,11 +160,12 @@ async function main() {
         documentId: upsertedDoc.id,
         chunkIndex: index + 1,
         chunkContent,
+        embedding: embeddings[index] || [],
       })),
     })
   }
   console.log(
-    `   ✅ ${knowledgeSeedData.length} Dokumen SOP/Regulasi berhasil disiapkan`,
+    `   ✅ ${knowledgeSeedData.length} Dokumen SOP/Regulasi berhasil diindeks beserta vector embeddings`,
   )
 
   console.log('🎉 Seeding database DesaAI selesai dengan sukses!')
