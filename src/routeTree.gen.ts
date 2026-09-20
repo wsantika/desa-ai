@@ -10,13 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AsistenRouteImport } from './routes/asisten'
 import { Route as LayananRouteImport } from './routes/layanan'
 import { Route as PengaduanRouteImport } from './routes/pengaduan'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminAnalitikRouteImport } from './routes/admin/analitik'
+import { Route as AdminKnowledgeRouteImport } from './routes/admin/knowledge'
+import { Route as AdminLayananRouteImport } from './routes/admin/layanan'
+import { Route as AdminPengaduanRouteImport } from './routes/admin/pengaduan'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AsistenRoute = AsistenRouteImport.update({
@@ -34,36 +45,109 @@ const PengaduanRoute = PengaduanRouteImport.update({
   path: '/pengaduan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalitikRoute = AdminAnalitikRouteImport.update({
+  id: '/analitik',
+  path: '/analitik',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminKnowledgeRoute = AdminKnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLayananRoute = AdminLayananRouteImport.update({
+  id: '/layanan',
+  path: '/layanan',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPengaduanRoute = AdminPengaduanRouteImport.update({
+  id: '/pengaduan',
+  path: '/pengaduan',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/asisten': typeof AsistenRoute
   '/layanan': typeof LayananRoute
   '/pengaduan': typeof PengaduanRoute
+  '/admin/analitik': typeof AdminAnalitikRoute
+  '/admin/knowledge': typeof AdminKnowledgeRoute
+  '/admin/layanan': typeof AdminLayananRoute
+  '/admin/pengaduan': typeof AdminPengaduanRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/asisten': typeof AsistenRoute
   '/layanan': typeof LayananRoute
   '/pengaduan': typeof PengaduanRoute
+  '/admin/analitik': typeof AdminAnalitikRoute
+  '/admin/knowledge': typeof AdminKnowledgeRoute
+  '/admin/layanan': typeof AdminLayananRoute
+  '/admin/pengaduan': typeof AdminPengaduanRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/asisten': typeof AsistenRoute
   '/layanan': typeof LayananRoute
   '/pengaduan': typeof PengaduanRoute
+  '/admin/analitik': typeof AdminAnalitikRoute
+  '/admin/knowledge': typeof AdminKnowledgeRoute
+  '/admin/layanan': typeof AdminLayananRoute
+  '/admin/pengaduan': typeof AdminPengaduanRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/asisten' | '/layanan' | '/pengaduan'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/asisten'
+    | '/layanan'
+    | '/pengaduan'
+    | '/admin/analitik'
+    | '/admin/knowledge'
+    | '/admin/layanan'
+    | '/admin/pengaduan'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/asisten' | '/layanan' | '/pengaduan'
-  id: '__root__' | '/' | '/asisten' | '/layanan' | '/pengaduan'
+  to:
+    | '/'
+    | '/asisten'
+    | '/layanan'
+    | '/pengaduan'
+    | '/admin/analitik'
+    | '/admin/knowledge'
+    | '/admin/layanan'
+    | '/admin/pengaduan'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/asisten'
+    | '/layanan'
+    | '/pengaduan'
+    | '/admin/analitik'
+    | '/admin/knowledge'
+    | '/admin/layanan'
+    | '/admin/pengaduan'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AsistenRoute: typeof AsistenRoute
   LayananRoute: typeof LayananRoute
   PengaduanRoute: typeof PengaduanRoute
@@ -76,6 +160,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/asisten': {
@@ -99,11 +190,65 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PengaduanRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analitik': {
+      id: '/admin/analitik'
+      path: '/analitik'
+      fullPath: '/admin/analitik'
+      preLoaderRoute: typeof AdminAnalitikRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/knowledge': {
+      id: '/admin/knowledge'
+      path: '/knowledge'
+      fullPath: '/admin/knowledge'
+      preLoaderRoute: typeof AdminKnowledgeRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/layanan': {
+      id: '/admin/layanan'
+      path: '/layanan'
+      fullPath: '/admin/layanan'
+      preLoaderRoute: typeof AdminLayananRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pengaduan': {
+      id: '/admin/pengaduan'
+      path: '/pengaduan'
+      fullPath: '/admin/pengaduan'
+      preLoaderRoute: typeof AdminPengaduanRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminAnalitikRoute: typeof AdminAnalitikRoute
+  AdminKnowledgeRoute: typeof AdminKnowledgeRoute
+  AdminLayananRoute: typeof AdminLayananRoute
+  AdminPengaduanRoute: typeof AdminPengaduanRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnalitikRoute: AdminAnalitikRoute,
+  AdminKnowledgeRoute: AdminKnowledgeRoute,
+  AdminLayananRoute: AdminLayananRoute,
+  AdminPengaduanRoute: AdminPengaduanRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   AsistenRoute: AsistenRoute,
   LayananRoute: LayananRoute,
   PengaduanRoute: PengaduanRoute,
