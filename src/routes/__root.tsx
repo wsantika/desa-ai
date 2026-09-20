@@ -23,12 +23,12 @@ export const Route = createRootRoute({
           'width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover',
       },
       {
-        title: 'Desa Mandara — Platform Layanan Warga Cerdas (DesaAI)',
+        title: 'Desa Tegal Tugu — Platform Layanan Warga Cerdas (DesaAI)',
       },
       {
         name: 'description',
         content:
-          'Portal pelayanan mandiri surat warga, pengaduan fasilitas lingkungan, dan asisten AI Made Mandara.',
+          'Portal pelayanan mandiri surat warga, pengaduan fasilitas lingkungan, dan asisten AI Made Tegal Tugu.',
       },
       {
         name: 'theme-color',
@@ -48,7 +48,7 @@ export const Route = createRootRoute({
       },
       {
         name: 'apple-mobile-web-app-title',
-        content: 'Desa Mandara',
+        content: 'Desa Tegal Tugu',
       },
     ],
     links: [
