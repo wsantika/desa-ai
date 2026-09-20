@@ -52,7 +52,27 @@ function AsistenChatPage() {
       if (stored) {
         const parsed = JSON.parse(stored)
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setMessages(parsed)
+          const sanitized = parsed
+            .map((m: unknown) => {
+              const item = m as Record<string, unknown>
+              const rawContent =
+                typeof item.content === 'string'
+                  ? item.content
+                  : typeof item.replyText === 'string'
+                    ? item.replyText
+                    : typeof item.reply === 'string'
+                      ? item.reply
+                      : ''
+              return {
+                ...item,
+                content: rawContent,
+              } as unknown as ChatMessage
+            })
+            .filter((m) => Boolean(m.content))
+
+          if (sanitized.length > 0) {
+            setMessages(sanitized)
+          }
         }
       }
     } catch {
@@ -134,7 +154,10 @@ function AsistenChatPage() {
       const botMessage: ChatMessage = {
         id: `bot-${Date.now()}`,
         role: 'assistant',
-        content: response.reply,
+        content:
+          response.replyText ||
+          (response as unknown as { reply?: string }).reply ||
+          '',
         actionLinks: response.actionLinks,
         groundingSources: response.groundingSources?.map((s) => ({
           title: s.documentTitle,
