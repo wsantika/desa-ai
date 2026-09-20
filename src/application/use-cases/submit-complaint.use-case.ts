@@ -35,6 +35,12 @@ export class SubmitComplaintUseCase {
       category: aiResult.category,
       priority: aiResult.priority,
       aiSummary: aiResult.summary,
+      aiEvaluation: {
+        confidenceScore: aiResult.confidenceScore,
+        recommendedAction: aiResult.recommendedAction,
+        executiveSummary: aiResult.summary,
+        rawAIResponse: aiResult.rawResponse,
+      },
     })
 
     return {

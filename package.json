@@ -76,5 +76,14 @@
       "@prisma/engines",
       "prisma"
     ]
+  },
+  "allowScripts": {
+    "@prisma/engines@7.10.0": true,
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true,
+    "prisma@7.10.0": true,
+    "protobufjs@7.6.6": true,
+    "unrs-resolver@1.12.2": true,
+    "@google/genai@2.23.0": true
   }
 }
