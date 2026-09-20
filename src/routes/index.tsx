@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import {
   FileText,
   AlertCircle,
@@ -63,12 +63,19 @@ const ANNOUNCEMENTS = [
 ]
 
 function DesaAIHome() {
+  const navigate = useNavigate()
   const [trackingCode, setTrackingCode] = useState('')
 
   const handleTrackSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!trackingCode.trim()) return
-    alert(`Mencari riwayat pengajuan tiket: ${trackingCode.toUpperCase()}`)
+    const query = trackingCode.trim().toUpperCase()
+    if (!query) return
+
+    if (query.startsWith('REQ')) {
+      navigate({ to: '/layanan', search: { track: query } })
+    } else {
+      navigate({ to: '/pengaduan', search: { track: query } })
+    }
   }
 
   return (

@@ -14,7 +14,16 @@ import ServiceRequestSuccessReceipt from '../components/service-request/ServiceR
 import ServiceTrackingTimeline from '../components/service-request/ServiceTrackingTimeline'
 import type { ServiceRequestEntity } from '../domain/entities/service-request.entity'
 
+interface LayananSearchParams {
+  track?: string
+}
+
 export const Route = createFileRoute('/layanan')({
+  validateSearch: (search: Record<string, unknown>): LayananSearchParams => {
+    return {
+      track: typeof search.track === 'string' ? search.track : undefined,
+    }
+  },
   component: LayananHubPage,
 })
 
@@ -95,12 +104,15 @@ const SERVICE_ITEMS: ServiceCard[] = [
 ]
 
 function LayananHubPage() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('katalog')
+  const search = Route.useSearch()
+  const initialTrack = search.track || ''
+
+  const [activeTab, setActiveTab] = useState<ActiveTab>(initialTrack ? 'lacak' : 'katalog')
   const [selectedServiceCode, setSelectedServiceCode] = useState<
     'DOMISILI' | 'SKU' | 'SKCK' | 'SKTM'
   >('DOMISILI')
   const [submittedRequest, setSubmittedRequest] = useState<ServiceRequestEntity | null>(null)
-  const [trackingCodeToQuery, setTrackingCodeToQuery] = useState('')
+  const [trackingCodeToQuery, setTrackingCodeToQuery] = useState(initialTrack)
 
   const handleApplyService = (code: 'DOMISILI' | 'SKU' | 'SKCK' | 'SKTM') => {
     setSelectedServiceCode(code)
