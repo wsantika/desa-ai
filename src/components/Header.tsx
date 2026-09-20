@@ -1,50 +1,82 @@
 import { Link } from '@tanstack/react-router'
+import { Building2, FileText, AlertCircle, Bot, PhoneCall } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--header-bg)] px-4 backdrop-blur-lg">
-      <nav className="page-wrap flex flex-wrap items-center justify-between gap-x-3 gap-y-2 py-3 sm:py-4">
+    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--header-bg)]/90 px-4 backdrop-blur-md">
+      <nav className="page-wrap flex items-center justify-between gap-3 py-2.5 sm:py-3.5">
+        {/* Brand & Village Identity */}
         <div className="flex items-center gap-6">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--chip-line)] bg-[var(--chip-bg)] px-3 py-1.5 text-sm font-bold text-[var(--sea-ink)] no-underline shadow-[0_4px_16px_rgba(30,90,72,0.06)] sm:px-4 sm:py-2"
+            className="inline-flex items-center gap-2.5 rounded-full border border-[var(--chip-line)] bg-[var(--chip-bg)] px-3 py-1.5 text-sm font-bold text-[var(--sea-ink)] no-underline shadow-[0_2px_10px_rgba(47,106,74,0.06)] sm:px-4 sm:py-2"
           >
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-xs text-white">
-              🏛️
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-700 text-white shadow-inner dark:bg-emerald-600">
+              <Building2 className="h-4 w-4" aria-hidden="true" />
             </span>
-            <span>DesaAI</span>
-            <span className="rounded-md bg-emerald-100 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
-              Smart Village
+            <span className="flex flex-col text-left">
+              <span className="leading-none tracking-tight">Desa Mandara</span>
+              <span className="text-[10px] font-medium text-[var(--sea-ink-soft)]">
+                Kuta Selatan, Badung
+              </span>
             </span>
           </Link>
 
+          {/* Desktop Navigation Links */}
           <div className="hidden items-center gap-x-1 text-sm font-medium sm:flex">
             <Link
               to="/"
-              className="nav-link"
+              className="nav-link px-3 py-1.5"
               activeProps={{ className: 'nav-link is-active' }}
+              activeOptions={{ exact: true }}
             >
               Beranda
+            </Link>
+            <Link
+              to="/layanan"
+              className="nav-link px-3 py-1.5"
+              activeProps={{ className: 'nav-link is-active' }}
+            >
+              <FileText className="mr-1.5 inline-block h-4 w-4" aria-hidden="true" />
+              Layanan Surat
+            </Link>
+            <Link
+              to="/pengaduan"
+              className="nav-link px-3 py-1.5"
+              activeProps={{ className: 'nav-link is-active' }}
+            >
+              <AlertCircle className="mr-1.5 inline-block h-4 w-4" aria-hidden="true" />
+              Pengaduan
+            </Link>
+            <Link
+              to="/asisten"
+              className="nav-link px-3 py-1.5"
+              activeProps={{ className: 'nav-link is-active' }}
+            >
+              <Bot className="mr-1.5 inline-block h-4 w-4" aria-hidden="true" />
+              Asisten AI
             </Link>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        {/* Right Action: Village Status & Theme Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Quick Hotline / Operational status */}
+          <div className="hidden items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-600/10 px-3 py-1 text-xs font-semibold text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 md:inline-flex">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
+            <span>Buka: 08.00 - 15.00 WITA</span>
+          </div>
+
           <a
-            href="https://github.com/wsantika/desa-ai"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-xl p-2 text-[var(--sea-ink-soft)] transition hover:bg-[var(--link-bg-hover)] hover:text-[var(--sea-ink)]"
+            href="tel:0361123456"
+            className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full border border-[var(--line)] px-2.5 py-1 text-xs font-semibold text-[var(--sea-ink)] transition hover:border-emerald-600/40 hover:bg-black/5 dark:hover:bg-white/5 sm:px-3 sm:py-1.5"
+            title="Telepon Hotline Kantor Desa Mandara"
           >
-            <span className="sr-only">GitHub</span>
-            <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
-              <path
-                fill="currentColor"
-                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-              />
-            </svg>
+            <PhoneCall className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400" aria-hidden="true" />
+            <span className="hidden xs:inline">Darurat</span>
           </a>
+
           <ThemeToggle />
         </div>
       </nav>
