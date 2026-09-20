@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface MarkdownContentProps {
-  content: string
+  content?: string | null
   className?: string
 }
 
@@ -10,7 +10,12 @@ interface MarkdownContentProps {
  * Supports bold, italic, headings, bullet lists, numbered lists, and line breaks.
  */
 export default function MarkdownContent({ content, className = '' }: MarkdownContentProps) {
-  const lines = content.split('\n')
+  const safeContent = typeof content === 'string' ? content : (content ? String(content) : '')
+  if (!safeContent) {
+    return <div className={`chat-markdown ${className}`} />
+  }
+
+  const lines = safeContent.split('\n')
   const elements: React.ReactNode[] = []
   let currentList: { type: 'ul' | 'ol'; items: string[] } | null = null
 
