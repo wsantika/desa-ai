@@ -36,6 +36,10 @@ export default function BottomNav() {
   const location = useLocation()
   const currentPath = location.pathname
 
+  if (currentPath.startsWith('/admin')) {
+    return null
+  }
+
   return (
     <nav
       aria-label="Navigasi Bawah Layanan Warga"
