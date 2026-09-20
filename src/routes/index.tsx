@@ -58,7 +58,7 @@ const ANNOUNCEMENTS = [
     date: '22 Sep 2026',
     banjar: 'Semua Banjar',
     title: 'Sosialisasi Pemilahan Sampah Berbasis Sumber',
-    desc: 'Penyuluhan TPS3R Desa Mandara terkait jadwal pengangkutan sampah organik & anorganik.',
+    desc: 'Penyuluhan TPS3R Desa Tegal Tugu terkait jadwal pengangkutan sampah organik & anorganik.',
   },
 ]
 
@@ -79,7 +79,7 @@ function DesaAIHome() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-600/30 bg-emerald-600/10 px-3 py-1 text-xs font-semibold text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300">
               <Building2 className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>Pemerintah Desa Mandara, Kec. Kuta Selatan, Badung</span>
+              <span>Pemerintah Desa Tegal Tugu, Kec. Gianyar, Gianyar</span>
             </div>
 
             <h1 className="display-title mt-4 text-2xl font-extrabold tracking-tight text-[var(--sea-ink)] sm:text-4xl">
@@ -224,7 +224,7 @@ function DesaAIHome() {
               Temukan Lampu Mati, Jalan Berlubang, atau Sampah Liar?
             </h2>
             <p className="mt-1 text-xs leading-relaxed text-[var(--sea-ink-soft)] sm:text-sm">
-              Laporkan langsung melalui HP Anda. Sistem AI Desa Mandara akan memilah kategori
+              Laporkan langsung melalui HP Anda. Sistem AI Desa Tegal Tugu akan memilah kategori
               dan level urgensi secara otomatis agar segera ditangani tim teknis lapangan.
             </p>
           </div>

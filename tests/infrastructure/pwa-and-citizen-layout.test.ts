@@ -16,8 +16,8 @@ describe('Issue #11: Citizen Platform Layout & PWA Configuration', () => {
     const raw = fs.readFileSync(manifestPath, 'utf-8')
     const manifest = JSON.parse(raw)
 
-    assert.equal(manifest.name, 'Desa Mandara — Platform Layanan Warga Cerdas')
-    assert.equal(manifest.short_name, 'Desa Mandara')
+    assert.equal(manifest.name, 'Desa Tegal Tugu — Platform Layanan Warga Cerdas')
+    assert.equal(manifest.short_name, 'Desa Tegal Tugu')
     assert.equal(manifest.display, 'standalone')
     assert.equal(manifest.start_url, '/')
     assert.equal(manifest.theme_color, '#2F6A4A')

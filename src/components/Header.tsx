@@ -16,9 +16,9 @@ export default function Header() {
               <Building2 className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="flex flex-col text-left">
-              <span className="leading-none tracking-tight">Desa Mandara</span>
+              <span className="leading-none tracking-tight">Desa Tegal Tugu</span>
               <span className="text-[10px] font-medium text-[var(--sea-ink-soft)]">
-                Kuta Selatan, Badung
+                Kec. Gianyar, Gianyar
               </span>
             </span>
           </Link>
