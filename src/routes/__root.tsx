@@ -23,7 +23,7 @@ export const Route = createRootRoute({
           'width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover',
       },
       {
-        title: 'Desa Tegal Tugu — Platform Layanan Warga Cerdas (DesaAI)',
+        title: 'Desa Tegal Tugu: Platform Layanan Warga Cerdas (DesaAI)',
       },
       {
         name: 'description',
