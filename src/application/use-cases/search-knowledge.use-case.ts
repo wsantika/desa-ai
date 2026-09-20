@@ -4,7 +4,10 @@ import type {
 } from '../../domain/entities/knowledge.entity.js'
 import type { IKnowledgeRepository } from '../../domain/repositories/i-knowledge.repository.js'
 import type { IEmbeddingService } from '../../domain/repositories/i-embedding.service.js'
-import { rankChunksBySimilarity } from '../../infrastructure/ai/vector-similarity.js'
+import {
+  rankChunksBySimilarity,
+  rankChunksByTextOverlap,
+} from '../../infrastructure/ai/vector-similarity.js'
 
 export interface SearchKnowledgeDTO {
   query: string
@@ -38,9 +41,17 @@ export class SearchKnowledgeUseCase {
       : allChunks
 
     // 4. Compute cosine similarities and return top-K ranked chunks
-    return rankChunksBySimilarity(queryEmbedding, targetChunks, {
+    let results = rankChunksBySimilarity(queryEmbedding, targetChunks, {
       topK: dto.topK ?? 4,
-      minSimilarityThreshold: dto.minSimilarityThreshold ?? 0.3,
+      minSimilarityThreshold: dto.minSimilarityThreshold ?? 0.25,
     })
+
+    // 5. Hybrid Fallback: If dense vector search returned no results,
+    // perform lexical keyword matching so chunks without precomputed embeddings are still retrieved
+    if (results.length === 0) {
+      results = rankChunksByTextOverlap(dto.query, targetChunks, dto.topK ?? 4)
+    }
+
+    return results
   }
 }
