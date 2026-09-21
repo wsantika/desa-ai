@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Sun, Moon, Laptop } from 'lucide-react'
 
 type ThemeMode = 'light' | 'dark' | 'auto'
 
@@ -41,6 +42,31 @@ export default function ThemeToggle() {
   }, [])
 
   useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (
+        e.key === 'theme' &&
+        (e.newValue === 'light' || e.newValue === 'dark' || e.newValue === 'auto')
+      ) {
+        setMode(e.newValue)
+        applyThemeMode(e.newValue)
+      }
+    }
+    const handleCustomChange = (e: Event) => {
+      const customEvent = e as CustomEvent<ThemeMode>
+      if (customEvent.detail) {
+        setMode(customEvent.detail)
+      }
+    }
+
+    window.addEventListener('storage', handleStorage)
+    window.addEventListener('theme-change', handleCustomChange)
+    return () => {
+      window.removeEventListener('storage', handleStorage)
+      window.removeEventListener('theme-change', handleCustomChange)
+    }
+  }, [])
+
+  useEffect(() => {
     if (mode !== 'auto') {
       return
     }
@@ -55,17 +81,26 @@ export default function ThemeToggle() {
   }, [mode])
 
   function toggleMode() {
-    const nextMode: ThemeMode =
-      mode === 'light' ? 'dark' : mode === 'dark' ? 'auto' : 'light'
+    let nextMode: ThemeMode
+    if (mode === 'auto') {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      nextMode = prefersDark ? 'light' : 'dark'
+    } else if (mode === 'light') {
+      nextMode = 'dark'
+    } else {
+      nextMode = 'auto'
+    }
+
     setMode(nextMode)
     applyThemeMode(nextMode)
     window.localStorage.setItem('theme', nextMode)
+    window.dispatchEvent(new CustomEvent('theme-change', { detail: nextMode }))
   }
 
   const label =
     mode === 'auto'
-      ? 'Theme mode: auto (system). Click to switch to light mode.'
-      : `Theme mode: ${mode}. Click to switch mode.`
+      ? 'Mode tema: otomatis (sistem). Klik untuk beralih mode.'
+      : `Mode tema: ${mode}. Klik untuk beralih mode.`
 
   return (
     <button
@@ -73,9 +108,21 @@ export default function ThemeToggle() {
       onClick={toggleMode}
       aria-label={label}
       title={label}
-      className="rounded-full border border-[var(--chip-line)] bg-[var(--chip-bg)] px-3 py-1.5 text-sm font-semibold text-[var(--sea-ink)] shadow-[0_8px_22px_rgba(30,90,72,0.08)] transition hover:-translate-y-0.5 whitespace-nowrap shrink-0"
+      className="inline-flex items-center gap-1.5 rounded-full border border-[var(--chip-line)] bg-[var(--chip-bg)] px-2.5 py-1 text-xs font-semibold text-[var(--sea-ink)] shadow-[0_2px_8px_rgba(30,90,72,0.06)] transition hover:-translate-y-0.5 whitespace-nowrap shrink-0 dark:border-[#22352f] dark:text-stone-200"
     >
-      {mode === 'auto' ? 'Auto' : mode === 'dark' ? 'Dark' : 'Light'}
+      {mode === 'auto' && (
+        <Laptop
+          className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400 shrink-0"
+          aria-hidden="true"
+        />
+      )}
+      {mode === 'light' && (
+        <Sun className="h-3.5 w-3.5 text-amber-500 shrink-0" aria-hidden="true" />
+      )}
+      {mode === 'dark' && (
+        <Moon className="h-3.5 w-3.5 text-sky-400 shrink-0" aria-hidden="true" />
+      )}
+      <span>{mode === 'auto' ? 'Auto' : mode === 'dark' ? 'Dark' : 'Light'}</span>
     </button>
   )
 }
