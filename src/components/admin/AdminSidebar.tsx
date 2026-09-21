@@ -108,7 +108,7 @@ export default function AdminSidebar({
 
         {/* Navigation List */}
         <nav aria-label="Navigasi Meja Kerja Desa" className="p-3 space-y-1">
-          <p className="px-3 pt-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+          <p className="px-3 pt-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
             Meja Kerja Utama
           </p>
 
@@ -123,26 +123,36 @@ export default function AdminSidebar({
                 key={item.to}
                 to={item.to}
                 onClick={isOpenMobile && onCloseMobile ? onCloseMobile : undefined}
-                className={`group flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                className={`group flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium transition-colors no-underline ${
                   isActive
-                    ? 'bg-emerald-800 text-white shadow-sm dark:bg-emerald-700'
-                    : 'text-[var(--sea-ink,#1b2a26)] hover:bg-emerald-50 hover:text-emerald-950 dark:text-stone-200 dark:hover:bg-emerald-950/40 dark:hover:text-emerald-200'
+                    ? 'bg-emerald-800 !text-white shadow-sm dark:bg-emerald-700'
+                    : 'text-stone-800 hover:bg-emerald-50 hover:text-emerald-950 dark:text-stone-200 dark:hover:bg-emerald-950/40 dark:hover:text-emerald-100'
                 }`}
                 aria-current={isActive ? 'page' : undefined}
               >
                 <div className="flex items-center gap-3">
                   <Icon
-                    className={`h-4 w-4 transition-transform group-hover:scale-110 ${
-                      isActive ? 'text-white' : 'text-emerald-800 dark:text-emerald-400'
+                    className={`h-4 w-4 transition-transform group-hover:scale-110 shrink-0 ${
+                      isActive
+                        ? '!text-white'
+                        : 'text-emerald-800 dark:text-emerald-400'
                     }`}
                     aria-hidden="true"
                   />
-                  <span>{item.label}</span>
+                  <span
+                    className={
+                      isActive
+                        ? '!text-white font-semibold'
+                        : 'text-stone-800 dark:text-stone-200'
+                    }
+                  >
+                    {item.label}
+                  </span>
                 </div>
 
                 {item.badgeCount !== undefined && item.badgeCount > 0 && (
                   <span
-                    className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold tracking-tight ${
+                    className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold tracking-tight shrink-0 ${
                       item.badgeTone === 'emergency'
                         ? 'bg-red-600 text-white dark:bg-red-500'
                         : 'bg-amber-600 text-white dark:bg-amber-500'
@@ -184,11 +194,11 @@ export default function AdminSidebar({
         <div className="flex items-center justify-between gap-2 px-1 pt-1">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold text-emerald-800 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-950/50"
+            className="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold text-emerald-800 no-underline hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-950/50"
             title="Buka portal publik layanan warga"
           >
-            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>Portal Warga</span>
+            <ExternalLink className="h-3.5 w-3.5 text-emerald-800 dark:text-emerald-300" aria-hidden="true" />
+            <span className="text-emerald-800 dark:text-emerald-300">Portal Warga</span>
           </Link>
 
           <ThemeToggle />

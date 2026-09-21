@@ -6,6 +6,7 @@ import { knowledgeSeedData } from './seed-data/knowledge.data.js'
 import { GeminiEmbeddingService } from '../src/infrastructure/ai/gemini-embedding.service.js'
 import { serviceTypesSeedData } from './seed-data/service-types.data.js'
 import { usersSeedData } from './seed-data/users.data.js'
+import { complaintsSeedData } from './seed-data/complaints.data.js'
 
 const adapter = new PrismaPg({
   connectionString: getDatabaseUrl(),
@@ -147,8 +148,9 @@ async function main() {
 
     // Generate dense vector embeddings for chunks
     const embeddingService = new GeminiEmbeddingService()
-    const embeddings =
-      await embeddingService.generateBatchEmbeddings(doc.chunks)
+    const embeddings = await embeddingService.generateBatchEmbeddings(
+      doc.chunks,
+    )
 
     // Bersihkan dan sinkronisasi chunks dokumen
     await prisma.knowledgeChunk.deleteMany({
@@ -166,6 +168,91 @@ async function main() {
   }
   console.log(
     `   ✅ ${knowledgeSeedData.length} Dokumen SOP/Regulasi berhasil diindeks beserta vector embeddings`,
+  )
+
+  // 5. Seed Pengaduan Warga & Riwayat Status (Demo Data Analitik)
+  console.log('📢 Menyiapkan Data Pengaduan Warga Demo...')
+  for (const c of complaintsSeedData) {
+    const existing = await prisma.complaint.findUnique({
+      where: { ticketCode: c.ticketCode },
+    })
+
+    if (existing) {
+      await prisma.complaint.update({
+        where: { ticketCode: c.ticketCode },
+        update: {
+          title: c.title,
+          description: c.description,
+          status: c.status,
+          category: c.category,
+          priority: c.priority,
+          aiSummary: c.aiSummary,
+          resolvedAt: c.resolvedAt ?? null,
+        },
+      })
+    } else {
+      await prisma.complaint.create({
+        data: {
+          ticketCode: c.ticketCode,
+          citizenId: c.citizenId ?? null,
+          reporterName: c.reporterName,
+          reporterPhone: c.reporterPhone,
+          banjarId: c.banjarId,
+          title: c.title,
+          description: c.description,
+          specificLocation: c.specificLocation,
+          status: c.status,
+          category: c.category,
+          priority: c.priority,
+          aiSummary: c.aiSummary,
+          createdAt: c.createdAt,
+          resolvedAt: c.resolvedAt ?? null,
+          aiEvaluation: {
+            create: {
+              predictedCategory: c.evaluation.predictedCategory,
+              priority: c.evaluation.priority,
+              confidenceScore: c.evaluation.confidenceScore,
+              executiveSummary: c.evaluation.executiveSummary,
+              recommendedAction: c.evaluation.recommendedAction,
+            },
+          },
+          statusLogs: {
+            create: [
+              {
+                newStatus: 'OPEN',
+                actionNote: 'Pengaduan dicatat melalui kanal digital DesaAI.',
+                createdAt: c.createdAt,
+              },
+              ...(c.status === 'IN_PROGRESS' || c.status === 'RESOLVED'
+                ? [
+                    {
+                      previousStatus: 'OPEN' as const,
+                      newStatus: 'IN_PROGRESS' as const,
+                      actionNote:
+                        'Petugas lapangan ditugaskan untuk peninjauan fisik.',
+                      createdAt: new Date(c.createdAt.getTime() + 2 * 3600000),
+                    },
+                  ]
+                : []),
+              ...(c.status === 'RESOLVED' && c.resolvedAt
+                ? [
+                    {
+                      previousStatus: 'IN_PROGRESS' as const,
+                      newStatus: 'RESOLVED' as const,
+                      actionNote:
+                        'Penanganan tuntas dan telah dikonfirmasi warga.',
+                      createdAt: c.resolvedAt,
+                    },
+                  ]
+                : []),
+            ],
+          },
+        },
+      })
+    }
+  }
+  console.log(
+    `   ✅ ${complaintsSeedData.length} Pengaduan Warga Demo berhasil disiapkan`,
   )
 
   console.log('🎉 Seeding database DesaAI selesai dengan sukses!')

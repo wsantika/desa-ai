@@ -4,6 +4,7 @@ import { banjarsSeedData } from '../../prisma/seed-data/banjars.data.js'
 import { knowledgeSeedData } from '../../prisma/seed-data/knowledge.data.js'
 import { serviceTypesSeedData } from '../../prisma/seed-data/service-types.data.js'
 import { usersSeedData } from '../../prisma/seed-data/users.data.js'
+import { complaintsSeedData } from '../../prisma/seed-data/complaints.data.js'
 
 describe('Database Seed Datasets Integrity', () => {
   it('validates master banjars dataset', () => {
@@ -67,10 +68,7 @@ describe('Database Seed Datasets Integrity', () => {
       assert.ok(!niks.has(u.profile.nik), `Duplicate NIK: ${u.profile.nik}`)
       niks.add(u.profile.nik)
       assert.ok(u.profile.fullName, 'Profile must have full name')
-      assert.ok(
-        ['L', 'P'].includes(u.profile.gender),
-        'Gender must be L or P',
-      )
+      assert.ok(['L', 'P'].includes(u.profile.gender), 'Gender must be L or P')
       assert.ok(
         banjarIds.has(u.profile.banjarId),
         `Profile banjarId ${u.profile.banjarId} must exist in banjars dataset`,
@@ -96,6 +94,65 @@ describe('Database Seed Datasets Integrity', () => {
       assert.ok(doc.title, 'Doc must have title')
       assert.ok(doc.contentText, 'Doc must have contentText')
       assert.ok(doc.chunks.length > 0, 'Doc must have pre-computed chunks')
+    }
+  })
+
+  it('validates demo complaints dataset for village analytics', () => {
+    assert.ok(
+      complaintsSeedData.length >= 10,
+      'Must have at least 10 demo complaints',
+    )
+    const ticketCodes = new Set<string>()
+    const banjarIds = new Set(banjarsSeedData.map((b) => b.id))
+    const validCategories = [
+      'INFRASTRUKTUR',
+      'KEBERSIHAN_LINGKUNGAN',
+      'KEAMANAN_KETERTIBAN',
+      'PELAYANAN_PUBLIK',
+      'BANTUAN_SOSIAL',
+      'LAINNYA',
+    ]
+
+    for (const c of complaintsSeedData) {
+      assert.ok(
+        /^CMP-\d{6}-\d{4}$/.test(c.ticketCode),
+        `Invalid ticket code format: ${c.ticketCode}`,
+      )
+      assert.ok(
+        !ticketCodes.has(c.ticketCode),
+        `Duplicate ticket code: ${c.ticketCode}`,
+      )
+      ticketCodes.add(c.ticketCode)
+
+      assert.ok(banjarIds.has(c.banjarId), `Banjar ${c.banjarId} must exist`)
+      assert.ok(c.reporterName, 'Complaint must have reporterName')
+      assert.ok(c.title, 'Complaint must have title')
+      assert.ok(c.description, 'Complaint must have description')
+      assert.ok(
+        validCategories.includes(c.category),
+        `Invalid category: ${c.category}`,
+      )
+      assert.ok(
+        ['OPEN', 'IN_PROGRESS', 'RESOLVED', 'REJECTED'].includes(c.status),
+        `Invalid status: ${c.status}`,
+      )
+      assert.ok(
+        ['LOW', 'MEDIUM', 'HIGH', 'EMERGENCY'].includes(c.priority),
+        `Invalid priority: ${c.priority}`,
+      )
+
+      if (c.status === 'RESOLVED') {
+        assert.ok(c.resolvedAt, 'Resolved complaint must have resolvedAt date')
+        assert.ok(
+          c.resolvedAt.getTime() >= c.createdAt.getTime(),
+          'resolvedAt must be after createdAt',
+        )
+      }
+
+      assert.ok(c.evaluation, 'Complaint must have AI evaluation')
+      assert.ok(
+        c.evaluation.confidenceScore > 0 && c.evaluation.confidenceScore <= 1.0,
+      )
     }
   })
 })

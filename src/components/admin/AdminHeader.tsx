@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Menu, Cpu, Bell, Clock, AlertTriangle } from 'lucide-react'
+import ThemeToggle from '../ThemeToggle'
 
 export interface AdminHeaderProps {
   title?: string
@@ -84,9 +85,14 @@ export default function AdminHeader({
           </div>
 
           {/* Live WITA Clock */}
-          <div className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--line,#d5ded9)] px-2.5 py-1 text-xs font-medium text-[var(--sea-ink-soft,#576c64)] dark:border-[#22352f] dark:text-stone-300">
+          <div className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-[var(--line,#d5ded9)] px-2.5 py-1 text-xs font-medium text-[var(--sea-ink-soft,#576c64)] dark:border-[#22352f] dark:text-stone-300">
             <Clock className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400 shrink-0" aria-hidden="true" />
             <span className="font-mono">{witaTime || '08.00.00'} WITA</span>
+          </div>
+
+          {/* Theme Mode Toggle */}
+          <div className="shrink-0">
+            <ThemeToggle />
           </div>
 
           {/* Notification Button */}
