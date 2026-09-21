@@ -12,14 +12,12 @@ export const triageFilterSchema = z.object({
   category: z
     .enum([
       'ALL',
-      'INFRASTRUCTURE',
-      'PUBLIC_FACILITY',
-      'WASTE_MANAGEMENT',
-      'HEALTH_SANITATION',
-      'SOCIAL_CONFLICT',
-      'SECURITY_ORDER',
-      'ADMINISTRATIVE',
-      'OTHER',
+      'INFRASTRUKTUR',
+      'KEBERSIHAN_LINGKUNGAN',
+      'KEAMANAN_KETERTIBAN',
+      'PELAYANAN_PUBLIK',
+      'BANTUAN_SOSIAL',
+      'LAINNYA',
     ])
     .optional()
     .default('ALL'),
