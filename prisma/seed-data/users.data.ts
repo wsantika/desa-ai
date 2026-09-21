@@ -31,7 +31,7 @@ export const usersSeedData: UserSeedItem[] = [
       birthPlace: 'Denpasar',
       birthDate: new Date('1980-01-01'),
       occupation: 'Administrator TI & Sekretaris Desa',
-      address: 'Jl. Veteran No. 1, Kantor Desa Mandara',
+      address: 'Jl. Raya Tegal Tugu No. 1, Kantor Perbekel Desa Tegal Tugu',
       banjarId: 'banjar-tengah',
     },
   },
@@ -87,6 +87,60 @@ export const usersSeedData: UserSeedItem[] = [
       occupation: 'Tenaga Pengajar SD Negeri 1',
       address: 'Jl. Melati No. 8, Banjar Kelod',
       banjarId: 'banjar-kelod',
+    },
+  },
+  {
+    id: 'user-citizen-03',
+    email: 'nyoman.budiartha@desa-ai.id',
+    phone: '085555555555',
+    passwordHash:
+      '$2b$10$EpRnTzVlqHNP0.fUbXUwSOyuiXe/QLSUG6xgncxI6WEYm6W6WpZye', // demo password: Password123!
+    role: 'CITIZEN',
+    profile: {
+      nik: '5171010505880005',
+      fullName: 'I Nyoman Budiartha',
+      gender: 'L',
+      birthPlace: 'Gianyar',
+      birthDate: new Date('1988-05-05'),
+      occupation: 'Petani Subak & Pekasih Banjar',
+      address: 'Jl. Kenanga No. 14, Banjar Tengah',
+      banjarId: 'banjar-tengah',
+    },
+  },
+  {
+    id: 'user-citizen-04',
+    email: 'putu.saraswati@desa-ai.id',
+    phone: '086666666666',
+    passwordHash:
+      '$2b$10$EpRnTzVlqHNP0.fUbXUwSOyuiXe/QLSUG6xgncxI6WEYm6W6WpZye', // demo password: Password123!
+    role: 'CITIZEN',
+    profile: {
+      nik: '5171010606960006',
+      fullName: 'Ni Putu Ayu Saraswati',
+      gender: 'P',
+      birthPlace: 'Gianyar',
+      birthDate: new Date('1996-06-06'),
+      occupation: 'Pedagang Sembako & Kuliner Tradisional',
+      address: 'Jl. Usaha Tani No. 3, Banjar Kangin',
+      banjarId: 'banjar-kangin',
+    },
+  },
+  {
+    id: 'user-citizen-05',
+    email: 'made.bagus@desa-ai.id',
+    phone: '087777777777',
+    passwordHash:
+      '$2b$10$EpRnTzVlqHNP0.fUbXUwSOyuiXe/QLSUG6xgncxI6WEYm6W6WpZye', // demo password: Password123!
+    role: 'CITIZEN',
+    profile: {
+      nik: '5171010707900007',
+      fullName: 'I Made Bagus Wijaya',
+      gender: 'L',
+      birthPlace: 'Gianyar',
+      birthDate: new Date('1990-07-07'),
+      occupation: 'Pematung Kayu & Seniman Ukir',
+      address: 'Gang Jepun No. 7, Banjar Kauh',
+      banjarId: 'banjar-kauh',
     },
   },
 ]
