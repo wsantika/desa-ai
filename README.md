@@ -1,4 +1,4 @@
-# 🏛️ DesaAI — AI-Powered Operating System for Smart Villages
+# 🏛️ DesaAI: AI-Powered Operating System for Smart Villages
 
 <div align="center">
 
@@ -118,9 +118,68 @@ npm run db:generate
 # 3. Sinkronisasikan skema database
 npm run db:push
 
-# 4. Jalankan server pengembangan
+# 4. Isi data awal (seed master banjar, layanan, dan RAG embeddings)
+npm run db:seed
+
+# 5. Jalankan server pengembangan
 npm run dev
 ```
+
+---
+
+### 🤖 Checklist Setup untuk Rekan Tim & AI Agent (Setelah `git pull`)
+
+Ketika rekan tim atau **AI Coding Agent** menarik (*pull*) branch pengembangan terbaru (`dev` atau `feat/*`), lakukan langkah-langkah wajib berikut secara berurutan:
+
+```bash
+# 1. Pastikan Docker / Container Database PostgreSQL Aktif
+# PERINGATAN: Jika container mati, aplikasi akan melempar error ECONNREFUSED saat query database!
+docker compose up -d db
+
+# 2. Pasang dependensi jika ada penambahan package
+npm install
+
+# 3. Pastikan konfigurasi .env.local terisi
+# Salin dari .env.example jika belum ada, dan isi GEMINI_API_KEY
+cp .env.example .env.local
+
+# 4. GENERATE PRISMA CLIENT (SANGAT PENTING!)
+# Folder src/generated/prisma/ ada di .gitignore.
+# Setiap developer / AI Agent WAJIB menjalankan ini agar TypeScript dan runtime sinkron.
+npm run db:generate
+
+# 5. Sinkronisasi Skema ke Basis Data Lokal
+npm run db:push
+
+# 6. Jalankan Database Seed (Wajib untuk Data Awal & RAG Embedding)
+# Mengisi master banjar, katalog permohonan surat, user demo, dan vektor embedding dokumen regulasi desa.
+npm run db:seed
+
+# 7. Jalankan Automated Test Suite & Linter
+npm run test
+npm run lint
+
+# 8. Jalankan Server Pengembangan
+npm run dev
+```
+
+#### 🌐 Navigasi Halaman Utama
+- **Portal Pelayanan Warga**: `http://localhost:3000/`
+  - Pengaduan Keluhan Fasilitas: `http://localhost:3000/pengaduan`
+  - Permohonan Surat Administrasi: `http://localhost:3000/layanan`
+  - Asisten Cerdas Desa (RAG Chat): `http://localhost:3000/asisten`
+- **Meja Kerja Perangkat Desa (Government Dashboard)**: `http://localhost:3000/admin`
+  - Meja Triage Pengaduan Cepat: `http://localhost:3000/admin/pengaduan`
+  - Verifikasi Berkas Layanan: `http://localhost:3000/admin/layanan`
+  - Analitik Masalah & Sebaran Banjar: `http://localhost:3000/admin/analitik`
+  - Manajemen Regulasi Desa (Knowledge Base): `http://localhost:3000/admin/knowledge`
+
+#### 📋 Aturan Kerja Kolaborasi AI Agent
+1. **Target Branch**: Selalu buat branch dari `dev` dan buka Pull Request ke `dev`. Jangan pernah menargetkan branch `master` langsung.
+2. **Atomic Commits**: Lakukan commit secara atomik per file (`git add <file> && git commit -m "..."`). Jangan menggabungkan banyak perubahan file dalam satu commit.
+3. **Format Pesan Commit**: Wajib menggunakan format Conventional Commits (`feat: ...`, `fix: ...`, `docs: ...`, `test: ...`, `refactor: ...`).
+4. **Validasi Kualitas**: Wajib memastikan `npm run test`, `npm run lint`, dan `npm run build` berhasil sebelum mem-push kode ke repositori.
+5. **Standar Antislop**: Dilarang menggunakan karakter em dash (ganti dengan titik dua, koma, titik, atau kurung), dan pastikan semua komponen visual memiliki state *empty*, *loading*, dan *error*.
 
 ---
 
@@ -168,4 +227,4 @@ Karya ini dikembangkan oleh **Tim Desa AI** dari **Universitas Pendidikan Nasion
 2. **Kadek Wahyu Santika Putra**
 3. **Renald Kevin Azzaky**
 
-*APTIKOM Hackathon 2026 — Smart Village Technology*
+*APTIKOM Hackathon 2026: Smart Village Technology*

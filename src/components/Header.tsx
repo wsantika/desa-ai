@@ -1,8 +1,13 @@
-import { Link } from '@tanstack/react-router'
-import { Building2, FileText, AlertCircle, Bot, PhoneCall } from 'lucide-react'
+import { Link, useLocation } from '@tanstack/react-router'
+import { Building2, FileText, AlertCircle, Bot, PhoneCall, ShieldCheck } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 
 export default function Header() {
+  const location = useLocation()
+  if (location.pathname.startsWith('/admin')) {
+    return null
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--header-bg)]/90 px-4 backdrop-blur-md">
       <nav className="page-wrap flex items-center justify-between gap-3 py-2.5 sm:py-3.5">
@@ -76,6 +81,15 @@ export default function Header() {
             <PhoneCall className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400" aria-hidden="true" />
             <span className="hidden xs:inline">Darurat</span>
           </a>
+
+          <Link
+            to="/admin"
+            className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full border border-emerald-700/20 bg-emerald-700/10 px-2.5 py-1 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-700/20 dark:border-emerald-500/30 dark:bg-emerald-950/40 dark:text-emerald-300 sm:px-3 sm:py-1.5"
+            title="Buka Meja Kerja Perangkat Desa"
+          >
+            <ShieldCheck className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400" aria-hidden="true" />
+            <span className="hidden sm:inline">Meja Kerja Desa</span>
+          </Link>
 
           <ThemeToggle />
         </div>
