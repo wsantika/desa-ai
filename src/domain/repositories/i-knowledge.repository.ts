@@ -41,4 +41,8 @@ export interface IKnowledgeRepository {
   ): Promise<KnowledgeDocumentEntity>
   getAllChunksWithEmbeddings(): Promise<KnowledgeChunkWithDocument[]>
   deleteDocument(id: string): Promise<void>
+  updatePublishStatus(
+    id: string,
+    isPublished: boolean,
+  ): Promise<KnowledgeDocumentEntity>
 }
