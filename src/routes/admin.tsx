@@ -36,7 +36,7 @@ function AdminLayout() {
       <div className="flex min-h-screen flex-col md:pl-64">
         <AdminHeader
           title="Meja Kerja Terpadu Perangkat Desa"
-          subtitle="Desa Mandara, Kec. Gianyar"
+          subtitle="Desa Tegal Tugu, Kec. Gianyar"
           urgentCount={urgentCount}
           onToggleMobileSidebar={() => setIsOpenMobile((prev) => !prev)}
         />

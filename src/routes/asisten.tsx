@@ -34,7 +34,7 @@ const INITIAL_MESSAGE: ChatMessage = {
   id: 'msg-welcome',
   role: 'assistant',
   content:
-    '**Om Swastyastu!** 🙏\n\nTiang **Made Mandara**, asisten AI resmi pelayanan publik Desa Mandara. Ada yang bisa tiang bantu seputar:\n- Persyaratan surat administrasi desa (Domisili, SKU, SKCK, SKTM)\n- Jam operasional dan jadwal pelayanan kantor desa\n- Alur pengaduan fasilitas lingkungan atau bantuan sosial\n\nSilakan ketik pertanyaan Anda atau pilih topik di bawah nggih!',
+    '**Om Swastyastu!** 🙏\n\nTiang **Made Tegal Tugu**, asisten AI resmi pelayanan publik Desa Tegal Tugu. Ada yang bisa tiang bantu seputar:\n- Persyaratan surat administrasi desa (Domisili, SKU, SKCK, SKTM)\n- Jam operasional dan jadwal pelayanan kantor desa\n- Alur pengaduan fasilitas lingkungan atau bantuan sosial\n\nSilakan ketik pertanyaan Anda atau pilih topik di bawah nggih!',
   createdAt: new Date().toISOString(),
 }
 
@@ -172,7 +172,7 @@ function AsistenChatPage() {
         id: `bot-err-${Date.now()}`,
         role: 'assistant',
         content:
-          'Matur suksma atas pertanyaannya. Saat ini koneksi sistem sedang sibuk, mohon coba kembali beberapa saat lagi atau hubungi langsung Kantor Desa Mandara.',
+          'Matur suksma atas pertanyaannya. Saat ini koneksi sistem sedang sibuk, mohon coba kembali beberapa saat lagi atau hubungi langsung Kantor Desa Tegal Tugu.',
         createdAt: new Date().toISOString(),
       }
       setMessages((prev) => [...prev, errorMessage])
@@ -191,10 +191,10 @@ function AsistenChatPage() {
           </div>
           <div>
             <h1 className="text-sm font-bold leading-tight text-[var(--sea-ink)] sm:text-base">
-              Made Mandara — Asisten AI Desa
+              Made Tegal Tugu: Asisten AI Desa
             </h1>
             <p className="text-[11px] text-[var(--sea-ink-soft)]">
-              Grounded SOP Resmi Desa Mandara &bull; RAG Engine
+              Grounded SOP Resmi Desa Tegal Tugu &bull; RAG Engine
             </p>
           </div>
         </div>
@@ -335,8 +335,8 @@ function AsistenChatPage() {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ketik pertanyaan untuk Made Mandara..."
-          aria-label="Ketik pertanyaan untuk Made Mandara"
+          placeholder="Ketik pertanyaan untuk Made Tegal Tugu..."
+          aria-label="Ketik pertanyaan untuk Made Tegal Tugu"
           disabled={loading}
           className="flex-1 rounded-xl bg-transparent px-3 py-2 text-xs text-[var(--sea-ink)] placeholder-[var(--sea-ink-soft)] focus:outline-none sm:text-sm"
         />

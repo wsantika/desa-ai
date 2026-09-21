@@ -37,7 +37,7 @@ function AdminDashboardOverviewPage() {
                 <ShieldCheck className="h-4 w-4" aria-hidden="true" />
               </span>
               <h2 className="m-0 text-lg sm:text-xl font-extrabold tracking-tight text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
-                Pusat Kendali Administrasi Desa Mandara
+                Pusat Kendali Administrasi Desa Tegal Tugu
               </h2>
             </div>
             <p className="m-0 text-xs sm:text-sm text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">

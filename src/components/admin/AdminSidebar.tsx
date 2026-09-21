@@ -88,7 +88,7 @@ export default function AdminSidebar({
                 </span>
               </div>
               <p className="m-0 text-xs font-medium text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
-                Pemerintah Desa Mandara
+                Pemerintah Desa Tegal Tugu
               </p>
             </div>
           </div>
