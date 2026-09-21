@@ -98,7 +98,7 @@ jobs:
         run: npx prisma generate
 
       - name: Apply Database Schema
-        run: npx prisma db push --skip-generate
+        run: npx prisma db push --accept-data-loss
 
       - name: Run ESLint
         run: npm run lint
