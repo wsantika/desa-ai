@@ -10,7 +10,7 @@ export interface AdminHeaderProps {
 
 export default function AdminHeader({
   title = 'Meja Kerja Terpadu',
-  subtitle = 'Pemerintah Desa Mandara',
+  subtitle = 'Pemerintah Desa Tegal Tugu',
   urgentCount = 0,
   onToggleMobileSidebar,
 }: AdminHeaderProps) {

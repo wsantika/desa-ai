@@ -44,7 +44,7 @@ export interface AdminDashboardSummaryData {
   recentServiceRequests: RecentServiceRequestItem[]
 }
 
-export async function fetchAdminDashboardSummary(): Promise<AdminDashboardSummaryData> {
+async function fetchAdminDashboardSummary(): Promise<AdminDashboardSummaryData> {
   // 1. Agregasi pengaduan
   const complaintsByStatus = await prisma.complaint.groupBy({
     by: ['status'],

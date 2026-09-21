@@ -114,12 +114,17 @@ describe('Issue #14: Complaint Submission & Tracking Status Engine', () => {
       throw new Error('Complaint not found')
     }
 
-    async findRecent(): Promise<ComplaintEntity[]> {
+    async listRecent(): Promise<ComplaintEntity[]> {
       return Array.from(this.complaints.values())
     }
 
-    async countByStatus(): Promise<Record<string, number>> {
-      return {}
+    async countByStatus(): Promise<Record<ComplaintEntity['status'], number>> {
+      return {
+        OPEN: 0,
+        IN_PROGRESS: 0,
+        RESOLVED: 0,
+        REJECTED: 0,
+      }
     }
   }
 

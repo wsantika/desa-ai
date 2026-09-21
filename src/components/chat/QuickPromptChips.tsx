@@ -17,7 +17,7 @@ export const POPULAR_PROMPTS: QuickPromptItem[] = [
   {
     id: 'p-jam',
     label: 'Jam Layanan Kantor Desa',
-    query: 'Kapan jam buka operasional pelayanan publik di Kantor Desa Mandara?',
+    query: 'Kapan jam buka operasional pelayanan publik di Kantor Desa Tegal Tugu?',
     category: 'layanan',
   },
   {
