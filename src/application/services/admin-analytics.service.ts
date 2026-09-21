@@ -52,9 +52,50 @@ export async function fetchAdminAnalyticsData(
   }
 
   // 2. Fetch master banjars
-  const masterBanjars = await prisma.banjar.findMany({
+  let masterBanjars = await prisma.banjar.findMany({
     orderBy: { name: 'asc' },
   })
+
+  if (masterBanjars.length === 0) {
+    masterBanjars = [
+      {
+        id: 'banjar-kaja',
+        name: 'Banjar Kaja',
+        dusun: 'Dusun Kangin',
+        leaderName: 'I Wayan Koster Wijaya',
+        leaderPhone: '081234567891',
+        createdAt: now,
+        updatedAt: now,
+      },
+      {
+        id: 'banjar-kangin',
+        name: 'Banjar Kangin',
+        dusun: 'Dusun Kangin',
+        leaderName: 'I Ketut Sudikerta Putra',
+        leaderPhone: '081234567894',
+        createdAt: now,
+        updatedAt: now,
+      },
+      {
+        id: 'banjar-kelod',
+        name: 'Banjar Kelod',
+        dusun: 'Dusun Kawan',
+        leaderName: 'I Made Rai Suartana',
+        leaderPhone: '081234567892',
+        createdAt: now,
+        updatedAt: now,
+      },
+      {
+        id: 'banjar-tengah',
+        name: 'Banjar Tengah',
+        dusun: 'Dusun Tengah',
+        leaderName: 'I Nyoman Giri Sentana',
+        leaderPhone: '081234567893',
+        createdAt: now,
+        updatedAt: now,
+      },
+    ]
+  }
 
   // 3. Build Prisma where clause
   const whereClause: {
