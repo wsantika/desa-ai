@@ -7,6 +7,7 @@ import { GeminiEmbeddingService } from '../src/infrastructure/ai/gemini-embeddin
 import { serviceTypesSeedData } from './seed-data/service-types.data.js'
 import { usersSeedData } from './seed-data/users.data.js'
 import { complaintsSeedData } from './seed-data/complaints.data.js'
+import { serviceRequestsSeedData } from './seed-data/service-requests.data.js'
 
 const adapter = new PrismaPg({
   connectionString: getDatabaseUrl(),
@@ -253,6 +254,65 @@ async function main() {
   }
   console.log(
     `   ✅ ${complaintsSeedData.length} Pengaduan Warga Demo berhasil disiapkan`,
+  )
+
+  // 6. Seed Permohonan Surat Layanan Mandiri Warga
+  console.log('📬 Menyiapkan Permohonan Surat Layanan Mandiri Warga...')
+  for (const req of serviceRequestsSeedData) {
+    const existing = await prisma.serviceRequest.findUnique({
+      where: { trackingCode: req.trackingCode },
+    })
+
+    if (existing) {
+      await prisma.serviceRequest.update({
+        where: { trackingCode: req.trackingCode },
+        update: {
+          status: req.status,
+          applicantName: req.applicantName,
+          applicantNik: req.applicantNik,
+          applicantPhone: req.applicantPhone,
+          purpose: req.purpose,
+          officerNotes: req.officerNotes ?? null,
+          completedAt: req.completedAt ?? null,
+        },
+      })
+    } else {
+      await prisma.serviceRequest.create({
+        data: {
+          id: req.id,
+          trackingCode: req.trackingCode,
+          userId: req.userId,
+          serviceTypeId: req.serviceTypeId,
+          status: req.status,
+          applicantName: req.applicantName,
+          applicantNik: req.applicantNik,
+          applicantPhone: req.applicantPhone,
+          purpose: req.purpose,
+          officerNotes: req.officerNotes ?? null,
+          createdAt: req.createdAt,
+          completedAt: req.completedAt ?? null,
+          attachments: {
+            create: req.attachments.map((att) => ({
+              fileName: att.fileName,
+              fileUrl: att.fileUrl,
+              fileType: att.fileType,
+            })),
+          },
+          statusLogs: {
+            create: req.statusLogs.map((log) => ({
+              previousStatus: log.previousStatus ?? null,
+              newStatus: log.newStatus,
+              actorId: log.actorId ?? null,
+              notes: log.notes ?? null,
+              createdAt: log.createdAt,
+            })),
+          },
+        },
+      })
+    }
+  }
+  console.log(
+    `   ✅ ${serviceRequestsSeedData.length} Permohonan Surat Warga Demo berhasil disiapkan`,
   )
 
   console.log('🎉 Seeding database DesaAI selesai dengan sukses!')
