@@ -184,14 +184,12 @@ export function TriageFilterToolbar({
             className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-medium text-[var(--sea-ink,#1b2a26)] focus:border-emerald-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-emerald-500"
           >
             <option value="ALL">Semua Kategori</option>
-            <option value="INFRASTRUCTURE">Infrastruktur</option>
-            <option value="PUBLIC_FACILITY">Fasilitas Umum</option>
-            <option value="WASTE_MANAGEMENT">Sampah & Kebersihan</option>
-            <option value="HEALTH_SANITATION">Kesehatan & Sanitasi</option>
-            <option value="SECURITY_ORDER">Keamanan & Ketertiban</option>
-            <option value="SOCIAL_CONFLICT">Sosial & Kemasyarakatan</option>
-            <option value="ADMINISTRATIVE">Administrasi Layanan</option>
-            <option value="OTHER">Lainnya</option>
+            <option value="INFRASTRUKTUR">Infrastruktur</option>
+            <option value="KEBERSIHAN_LINGKUNGAN">Kebersihan Lingkungan</option>
+            <option value="KEAMANAN_KETERTIBAN">Keamanan & Ketertiban</option>
+            <option value="PELAYANAN_PUBLIK">Pelayanan Publik</option>
+            <option value="BANTUAN_SOSIAL">Bantuan Sosial</option>
+            <option value="LAINNYA">Lainnya</option>
           </select>
         </div>
       </div>
