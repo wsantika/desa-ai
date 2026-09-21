@@ -9,7 +9,7 @@ import {
 import {
   fetchTriageDeskData,
   updateTriageComplaintStatus,
-} from '../../src/application/server-functions/admin-triage.fn.js'
+} from '../../src/application/services/admin-triage.service.js'
 import { prisma } from '../../src/infrastructure/db/prisma.js'
 
 async function isDatabaseReachable(): Promise<boolean> {

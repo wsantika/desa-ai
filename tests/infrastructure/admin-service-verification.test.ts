@@ -9,7 +9,7 @@ import {
 import {
   fetchServiceVerificationData,
   updateServiceRequestStatus,
-} from '../../src/application/server-functions/admin-service-verification.fn.js'
+} from '../../src/application/services/admin-service-verification.service.js'
 import { prisma } from '../../src/infrastructure/db/prisma.js'
 
 async function isDatabaseReachable(): Promise<boolean> {
