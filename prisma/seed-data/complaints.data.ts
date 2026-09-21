@@ -376,4 +376,135 @@ export const complaintsSeedData: ComplaintSeedItem[] = [
         'Koordinasi bersama BKSDA Gianyar dan pemasangan papan himbauan pengelolaan pakan satwa.',
     },
   },
+
+  // Banjar Kauh
+  {
+    ticketCode: 'CMP-202609-0014',
+    reporterName: 'I Made Bagus Wijaya',
+    reporterPhone: '087777777777',
+    citizenId: 'user-citizen-05',
+    banjarId: 'banjar-kauh',
+    title: 'Pohon Santen Rawan Tumbang Menimpa Bale Banjar Kauh',
+    description:
+      'Pohon santen berdiameter 60 cm di samping Bale Banjar Kauh sudah lapuk di bagian pangkal akar akibat cuaca angin kencang, sangat membahayakan saat ada kegiatan pasangkrahan adat.',
+    specificLocation: 'Sebelah barat Bale Banjar Kauh RT 01',
+    status: 'IN_PROGRESS',
+    category: 'INFRASTRUKTUR',
+    priority: 'EMERGENCY',
+    aiSummary:
+      'Pohon tua lapuk rawan tumbang di area publik Bale Banjar Kauh yang berisiko menimpa fasilitas balai adat.',
+    createdAt: new Date(Date.now() - 2 * 86400000),
+    evaluation: {
+      predictedCategory: 'INFRASTRUKTUR',
+      priority: 'EMERGENCY',
+      confidenceScore: 0.96,
+      executiveSummary:
+        'Ancaman keselamatan warga akibat pohon tua lapuk di sekitar fasilitas umum balai banjar.',
+      recommendedAction:
+        'Penebangan terencana segera oleh BPBD Gianyar bersama tim Linmas dan prajuru Banjar Kauh.',
+    },
+  },
+  {
+    ticketCode: 'CMP-202609-0015',
+    reporterName: 'Ni Putu Sukerti',
+    reporterPhone: '081928374650',
+    banjarId: 'banjar-kauh',
+    title: 'Lampu Penerangan Mati di Tikungan Pura Dalem Banjar Kauh',
+    description:
+      'Dua titik lampu penerangan jalan di tikungan tajam menuju Pura Dalem mati total selama sepekan, membuat jalan gelap gulita dan rawan kecelakaan.',
+    specificLocation: 'Tikungan Pura Dalem Banjar Kauh',
+    status: 'RESOLVED',
+    category: 'INFRASTRUKTUR',
+    priority: 'MEDIUM',
+    aiSummary:
+      'Lampu penerangan padam di tikungan tajam akses menuju Pura Dalem Banjar Kauh.',
+    createdAt: new Date(Date.now() - 5 * 86400000),
+    resolvedAt: new Date(Date.now() - 5 * 86400000 + 20 * 3600000),
+    evaluation: {
+      predictedCategory: 'INFRASTRUKTUR',
+      priority: 'MEDIUM',
+      confidenceScore: 0.92,
+      executiveSummary:
+        'Gangguan visibilitas malam hari di tikungan jalan akibat matinya lampu penerangan umum.',
+      recommendedAction:
+        'Penggantian bohlam LED dan perbaikan saklar otomatis oleh teknisi sarana desa.',
+    },
+  },
+  {
+    ticketCode: 'CMP-202609-0016',
+    reporterName: 'I Wayan Sudarma',
+    reporterPhone: '085234567891',
+    banjarId: 'banjar-kauh',
+    title: 'Sumbatan Sampah Plastik dan Ranting di Pintu Air Subak Kauh',
+    description:
+      'Pintu air saluran irigasi tersier Subak Kauh tersumbat oleh tumpukan sampah plastik sisa upakara dan ranting bambu, debit air ke persawahan berkurang drastis.',
+    specificLocation: 'Pintu air temuku Subak Kauh barat laut Banjar Kauh',
+    status: 'RESOLVED',
+    category: 'KEBERSIHAN_LINGKUNGAN',
+    priority: 'HIGH',
+    aiSummary:
+      'Penyumbatan pintu air irigasi Subak Kauh oleh sampah yang mengganggu pasokan air sawah.',
+    createdAt: new Date(Date.now() - 4 * 86400000),
+    resolvedAt: new Date(Date.now() - 4 * 86400000 + 14 * 3600000),
+    evaluation: {
+      predictedCategory: 'KEBERSIHAN_LINGKUNGAN',
+      priority: 'HIGH',
+      confidenceScore: 0.95,
+      executiveSummary:
+        'Hambatan aliran irigasi persawahan subak akibat material sampah di pintu air temuku.',
+      recommendedAction:
+        'Pembersihan gotong royong bersama krama subak dan pengangkutan sampah ke TPS3R Desa Tegal Tugu.',
+    },
+  },
+  {
+    ticketCode: 'CMP-202609-0017',
+    reporterName: 'I Nyoman Arimbawa',
+    reporterPhone: '087812345678',
+    banjarId: 'banjar-kauh',
+    title: 'Sengketa Pembatas Pagar Seng Antar Tetangga Pekarangan',
+    description:
+      'Tetangga sebelah mendirikan pagar seng menjorok 30 cm ke batas pekarangan pekarangan saya tanpa izin, mohon pihak dinas desa membongkar pagar tersebut.',
+    specificLocation: 'Gang Sandat No. 12 Banjar Kauh',
+    status: 'REJECTED',
+    category: 'LAINNYA',
+    priority: 'LOW',
+    aiSummary:
+      'Laporan sengketa perdata batas tanah pekarangan antar-warga yang meminta penertiban fisik sepihak.',
+    createdAt: new Date(Date.now() - 3 * 86400000),
+    evaluation: {
+      predictedCategory: 'LAINNYA',
+      priority: 'LOW',
+      confidenceScore: 0.88,
+      executiveSummary:
+        'Sengketa batas tanah antar tetangga yang merupakan ranah musyawarah adat atau hukum perdata.',
+      recommendedAction:
+        'Ditolak untuk penindakan langsung dinas; diarahkan mediasi kekeluargaan bersama Kelian Adat Banjar Kauh.',
+    },
+  },
+  {
+    ticketCode: 'CMP-202609-0018',
+    reporterName: 'I Made Bagus Wijaya',
+    reporterPhone: '087777777777',
+    citizenId: 'user-citizen-05',
+    banjarId: 'banjar-kauh',
+    title: 'Permintaan Jadwal Sosialisasi Pemilahan Sampah Organik TPS3R',
+    description:
+      'Warga tempekan kauh memerlukan sosialisasi langsung tentang jadwal pemilahan ember sampah organik sisa canang dan dapur ke TPS3R Desa Tegal Tugu.',
+    specificLocation: 'Bale Tempekan Kawan Banjar Kauh',
+    status: 'OPEN',
+    category: 'PELAYANAN_PUBLIK',
+    priority: 'LOW',
+    aiSummary:
+      'Aspirasi permohonan edukasi teknis pemilahan sampah organik rumah tangga dan upakara di Banjar Kauh.',
+    createdAt: new Date(Date.now() - 1 * 86400000),
+    evaluation: {
+      predictedCategory: 'PELAYANAN_PUBLIK',
+      priority: 'LOW',
+      confidenceScore: 0.91,
+      executiveSummary:
+        'Usulan kegiatan sosialisasi lingkungan hidup dari warga tempekan Banjar Kauh.',
+      recommendedAction:
+        'Penjadwalan kunjungan edukasi TPS3R oleh Satgas Lingkungan Desa Tegal Tugu pada paruman banjar.',
+    },
+  },
 ]
