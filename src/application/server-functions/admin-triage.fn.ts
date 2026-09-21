@@ -155,7 +155,14 @@ export async function fetchTriageDeskData(
       statusLogs: {
         orderBy: { createdAt: 'desc' },
         include: {
-          actor: { select: { name: true } },
+          actor: {
+            select: {
+              email: true,
+              profile: {
+                select: { fullName: true },
+              },
+            },
+          },
         },
       },
     },
@@ -197,7 +204,7 @@ export async function fetchTriageDeskData(
       actionNote: log.actionNote,
       proofPhotoUrl: log.proofPhotoUrl,
       createdAt: log.createdAt.toISOString(),
-      actorName: log.actor?.name || null,
+      actorName: log.actor?.profile?.fullName || log.actor?.email || null,
     })),
   }))
 
