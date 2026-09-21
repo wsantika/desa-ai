@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   FileText,
   Clock,
@@ -16,12 +16,26 @@ import type { ServiceRequestEntity } from '../domain/entities/service-request.en
 
 interface LayananSearchParams {
   track?: string
+  tab?: 'katalog' | 'form' | 'lacak'
+  type?: 'DOMISILI' | 'SKU' | 'SKCK' | 'SKTM'
 }
 
 export const Route = createFileRoute('/layanan')({
   validateSearch: (search: Record<string, unknown>): LayananSearchParams => {
+    const validTabs = ['katalog', 'form', 'lacak'] as const
+    const validTypes = ['DOMISILI', 'SKU', 'SKCK', 'SKTM'] as const
     return {
       track: typeof search.track === 'string' ? search.track : undefined,
+      tab:
+        typeof search.tab === 'string' &&
+        validTabs.includes(search.tab as (typeof validTabs)[number])
+          ? (search.tab as (typeof validTabs)[number])
+          : undefined,
+      type:
+        typeof search.type === 'string' &&
+        validTypes.includes(search.type as (typeof validTypes)[number])
+          ? (search.type as (typeof validTypes)[number])
+          : undefined,
     }
   },
   component: LayananHubPage,
@@ -106,13 +120,29 @@ const SERVICE_ITEMS: ServiceCard[] = [
 function LayananHubPage() {
   const search = Route.useSearch()
   const initialTrack = search.track || ''
+  const initialType = search.type
+  const initialTab: ActiveTab =
+    search.tab || (initialTrack ? 'lacak' : initialType ? 'form' : 'katalog')
 
-  const [activeTab, setActiveTab] = useState<ActiveTab>(initialTrack ? 'lacak' : 'katalog')
+  const [activeTab, setActiveTab] = useState<ActiveTab>(initialTab)
   const [selectedServiceCode, setSelectedServiceCode] = useState<
     'DOMISILI' | 'SKU' | 'SKCK' | 'SKTM'
-  >('DOMISILI')
-  const [submittedRequest, setSubmittedRequest] = useState<ServiceRequestEntity | null>(null)
+  >(initialType || 'DOMISILI')
+  const [submittedRequest, setSubmittedRequest] =
+    useState<ServiceRequestEntity | null>(null)
   const [trackingCodeToQuery, setTrackingCodeToQuery] = useState(initialTrack)
+
+  useEffect(() => {
+    if (search.type) {
+      setSelectedServiceCode(search.type)
+      setActiveTab('form')
+    } else if (search.tab) {
+      setActiveTab(search.tab)
+    } else if (search.track) {
+      setActiveTab('lacak')
+      setTrackingCodeToQuery(search.track)
+    }
+  }, [search.type, search.tab, search.track])
 
   const handleApplyService = (code: 'DOMISILI' | 'SKU' | 'SKCK' | 'SKTM') => {
     setSelectedServiceCode(code)
@@ -144,7 +174,8 @@ function LayananHubPage() {
         </h1>
         <p className="mt-2 max-w-2xl text-xs leading-relaxed text-[var(--sea-ink-soft)] sm:text-base">
           Ajukan permohonan administrasi surat desa secara online dari HP Anda.
-          Bebas antrean fisik, verifikasi transparan, dan tanpa pungutan biaya (Gratis Rp 0).
+          Bebas antrean fisik, verifikasi transparan, dan tanpa pungutan biaya
+          (Gratis Rp 0).
         </p>
       </div>
 
