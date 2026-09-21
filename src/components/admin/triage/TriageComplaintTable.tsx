@@ -91,36 +91,34 @@ function getStatusBadge(status: ComplaintStatus) {
 
 function getCategoryLabel(category: ComplaintCategory | null): string {
   switch (category) {
-    case 'INFRASTRUCTURE':
+    case 'INFRASTRUKTUR':
       return 'Infrastruktur'
-    case 'PUBLIC_FACILITY':
-      return 'Fasilitas Umum'
-    case 'WASTE_MANAGEMENT':
-      return 'Kebersihan'
-    case 'HEALTH_SANITATION':
-      return 'Sanitasi'
-    case 'SECURITY_ORDER':
-      return 'Keamanan'
-    case 'SOCIAL_CONFLICT':
-      return 'Sosial'
-    case 'ADMINISTRATIVE':
-      return 'Administrasi'
-    case 'OTHER':
+    case 'KEBERSIHAN_LINGKUNGAN':
+      return 'Kebersihan Lingkungan'
+    case 'KEAMANAN_KETERTIBAN':
+      return 'Keamanan & Ketertiban'
+    case 'PELAYANAN_PUBLIK':
+      return 'Pelayanan Publik'
+    case 'BANTUAN_SOSIAL':
+      return 'Bantuan Sosial'
+    case 'LAINNYA':
     default:
-      return 'Umum'
+      return 'Lainnya'
   }
 }
 
 function formatTriageDate(isoString: string): string {
   try {
     const d = new Date(isoString)
-    return new Intl.DateTimeFormat('id-ID', {
-      day: 'numeric',
-      month: 'short',
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'Asia/Makassar',
-    }).format(d) + ' WITA'
+    return (
+      new Intl.DateTimeFormat('id-ID', {
+        day: 'numeric',
+        month: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'Asia/Makassar',
+      }).format(d) + ' WITA'
+    )
   } catch {
     return isoString
   }
