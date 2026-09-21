@@ -277,12 +277,12 @@ export function TriageDetailModal({
                           {log.newStatus}
                         </span>
                         {log.previousStatus && (
-                          <span className="text-[10px] text-[var(--sea-ink-soft,#576c64)]">
+                          <span className="text-[10px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
                             (dari {log.previousStatus})
                           </span>
                         )}
                       </div>
-                      <span className="text-[10px] text-[var(--sea-ink-soft,#576c64)]">
+                      <span className="text-[10px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
                         {new Date(log.createdAt).toLocaleString('id-ID')}
                       </span>
                     </div>
@@ -373,7 +373,7 @@ export function TriageDetailModal({
             <div>
               <label
                 htmlFor="triage-action-notes"
-                className="block text-[11px] font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400"
+                className="block text-[11px] font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-300"
               >
                 Catatan Penanganan Petugas (Wajib)
               </label>
@@ -383,7 +383,7 @@ export function TriageDetailModal({
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Contoh: Tim satgas banjar telah diterjunkan ke lokasi untuk perbaikan kabel lampu jalan."
-                className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] p-2.5 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:focus:border-emerald-500"
+                className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] p-2.5 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-400 dark:focus:border-emerald-500 dark:focus:bg-[#14201d]"
                 required
               />
             </div>
@@ -392,7 +392,7 @@ export function TriageDetailModal({
             <div>
               <label
                 htmlFor="triage-proof-url"
-                className="block text-[11px] font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400"
+                className="block text-[11px] font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-300"
               >
                 URL Foto Bukti Penanganan (Opsional)
               </label>
@@ -402,7 +402,7 @@ export function TriageDetailModal({
                 value={proofPhotoUrl}
                 onChange={(e) => setProofPhotoUrl(e.target.value)}
                 placeholder="https://..."
-                className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:focus:border-emerald-500"
+                className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-400 dark:focus:border-emerald-500 dark:focus:bg-[#14201d]"
               />
             </div>
 
