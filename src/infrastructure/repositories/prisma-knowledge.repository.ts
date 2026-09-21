@@ -170,6 +170,22 @@ export class PrismaKnowledgeRepository implements IKnowledgeRepository {
     })
   }
 
+  async updatePublishStatus(
+    id: string,
+    isPublished: boolean,
+  ): Promise<KnowledgeDocumentEntity> {
+    const updated = await this.client.knowledgeDocument.update({
+      where: { id },
+      data: { isPublished },
+      include: {
+        chunks: {
+          orderBy: { chunkIndex: 'asc' },
+        },
+      },
+    })
+    return this.toDomainEntity(updated)
+  }
+
   private toDomainEntity(raw: {
     id: string
     title: string

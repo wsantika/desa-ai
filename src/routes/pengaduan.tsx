@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   ShieldAlert,
   Search,
@@ -22,12 +22,19 @@ import type { AIEvaluationResult } from '../domain/repositories/i-ai-evaluator.s
 
 interface PengaduanSearchParams {
   track?: string
+  tab?: 'kategori' | 'form' | 'lacak'
 }
 
 export const Route = createFileRoute('/pengaduan')({
   validateSearch: (search: Record<string, unknown>): PengaduanSearchParams => {
+    const validTabs = ['kategori', 'form', 'lacak'] as const
     return {
       track: typeof search.track === 'string' ? search.track : undefined,
+      tab:
+        typeof search.tab === 'string' &&
+        validTabs.includes(search.tab as (typeof validTabs)[number])
+          ? (search.tab as (typeof validTabs)[number])
+          : undefined,
     }
   },
   component: PengaduanHubPage,
@@ -65,13 +72,25 @@ const COMPLAINT_CATEGORIES = [
 function PengaduanHubPage() {
   const search = Route.useSearch()
   const initialTrack = search.track || ''
+  const initialTab: ActiveTab =
+    search.tab || (initialTrack ? 'lacak' : 'kategori')
 
-  const [activeTab, setActiveTab] = useState<ActiveTab>(initialTrack ? 'lacak' : 'kategori')
-  const [trackingTicketToQuery, setTrackingTicketToQuery] = useState(initialTrack)
+  const [activeTab, setActiveTab] = useState<ActiveTab>(initialTab)
+  const [trackingTicketToQuery, setTrackingTicketToQuery] =
+    useState(initialTrack)
   const [submittedData, setSubmittedData] = useState<{
     complaint: ComplaintEntity
     evaluation?: AIEvaluationResult
   } | null>(null)
+
+  useEffect(() => {
+    if (search.tab) {
+      setActiveTab(search.tab)
+    } else if (search.track) {
+      setActiveTab('lacak')
+      setTrackingTicketToQuery(search.track)
+    }
+  }, [search.tab, search.track])
 
   const handleStartReport = () => {
     setSubmittedData(null)
@@ -97,9 +116,9 @@ function PengaduanHubPage() {
           Layanan Pengaduan &amp; Aspirasi Warga
         </h1>
         <p className="mt-2 max-w-2xl text-xs leading-relaxed text-[var(--sea-ink-soft)] sm:text-base">
-          Laporkan kendala fasilitas umum atau aspirasi Anda di Desa Tegal Tugu. Setiap laporan
-          diprioritaskan otomatis dengan evaluasi cerdas AI dan ditindaklanjuti secara transparan oleh
-          perangkat desa.
+          Laporkan kendala fasilitas umum atau aspirasi Anda di Desa Tegal Tugu.
+          Setiap laporan diprioritaskan otomatis dengan evaluasi cerdas AI dan
+          ditindaklanjuti secara transparan oleh perangkat desa.
         </p>
       </div>
 
@@ -159,8 +178,9 @@ function PengaduanHubPage() {
                 Ada Fasilitas Rusak di Lingkungan Anda?
               </h2>
               <p className="mt-1 text-xs leading-relaxed text-[var(--sea-ink-soft)] sm:text-sm">
-                Ambil foto bukti, tuliskan lokasi banjar dan kendalanya. Sistem AI Desa Tegal Tugu
-                akan langsung menilai tingkat kedaruratan untuk penanganan petugas.
+                Ambil foto bukti, tuliskan lokasi banjar dan kendalanya. Sistem
+                AI Desa Tegal Tugu akan langsung menilai tingkat kedaruratan
+                untuk penanganan petugas.
               </p>
             </div>
             <button
@@ -179,7 +199,8 @@ function PengaduanHubPage() {
               Sudah Pernah Mengajukan Pengaduan?
             </h3>
             <p className="mt-1 text-xs text-[var(--sea-ink-soft)]">
-              Cek perkembangan penanganan aduan Anda secara transparan dengan memasukkan kode tiket pengaduan (CMP-YYYYMM-XXXX).
+              Cek perkembangan penanganan aduan Anda secara transparan dengan
+              memasukkan kode tiket pengaduan (CMP-YYYYMM-XXXX).
             </p>
             <div className="mt-3 flex max-w-md gap-2">
               <input
@@ -200,7 +221,9 @@ function PengaduanHubPage() {
               <button
                 type="button"
                 onClick={() => {
-                  const el = document.getElementById('quick-ticket-input') as HTMLInputElement | null
+                  const el = document.getElementById(
+                    'quick-ticket-input',
+                  ) as HTMLInputElement | null
                   if (el && el.value.trim()) {
                     handleTrackDirect(el.value.trim().toUpperCase())
                   }
@@ -253,7 +276,8 @@ function PengaduanHubPage() {
               Alur Penanganan Pengaduan Cerdas
             </h2>
             <p className="mt-1 text-xs text-[var(--sea-ink-soft)]">
-              Desa Tegal Tugu menjamin setiap pengaduan diproses secara transparan tanpa pungutan liar.
+              Desa Tegal Tugu menjamin setiap pengaduan diproses secara
+              transparan tanpa pungutan liar.
             </p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
@@ -265,7 +289,8 @@ function PengaduanHubPage() {
                   Lapor Mandiri dari HP
                 </h3>
                 <p className="mt-1 text-xs leading-relaxed text-[var(--sea-ink-soft)]">
-                  Isi judul, banjar, patokan lokasi, kronologi masalah, dan lampirkan foto bukti lapangan.
+                  Isi judul, banjar, patokan lokasi, kronologi masalah, dan
+                  lampirkan foto bukti lapangan.
                 </p>
               </div>
 
@@ -277,7 +302,8 @@ function PengaduanHubPage() {
                   Triase &amp; Disposisi AI
                 </h3>
                 <p className="mt-1 text-xs leading-relaxed text-[var(--sea-ink-soft)]">
-                  AI mengklasifikasikan bidang, menyimpulkan urgensi, dan memberi notifikasi ke petugas berwenang.
+                  AI mengklasifikasikan bidang, menyimpulkan urgensi, dan
+                  memberi notifikasi ke petugas berwenang.
                 </p>
               </div>
 
@@ -289,7 +315,8 @@ function PengaduanHubPage() {
                   Tindak Lanjut &amp; Solusi
                 </h3>
                 <p className="mt-1 text-xs leading-relaxed text-[var(--sea-ink-soft)]">
-                  Petugas dan aparat banjar meninjau langsung ke lokasi dan mencatat bukti penyelesaian di sistem.
+                  Petugas dan aparat banjar meninjau langsung ke lokasi dan
+                  mencatat bukti penyelesaian di sistem.
                 </p>
               </div>
             </div>
@@ -321,7 +348,9 @@ function PengaduanHubPage() {
       {/* TAB 3: LACAK TIKET PENGADUAN */}
       {activeTab === 'lacak' && (
         <div>
-          <ComplaintTrackingTimeline initialTicketCode={trackingTicketToQuery} />
+          <ComplaintTrackingTimeline
+            initialTicketCode={trackingTicketToQuery}
+          />
         </div>
       )}
     </div>
