@@ -100,6 +100,11 @@ jobs:
       - name: Apply Database Schema
         run: npx prisma db push --accept-data-loss
 
+      - name: Seed Database
+        run: npx tsx prisma/seed.ts
+        env:
+          PRISMA_USER_CONSENT_FOR_DANGEROUS_AI_ACTION: "yes"
+
       - name: Run ESLint
         run: npm run lint
 
