@@ -4,64 +4,80 @@ import {
   AlertCircle,
   Bot,
   Search,
-  Clock,
-  MapPin,
   ArrowRight,
-  Phone,
-  Calendar,
+  Sparkles,
   Building2,
   CheckCircle2,
+  Clock,
+  ShieldCheck,
+  Phone,
+  MapPin,
+  FileCheck,
 } from 'lucide-react'
 import { useState } from 'react'
 
-export const Route = createFileRoute('/')({ component: DesaAIHome })
+export const Route = createFileRoute('/')({ component: DesaAILandingPage })
 
-const PRIMARY_ACTIONS = [
+const FEATURES = [
   {
     id: 'surat',
-    title: 'Layanan Surat Desa',
-    desc: 'Urus Surat Keterangan Domisili, Usaha (SKU), Pengantar SKCK, dan SKTM secara mandiri dari HP tanpa antre fisik.',
+    title: 'Surat Menyurat Mandiri',
+    subtitle: 'Domisili, Usaha (SKU), SKCK, & SKTM',
+    desc: 'Ajukan permohonan surat resmi langsung dari ponsel. Berkas diperiksa secara online oleh staf desa, transparan tanpa biaya dan tanpa perlu antre fisik.',
+    icon: FileCheck,
     link: '/layanan',
-    btnText: 'Mulai Buat Surat',
-    icon: FileText,
-    badge: 'Proses 1 - 2 Hari',
+    linkText: 'Buka Layanan Surat',
+    badge: 'Administrasi Kependudukan',
   },
   {
     id: 'pengaduan',
-    title: 'Lapor Kendala Warga',
-    desc: 'Laporkan lampu jalan padam, jalan rusak, saluran mampet, atau masalah sampah di lingkungan banjar Anda.',
-    link: '/pengaduan',
-    btnText: 'Kirim Laporan',
+    title: 'Pengaduan Fasilitas Warga',
+    subtitle: 'Lampu Padam, Jalan Rusak, & Sampah',
+    desc: 'Laporkan kerusakan fasilitas umum atau keluhan lingkungan di banjar Anda. Sistem cerdas otomatis meneruskan laporan ke perangkat desa untuk penanganan cepat.',
     icon: AlertCircle,
-    badge: 'Respon Cepat Petugas',
+    link: '/pengaduan',
+    linkText: 'Kirim Laporan Warga',
+    badge: 'Respon Cepat Lingkungan',
   },
   {
     id: 'asisten',
-    title: 'Tanya Asisten Made',
-    desc: 'Punya pertanyaan mengenai syarat berkas, jadwal kantor, atau bantuan bansos? Tanyakan langsung ke asisten cerdas desa.',
-    link: '/asisten',
-    btnText: 'Mulai Tanya Jawab',
+    title: 'Asisten Cerdas Made Mandara',
+    subtitle: 'Informasi & Panduan Resmi 24 Jam',
+    desc: 'Butuh informasi persyaratan dokumen, jadwal kantor, atau agenda posyandu? Tanyakan langsung ke asisten AI desa yang terhubung dengan basis pengetahuan resmi.',
     icon: Bot,
-    badge: 'Siap Membantu 24 Jam',
+    link: '/asisten',
+    linkText: 'Mulai Tanya Asisten',
+    badge: 'Didukung AI Desa',
   },
 ]
 
-const ANNOUNCEMENTS = [
+const STEPS = [
   {
-    date: '20 Sep 2026',
-    banjar: 'Banjar Kaja',
-    title: 'Jadwal Posyandu Balita dan Lansia Rutin',
-    desc: 'Pelayanan kesehatan berkala bertempat di Balai Banjar Kaja mulai pukul 08.30 WITA.',
+    step: '01',
+    title: 'Pilih Layanan',
+    desc: 'Pilih jenis surat keterangan yang dibutuhkan atau kategori kendala lingkungan yang ingin dilaporkan.',
   },
   {
-    date: '22 Sep 2026',
-    banjar: 'Semua Banjar',
-    title: 'Sosialisasi Pemilahan Sampah Rumah Tangga',
-    desc: 'Penyuluhan TPS3R Desa Tegal Tugu tentang pemilahan sampah organik dan anorganik berbasis sumber.',
+    step: '02',
+    title: 'Isi Data & Unggah Foto',
+    desc: 'Lengkapi data identitas NIK dan unggah dokumen persyaratan atau foto bukti fasilitas dari HP Anda.',
+  },
+  {
+    step: '03',
+    title: 'Pantau Status Real-Time',
+    desc: 'Gunakan nomor tiket untuk memantau proses verifikasi perangkat desa hingga dokumen siap diambil atau diunduh.',
   },
 ]
 
-function DesaAIHome() {
+const BANJARS = [
+  { name: 'Banjar Tengah', desc: 'Pusat pemerintahan desa dan balai wantilan' },
+  { name: 'Banjar Kaja', desc: 'Kawasan utara desa dan sentra pertanian' },
+  { name: 'Banjar Kelod', desc: 'Kawasan selatan desa dan permukiman warga' },
+  { name: 'Banjar Pande', desc: 'Sentra kerajinan dan tradisi lokal warga' },
+  { name: 'Banjar Kauh', desc: 'Wilayah barat desa dan penghubung antar-dusun' },
+]
+
+function DesaAILandingPage() {
   const navigate = useNavigate()
   const [trackingCode, setTrackingCode] = useState('')
 
@@ -78,75 +94,149 @@ function DesaAIHome() {
   }
 
   return (
-    <div className="page-wrap px-4 py-6 sm:py-10 max-w-5xl mx-auto space-y-8 sm:space-y-12">
-      {/* 1. SAMBUTAN & IDENTITAS DESA (BERSIH & MUDAH DIBACA) */}
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs sm:p-10 dark:border-slate-800 dark:bg-slate-900">
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-blue-800 dark:border-blue-900/50 dark:bg-blue-950/60 dark:text-blue-300">
-            <Building2 className="h-4 w-4 shrink-0" aria-hidden="true" />
-            <span>Pemerintah Desa Tegal Tugu, Gianyar</span>
+    <div className="space-y-16 sm:space-y-24 pb-16">
+      {/* 1. HERO SECTION (STANDAR MODERN LANDING PAGE) */}
+      <section className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-blue-50/50 via-white to-white py-12 sm:py-20 dark:border-slate-800 dark:from-slate-900/50 dark:via-slate-900 dark:to-slate-900">
+        <div className="mx-auto max-w-5xl px-4 text-center">
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs sm:text-sm font-semibold text-blue-800 dark:border-blue-900/50 dark:bg-blue-950/60 dark:text-blue-300 shadow-xs">
+            <Building2 className="h-4 w-4 text-blue-700 dark:text-blue-400" aria-hidden="true" />
+            <span>Pemerintah Desa Tegal Tugu, Kecamatan Gianyar</span>
           </div>
 
-          <h1 className="mt-4 text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-            Layanan Warga Desa Tegal Tugu
+          {/* Headline Utama */}
+          <h1 className="mt-6 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            Layanan Administrasi &amp; Pengaduan Warga Desa dalam Satu Pintu
           </h1>
-          <p className="mt-3 text-base sm:text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            Selamat datang di pusat layanan resmi warga. Silakan pilih menu di bawah
-            ini untuk membuat surat keterangan, melaporkan kendala lingkungan, atau
-            bertanya kepada asisten desa.
+
+          {/* Subheadline Penjelas */}
+          <p className="mx-auto mt-5 max-w-3xl text-base sm:text-xl leading-relaxed text-slate-600 dark:text-slate-300">
+            Urus surat resmi dari rumah, laporkan kendala fasilitas lingkungan secara transparan,
+            dan dapatkan panduan cerdas 24 jam tanpa perlu antre di kantor desa.
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
-            <div className="inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-1.5 dark:bg-slate-800">
-              <Clock className="h-4 w-4 text-blue-600 dark:text-blue-400" aria-hidden="true" />
-              <span>Jam Buka Kantor: 08:00 - 15:00 WITA</span>
+          {/* Action CTA Buttons */}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+            <Link
+              to="/layanan"
+              className="inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-sm transition hover:bg-blue-700 active:scale-[0.98]"
+            >
+              <FileText className="h-5 w-5" aria-hidden="true" />
+              <span>Buat Surat Online</span>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+
+            <Link
+              to="/pengaduan"
+              className="inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-3.5 text-base font-bold text-slate-800 shadow-xs transition hover:bg-slate-50 hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 active:scale-[0.98]"
+            >
+              <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+              <span>Lapor Masalah Warga</span>
+            </Link>
+
+            <Link
+              to="/asisten"
+              className="inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-blue-200 bg-blue-50/80 px-6 py-3.5 text-base font-bold text-blue-700 transition hover:bg-blue-100 dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 active:scale-[0.98]"
+            >
+              <Sparkles className="h-4 w-4" aria-hidden="true" />
+              <span>Tanya Asisten AI</span>
+            </Link>
+          </div>
+
+          {/* Key Value Propositions Bar */}
+          <div className="mt-12 pt-8 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-100/80 text-blue-700 dark:bg-blue-950/80 dark:text-blue-400">
+                <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-slate-900 dark:text-white">100% Gratis</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Tanpa biaya permohonan</p>
+              </div>
             </div>
-            <div className="inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-1.5 dark:bg-slate-800">
-              <MapPin className="h-4 w-4 text-blue-600 dark:text-blue-400" aria-hidden="true" />
-              <span>Wilayah 5 Banjar Adat &amp; Dinas</span>
+
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-100/80 text-blue-700 dark:bg-blue-950/80 dark:text-blue-400">
+                <Clock className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-slate-900 dark:text-white">Proses Cepat</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Target selesai 1-2 hari</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-100/80 text-blue-700 dark:bg-blue-950/80 dark:text-blue-400">
+                <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-slate-900 dark:text-white">Resmi &amp; Sah</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Verifikasi perangkat desa</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-100/80 text-blue-700 dark:bg-blue-950/80 dark:text-blue-400">
+                <MapPin className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-slate-900 dark:text-white">5 Banjar Dinas</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Terintegrasi menyeluruh</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. TIGA MENU UTAMA WARGA (BESAR, JELAS, & RAMAH LANSIA) */}
-      <section aria-labelledby="main-actions-heading">
-        <h2 id="main-actions-heading" className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white mb-4">
-          Apa yang Ingin Anda Lakukan Hari Ini?
-        </h2>
+      {/* 2. FITUR UTAMA / VALUE PROPOSITION SECTION */}
+      <section className="mx-auto max-w-6xl px-4" aria-labelledby="features-heading">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
+            <span>Pelayanan Terpadu</span>
+          </div>
+          <h2 id="features-heading" className="mt-3 text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Tiga Layanan Utama untuk Kebutuhan Warga
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+            Didesain sederhana agar mudah diakses oleh seluruh lapisan masyarakat Desa Tegal Tugu.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {PRIMARY_ACTIONS.map((action) => {
-            const Icon = action.icon
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {FEATURES.map((item) => {
+            const Icon = item.icon
             return (
               <div
-                key={action.id}
-                className="flex flex-col justify-between rounded-2xl border-2 border-slate-200 bg-white p-6 shadow-xs transition hover:border-blue-600 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500"
+                key={item.id}
+                className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-7 shadow-xs transition duration-200 hover:border-blue-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-700"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-700 dark:bg-blue-950/70 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40">
-                      <Icon className="h-7 w-7" aria-hidden="true" />
+                  <div className="flex items-center justify-between gap-2 mb-5">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40">
+                      <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <span className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">
-                      {action.badge}
+                      {item.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-                    {action.title}
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                    {item.title}
                   </h3>
-                  <p className="mt-2 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
-                    {action.desc}
+                  <p className="mt-1 text-xs font-semibold text-blue-700 dark:text-blue-400">
+                    {item.subtitle}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                    {item.desc}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <div className="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800">
                   <Link
-                    to={action.link}
-                    className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-xs transition hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
+                    to={item.link}
+                    className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 group-hover:translate-x-0.5 transition-transform"
                   >
-                    <span>{action.btnText}</span>
+                    <span>{item.linkText}</span>
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>
@@ -156,101 +246,133 @@ function DesaAIHome() {
         </div>
       </section>
 
-      {/* 3. LACAK STATUS BERKAS / ADUAN (SIMPEL & JELAS) */}
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs dark:border-slate-800 dark:bg-slate-900" aria-labelledby="track-heading">
-        <div className="max-w-2xl">
-          <h2 id="track-heading" className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-            Sudah Pernah Mengajukan Surat atau Aduan?
-          </h2>
-          <p className="mt-1 text-sm sm:text-base text-slate-600 dark:text-slate-300">
-            Ketik nomor tiket yang Anda terima untuk melihat tahapan pengerjaan saat ini.
-          </p>
-
-          <form onSubmit={handleTrackSubmit} className="mt-4 flex flex-col sm:flex-row gap-3">
-            <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" aria-hidden="true" />
-              <input
-                type="text"
-                value={trackingCode}
-                onChange={(e) => setTrackingCode(e.target.value)}
-                placeholder="Contoh: REQ-202609-0001"
-                aria-label="Nomor Tiket Permohonan Surat atau Pengaduan"
-                className="w-full rounded-xl border-2 border-slate-300 bg-slate-50 py-3 pl-12 pr-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-              />
-            </div>
-            <button
-              type="submit"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-blue-700 px-7 py-3 text-base font-bold text-white shadow-xs transition hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500"
-            >
-              Cek Status
-            </button>
-          </form>
-        </div>
-      </section>
-
-      {/* 4. BANTUAN TELEPON & KANTOR (SANGAT MEMBANTU ORANG TUA / LANSIA) */}
-      <section className="rounded-2xl border border-blue-200 bg-blue-50/60 p-6 sm:p-8 dark:border-blue-900/40 dark:bg-blue-950/30">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-md bg-blue-100 px-2.5 py-1 text-xs font-bold text-blue-800 dark:bg-blue-900/60 dark:text-blue-200">
-              <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>Bantuan Langsung Warga</span>
-            </div>
-            <h2 className="mt-2 text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-              Kesulitan Mengisi Formulir dari Ponsel?
+      {/* 3. ALUR KERJA (HOW IT WORKS) */}
+      <section className="mx-auto max-w-6xl px-4" aria-labelledby="steps-heading">
+        <div className="rounded-3xl border border-slate-200 bg-slate-50/70 p-8 sm:p-12 dark:border-slate-800 dark:bg-slate-900/50">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <h2 id="steps-heading" className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+              Alur Pelayanan Sangat Mudah
             </h2>
-            <p className="mt-1 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300 max-w-xl">
-              Perangkat Desa Tegal Tugu siap mendampingi Anda. Anda dapat menghubungi
-              hotline telepon kami atau datang langsung ke kantor desa pada jam pelayanan.
+            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+              Hanya membutuhkan 3 langkah sederhana untuk menyelesaikan pengajuan Anda.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto shrink-0">
-            <a
-              href="tel:0361123456"
-              className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm sm:text-base font-bold text-white shadow-xs transition hover:bg-blue-700"
-            >
-              <Phone className="h-4 w-4" aria-hidden="true" />
-              <span>Telepon: (0361) 123456</span>
-            </a>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {STEPS.map((s) => (
+              <div
+                key={s.step}
+                className="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900"
+              >
+                <span className="inline-block font-mono text-3xl font-extrabold text-blue-600/30 dark:text-blue-400/30">
+                  {s.step}
+                </span>
+                <h3 className="mt-2 text-lg font-bold text-slate-900 dark:text-white">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  {s.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 5. PENGUMUMAN & AGENDA DESA (RINGKAS & NYAMAN DIPANDANG) */}
-      <section aria-labelledby="announcements-heading">
-        <div className="mb-4">
-          <h2 id="announcements-heading" className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-            Pengumuman Terkini Desa Tegal Tugu
+      {/* 4. TRACKING LOOKUP WIDGET (LACAK TIKET DENGAN MUDAH) */}
+      <section className="mx-auto max-w-4xl px-4" aria-labelledby="tracking-heading">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-10 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="text-center max-w-xl mx-auto">
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400 mb-3">
+              <Search className="h-6 w-6" aria-hidden="true" />
+            </div>
+            <h2 id="tracking-heading" className="text-2xl font-bold text-slate-900 dark:text-white">
+              Lacak Pengajuan Surat atau Aduan
+            </h2>
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Masukkan nomor tiket permohonan Anda (contoh: REQ-202609-0001 atau CMP-202609-0001)
+              untuk melihat posisi berkas secara real-time.
+            </p>
+
+            <form onSubmit={handleTrackSubmit} className="mt-6 flex flex-col sm:flex-row gap-3">
+              <div className="relative flex-1">
+                <input
+                  type="text"
+                  value={trackingCode}
+                  onChange={(e) => setTrackingCode(e.target.value)}
+                  placeholder="Ketik Nomor Tiket Anda..."
+                  aria-label="Nomor Tiket Permohonan Surat atau Pengaduan"
+                  className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                />
+              </div>
+              <button
+                type="submit"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-blue-600 px-8 py-3 text-base font-bold text-white shadow-xs transition hover:bg-blue-700 active:scale-[0.98]"
+              >
+                Lacak Status
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. WILAYAH LAYANAN 5 BANJAR (COMMUNITY TRUST) */}
+      <section className="mx-auto max-w-6xl px-4" aria-labelledby="banjar-heading">
+        <div className="text-center max-w-2xl mx-auto mb-8">
+          <h2 id="banjar-heading" className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+            Melayani Seluruh Warga di 5 Wilayah Banjar
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            Informasi kegiatan dan agenda penting di lingkungan banjar.
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Platform Desa Tegal Tugu terintegrasi dengan data kependudukan dan perangkat wilayah masing-masing banjar.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          {ANNOUNCEMENTS.map((item, idx) => (
-            <article
-              key={idx}
-              className="flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-slate-800 dark:bg-slate-900"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {BANJARS.map((b) => (
+            <div
+              key={b.name}
+              className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-xs dark:border-slate-800 dark:bg-slate-900"
             >
-              <div className="flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 dark:text-blue-400">
-                  <Calendar className="h-4 w-4" aria-hidden="true" />
-                  <span>{item.date}</span>
-                </span>
-                <span className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-xs font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
-                  {item.banjar}
-                </span>
+              <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400 mb-2">
+                <MapPin className="h-4 w-4" aria-hidden="true" />
               </div>
-              <h3 className="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-white">
-                {item.title}
-              </h3>
-              <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                {item.desc}
-              </p>
-            </article>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">{b.name}</h3>
+              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{b.desc}</p>
+            </div>
           ))}
+        </div>
+      </section>
+
+      {/* 6. CALL TO ACTION SECTION (FOOTER BANNER) */}
+      <section className="mx-auto max-w-6xl px-4">
+        <div className="rounded-3xl bg-blue-700 p-8 sm:p-12 text-white shadow-lg text-center dark:bg-blue-800">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Mulai Urus Kebutuhan Desa Anda Hari Ini
+            </h2>
+            <p className="mt-3 text-base sm:text-lg text-blue-100 leading-relaxed">
+              Manfaatkan kemudahan administrasi digital resmi dari Pemerintah Desa Tegal Tugu.
+              Cepat, transparan, dan tanpa dipungut biaya apa pun.
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                to="/layanan"
+                className="inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-white px-7 py-3 text-base font-bold text-blue-800 shadow-sm transition hover:bg-blue-50 active:scale-[0.98]"
+              >
+                <span>Ajukan Surat Sekarang</span>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+
+              <a
+                href="tel:0361123456"
+                className="inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-blue-400/60 bg-blue-800/40 px-6 py-3 text-base font-bold text-white transition hover:bg-blue-800/80 active:scale-[0.98]"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                <span>Hotline Kantor: (0361) 123456</span>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </div>
