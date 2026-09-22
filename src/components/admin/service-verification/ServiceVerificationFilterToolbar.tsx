@@ -86,7 +86,7 @@ export function ServiceVerificationFilterToolbar({
               onClick={() => onFilterChange({ status: tab.key })}
               className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold whitespace-nowrap transition ${
                 isActive
-                  ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
+                  ? 'bg-blue-600 text-white shadow-xs dark:bg-blue-600'
                   : 'border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] text-[var(--sea-ink-soft,#576c64)] hover:bg-black/5 dark:border-[#22352f] dark:bg-[#121c19] dark:text-stone-300 dark:hover:bg-white/5'
               }`}
             >
@@ -115,7 +115,7 @@ export function ServiceVerificationFilterToolbar({
             value={filter.search || ''}
             onChange={(e) => onFilterChange({ search: e.target.value })}
             placeholder="Cari nomor tiket REQ, nama pemohon, NIK, atau keperluan..."
-            className="w-full rounded-xl border border-[var(--line,#d5ded9)] bg-black/[0.02] py-2 pr-4 pl-9 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-emerald-700 focus:outline-hidden dark:border-[#22352f] dark:bg-white/[0.02] dark:text-stone-100"
+            className="w-full rounded-xl border border-[var(--line,#d5ded9)] bg-black/[0.02] py-2 pr-4 pl-9 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-blue-600 focus:outline-hidden dark:border-[#22352f] dark:bg-white/[0.02] dark:text-stone-100"
           />
         </div>
 
@@ -126,7 +126,7 @@ export function ServiceVerificationFilterToolbar({
             <select
               value={filter.serviceCode || 'ALL'}
               onChange={(e) => onFilterChange({ serviceCode: e.target.value as ServiceVerificationFilterDTO['serviceCode'] })}
-              className="rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] px-3 py-2 text-xs font-semibold text-[var(--sea-ink,#1b2a26)] focus:border-emerald-700 focus:outline-hidden dark:border-[#22352f] dark:bg-[#121c19] dark:text-stone-200"
+              className="rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] px-3 py-2 text-xs font-semibold text-[var(--sea-ink,#1b2a26)] focus:border-blue-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#121c19] dark:text-stone-200"
             >
               <option value="ALL">Semua Jenis Layanan Surat</option>
               {serviceTypes.map((st) => (

@@ -186,7 +186,7 @@ export function TriageComplaintTable({
                   >
                     {/* Tiket & Waktu */}
                     <td className="py-3.5 pr-3 pl-4 align-top">
-                      <div className="font-mono font-bold text-emerald-800 dark:text-emerald-400">
+                      <div className="font-mono font-bold text-blue-600 dark:text-blue-400">
                         {item.ticketCode}
                       </div>
                       <div className="mt-0.5 flex items-center gap-1 text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-500">
@@ -232,7 +232,7 @@ export function TriageComplaintTable({
                         </span>
 
                         <span className="inline-flex items-center gap-1 rounded bg-[var(--surface-secondary,#f4f7f5)] px-1.5 py-0.5 text-[10px] font-medium text-[var(--sea-ink-soft,#576c64)] dark:bg-[#182622] dark:text-stone-400">
-                          <Sparkles className="h-2.5 w-2.5 text-emerald-700 dark:text-emerald-400" />
+                          <Sparkles className="h-2.5 w-2.5 text-blue-600 dark:text-blue-400" />
                           <span>{getCategoryLabel(item.category)}</span>
                         </span>
                       </div>
@@ -252,7 +252,7 @@ export function TriageComplaintTable({
                       <button
                         type="button"
                         onClick={() => onSelectComplaint(item)}
-                        className="inline-flex items-center gap-1 rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] px-2.5 py-1.5 text-xs font-semibold text-[var(--sea-ink,#1b2a26)] shadow-2xs hover:border-emerald-600 hover:text-emerald-800 dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:hover:border-emerald-500 dark:hover:text-emerald-400"
+                        className="inline-flex items-center gap-1 rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] px-2.5 py-1.5 text-xs font-semibold text-[var(--sea-ink,#1b2a26)] shadow-2xs hover:border-blue-500 hover:text-blue-600 dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:hover:border-blue-400 dark:hover:text-blue-300"
                       >
                         <span>Triage & Detail</span>
                         <ChevronRight className="h-3.5 w-3.5" />
@@ -282,7 +282,7 @@ export function TriageComplaintTable({
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <span className="font-mono text-xs font-bold text-emerald-800 dark:text-emerald-400">
+                  <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
                     {item.ticketCode}
                   </span>
                   <div className="text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-500">
@@ -326,7 +326,7 @@ export function TriageComplaintTable({
                 <button
                   type="button"
                   onClick={() => onSelectComplaint(item)}
-                  className="inline-flex min-h-[36px] items-center gap-1 rounded-lg bg-emerald-800 px-3 py-1.5 text-xs font-semibold text-white hover:bg-emerald-900 dark:bg-emerald-700"
+                  className="inline-flex min-h-[36px] items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
                 >
                   <span>Triage Laporan</span>
                   <ChevronRight className="h-3.5 w-3.5" />

@@ -31,7 +31,7 @@ export function getCategoryMeta(category: KnowledgeCategory) {
       return {
         label: 'SOP Layanan',
         badgeClass:
-          'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800/60',
+          'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-800/60',
         icon: FileText,
       }
     case 'REGULASI':
@@ -158,7 +158,7 @@ export function KnowledgeDocumentTable({
                             href={doc.sourceUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-emerald-800 hover:underline dark:text-emerald-400"
+                            className="inline-flex items-center gap-1 text-blue-600 hover:underline dark:text-blue-400"
                             title={doc.sourceUrl}
                           >
                             <span>Tautan Acuan</span>
@@ -200,7 +200,7 @@ export function KnowledgeDocumentTable({
                         onClick={() => onTogglePublish(doc.id, doc.isPublished)}
                         className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold transition ${
                           doc.isPublished
-                            ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200 dark:bg-emerald-950/80 dark:text-emerald-300 dark:hover:bg-emerald-900'
+                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-950/80 dark:text-blue-300 dark:hover:bg-blue-900'
                             : 'bg-stone-200 text-stone-700 hover:bg-stone-300 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700'
                         }`}
                         title="Klik untuk mengubah status aktif/nonaktif pada asisten AI"
@@ -208,7 +208,7 @@ export function KnowledgeDocumentTable({
                         <Sparkles
                           className={`h-3 w-3 ${
                             doc.isPublished
-                              ? 'text-emerald-600 dark:text-emerald-400'
+                              ? 'text-blue-600 dark:text-blue-400'
                               : 'text-stone-400'
                           }`}
                         />
@@ -238,7 +238,7 @@ export function KnowledgeDocumentTable({
                         <button
                           type="button"
                           onClick={() => onEditDocument(doc)}
-                          className="rounded-lg p-1.5 text-emerald-700 hover:bg-emerald-50 hover:text-emerald-900 dark:text-emerald-400 dark:hover:bg-emerald-950/50"
+                          className="rounded-lg p-1.5 text-blue-600 hover:bg-blue-50 hover:text-blue-800 dark:text-blue-400 dark:hover:bg-blue-950/50"
                           title="Sunting isi dokumen & markdown"
                           aria-label={`Sunting ${doc.title}`}
                         >
@@ -290,7 +290,7 @@ export function KnowledgeDocumentTable({
                   onClick={() => onTogglePublish(doc.id, doc.isPublished)}
                   className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold ${
                     doc.isPublished
-                      ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300'
+                      ? 'bg-blue-100 text-blue-800 dark:bg-blue-950/80 dark:text-blue-300'
                       : 'bg-stone-200 text-stone-700 dark:bg-stone-800 dark:text-stone-300'
                   }`}
                 >
@@ -324,7 +324,7 @@ export function KnowledgeDocumentTable({
                   <button
                     type="button"
                     onClick={() => onEditDocument(doc)}
-                    className="rounded-md bg-emerald-800 px-2.5 py-1 text-xs font-bold text-white hover:bg-emerald-900 dark:bg-emerald-700"
+                    className="rounded-md bg-blue-600 px-2.5 py-1 text-xs font-bold text-white hover:bg-blue-700 dark:bg-blue-600"
                   >
                     Sunting
                   </button>

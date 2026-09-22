@@ -108,11 +108,11 @@ export default function ThemeToggle() {
       onClick={toggleMode}
       aria-label={label}
       title={label}
-      className="inline-flex items-center gap-1.5 rounded-full border border-[var(--chip-line)] bg-[var(--chip-bg)] px-2.5 py-1 text-xs font-semibold text-[var(--sea-ink)] shadow-[0_2px_8px_rgba(30,90,72,0.06)] transition hover:-translate-y-0.5 whitespace-nowrap shrink-0 dark:border-[#22352f] dark:text-stone-200"
+      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 shadow-xs transition hover:border-blue-300 whitespace-nowrap shrink-0 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
     >
       {mode === 'auto' && (
         <Laptop
-          className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400 shrink-0"
+          className="h-3.5 w-3.5 text-blue-700 dark:text-blue-400 shrink-0"
           aria-hidden="true"
         />
       )}

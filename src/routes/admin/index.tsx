@@ -29,18 +29,18 @@ function AdminDashboardOverviewPage() {
   return (
     <div className="mx-auto max-w-7xl space-y-6">
       {/* Welcome & Status Banner */}
-      <div className="rounded-2xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-6 shadow-xs dark:border-[#22352f] dark:bg-[#121c19]">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-emerald-800 text-white text-xs font-bold dark:bg-emerald-600">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-700 text-white text-xs font-bold dark:bg-blue-600">
                 <ShieldCheck className="h-4 w-4" aria-hidden="true" />
               </span>
-              <h2 className="m-0 text-lg sm:text-xl font-extrabold tracking-tight text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+              <h2 className="m-0 text-lg sm:text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                 Pusat Kendali Administrasi Desa Tegal Tugu
               </h2>
             </div>
-            <p className="m-0 text-xs sm:text-sm text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+            <p className="m-0 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               Integrasi layanan persuratan warga, triage keluhan fasilitas cerdas, dan analitik banjar tertutup.
             </p>
           </div>
@@ -48,14 +48,14 @@ function AdminDashboardOverviewPage() {
           <div className="flex flex-wrap items-center gap-2">
             <Link
               to="/admin/pengaduan"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-800 px-3.5 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-600"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-3.5 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500"
             >
               <span>Meja Triage</span>
               <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
             </Link>
             <Link
               to="/admin/layanan"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3.5 py-2 text-xs font-bold text-[var(--sea-ink,#1b2a26)] transition hover:bg-black/5 dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:hover:bg-white/5"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-bold text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
             >
               <span>Verifikasi Surat</span>
             </Link>
@@ -113,17 +113,17 @@ function AdminDashboardOverviewPage() {
       </div>
 
       {/* Secondary Information & Knowledge Stats */}
-      <div className="rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-5 shadow-xs dark:border-[#22352f] dark:bg-[#121c19]">
+      <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
               <BookOpen className="h-5 w-5" aria-hidden="true" />
             </span>
             <div>
-              <p className="m-0 text-sm font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+              <p className="m-0 text-sm font-bold text-slate-900 dark:text-white">
                 Pusat Regulasi dan Basis Pengetahuan Desa
               </p>
-              <p className="m-0 text-xs text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+              <p className="m-0 text-xs text-slate-500 dark:text-slate-400">
                 Tersedia {metrics.totalKnowledgeDocs} dokumen resmi terindeks oleh asisten AI desa.
               </p>
             </div>
@@ -131,7 +131,7 @@ function AdminDashboardOverviewPage() {
 
           <Link
             to="/admin/knowledge"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-950 dark:text-emerald-300 dark:hover:text-emerald-100"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
           >
             <Building2 className="h-3.5 w-3.5" aria-hidden="true" />
             <span>Kelola Basis Pengetahuan</span>

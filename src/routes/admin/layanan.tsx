@@ -119,7 +119,7 @@ function AdminLayananDeskPage() {
           <div className="flex items-center gap-2">
             <Link
               to="/admin"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 hover:text-emerald-950 dark:text-emerald-300"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               <span>Kembali ke Ringkasan Eksekutif</span>
@@ -130,7 +130,7 @@ function AdminLayananDeskPage() {
             <h2 className="m-0 text-xl font-bold tracking-tight text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
               Meja Kerja Verifikasi dan Persetujuan Surat Layanan
             </h2>
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-bold text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300">
+            <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-0.5 text-[11px] font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
               <FileCheck className="h-3 w-3" />
               <span>Layanan Terpadu</span>
             </span>

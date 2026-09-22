@@ -70,24 +70,24 @@ export default function AdminSidebar({
   ]
 
   const sidebarContent = (
-    <div className="flex h-full flex-col justify-between bg-[var(--surface-primary,#ffffff)] text-[var(--sea-ink,#1b2a26)] border-r border-[var(--line,#d5ded9)] dark:bg-[#121c19] dark:border-[#22352f]">
+    <div className="flex h-full flex-col justify-between bg-white text-slate-900 border-r border-slate-200 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-100">
       {/* Brand Header */}
       <div>
-        <div className="flex items-center justify-between border-b border-[var(--line,#d5ded9)] px-5 py-4 dark:border-[#22352f]">
+        <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-800">
           <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-800 text-white shadow-sm dark:bg-emerald-600">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-700 text-white shadow-xs dark:bg-blue-600">
               <Building2 className="h-5 w-5" aria-hidden="true" />
             </span>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-sm tracking-tight text-emerald-950 dark:text-emerald-100">
+                <span className="font-bold text-sm tracking-tight text-slate-900 dark:text-white">
                   DesaAI Workspace
                 </span>
-                <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                <span className="rounded bg-blue-50 border border-blue-200 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-700 dark:bg-blue-950/60 dark:border-blue-900/50 dark:text-blue-300">
                   Gov
                 </span>
               </div>
-              <p className="m-0 text-xs font-medium text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+              <p className="m-0 text-xs font-medium text-slate-500 dark:text-slate-400">
                 Pemerintah Desa Tegal Tugu
               </p>
             </div>
@@ -98,7 +98,7 @@ export default function AdminSidebar({
             <button
               type="button"
               onClick={onCloseMobile}
-              className="flex h-8 w-8 items-center justify-center rounded-md text-[var(--sea-ink-soft,#576c64)] hover:bg-black/5 hover:text-[var(--sea-ink,#1b2a26)] dark:hover:bg-white/5 dark:hover:text-white md:hidden"
+              className="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white md:hidden"
               aria-label="Tutup menu navigasi"
             >
               <X className="h-5 w-5" />
@@ -108,7 +108,7 @@ export default function AdminSidebar({
 
         {/* Navigation List */}
         <nav aria-label="Navigasi Meja Kerja Desa" className="p-3 space-y-1">
-          <p className="px-3 pt-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+          <p className="px-3 pt-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
             Meja Kerja Utama
           </p>
 
@@ -125,8 +125,8 @@ export default function AdminSidebar({
                 onClick={isOpenMobile && onCloseMobile ? onCloseMobile : undefined}
                 className={`group flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium transition-colors no-underline ${
                   isActive
-                    ? 'bg-emerald-800 !text-white shadow-sm dark:bg-emerald-700'
-                    : 'text-stone-800 hover:bg-emerald-50 hover:text-emerald-950 dark:text-stone-200 dark:hover:bg-emerald-950/40 dark:hover:text-emerald-100'
+                    ? 'bg-blue-700 !text-white shadow-xs dark:bg-blue-600'
+                    : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white'
                 }`}
                 aria-current={isActive ? 'page' : undefined}
               >
@@ -135,7 +135,7 @@ export default function AdminSidebar({
                     className={`h-4 w-4 transition-transform group-hover:scale-110 shrink-0 ${
                       isActive
                         ? '!text-white'
-                        : 'text-emerald-800 dark:text-emerald-400'
+                        : 'text-slate-500 group-hover:text-blue-700 dark:text-slate-400 dark:group-hover:text-blue-400'
                     }`}
                     aria-hidden="true"
                   />
@@ -143,7 +143,7 @@ export default function AdminSidebar({
                     className={
                       isActive
                         ? '!text-white font-semibold'
-                        : 'text-stone-800 dark:text-stone-200'
+                        : 'text-slate-700 dark:text-slate-300'
                     }
                   >
                     {item.label}
@@ -168,23 +168,23 @@ export default function AdminSidebar({
       </div>
 
       {/* Footer Profile & Actions */}
-      <div className="border-t border-[var(--line,#d5ded9)] p-3 space-y-3 dark:border-[#22352f]">
+      <div className="border-t border-slate-200 p-3 space-y-3 dark:border-slate-800">
         {/* Officer Active Profile */}
-        <div className="flex items-center gap-3 rounded-lg bg-[var(--surface-secondary,#f4f7f5)] p-2.5 dark:bg-[#182622]">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-800 text-xs font-bold text-white shadow-inner dark:bg-emerald-600">
+        <div className="flex items-center gap-3 rounded-lg bg-slate-50 p-2.5 dark:bg-slate-800/60">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-700 text-xs font-bold text-white shadow-inner dark:bg-blue-600">
             WS
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
-              <p className="m-0 truncate text-xs font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+              <p className="m-0 truncate text-xs font-bold text-slate-900 dark:text-white">
                 I Wayan Sudarma
               </p>
               <span
-                className="h-2 w-2 shrink-0 rounded-full bg-emerald-500 ring-2 ring-emerald-200 dark:ring-emerald-900"
+                className="h-2 w-2 shrink-0 rounded-full bg-blue-500 ring-2 ring-blue-200 dark:ring-blue-900"
                 title="Piket Aktif"
               />
             </div>
-            <p className="m-0 truncate text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+            <p className="m-0 truncate text-[11px] text-slate-500 dark:text-slate-400">
               Kaur Tata Usaha dan Pelayanan
             </p>
           </div>
@@ -194,11 +194,11 @@ export default function AdminSidebar({
         <div className="flex items-center justify-between gap-2 px-1 pt-1">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold text-emerald-800 no-underline hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-950/50"
+            className="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold text-blue-700 no-underline hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-slate-800"
             title="Buka portal publik layanan warga"
           >
-            <ExternalLink className="h-3.5 w-3.5 text-emerald-800 dark:text-emerald-300" aria-hidden="true" />
-            <span className="text-emerald-800 dark:text-emerald-300">Portal Warga</span>
+            <ExternalLink className="h-3.5 w-3.5 text-blue-700 dark:text-blue-400" aria-hidden="true" />
+            <span>Portal Warga</span>
           </Link>
 
           <ThemeToggle />

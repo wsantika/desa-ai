@@ -43,7 +43,7 @@ export default function BottomNav() {
   return (
     <nav
       aria-label="Navigasi Bawah Layanan Warga"
-      className="fixed bottom-0 left-0 right-0 z-40 border-t border-[var(--line)] bg-[var(--header-bg)]/95 shadow-[0_-4px_20px_rgba(23,58,64,0.06)] backdrop-blur-lg sm:hidden"
+      className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 shadow-xs backdrop-blur-lg dark:border-slate-800 dark:bg-slate-900/95 sm:hidden"
       style={{
         paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))',
       }}
@@ -61,28 +61,28 @@ export default function BottomNav() {
               to={item.to}
               className={`group flex min-h-[52px] min-w-[64px] flex-1 flex-col items-center justify-center rounded-xl px-1 py-1 transition-colors ${
                 isActive
-                  ? 'text-emerald-700 dark:text-emerald-300'
-                  : 'text-[var(--sea-ink-soft)] hover:text-[var(--sea-ink)]'
+                  ? 'text-blue-700 dark:text-blue-400'
+                  : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200'
               }`}
               aria-current={isActive ? 'page' : undefined}
             >
               <div
-                className={`relative flex h-8 w-12 items-center justify-center rounded-full transition-all duration-200 ${
+                className={`relative flex h-8 w-12 items-center justify-center rounded-full transition-all duration-150 ${
                   isActive
-                    ? 'bg-emerald-600/15 dark:bg-emerald-400/20'
-                    : 'group-hover:bg-black/5 dark:group-hover:bg-white/5'
+                    ? 'bg-blue-100/80 text-blue-700 dark:bg-blue-950/80 dark:text-blue-300'
+                    : 'group-hover:bg-slate-100 dark:group-hover:bg-slate-800'
                 }`}
               >
                 <Icon
-                  className={`h-5 w-5 transition-transform duration-200 ${
+                  className={`h-5 w-5 transition-transform duration-150 ${
                     isActive ? 'scale-110 stroke-[2.25]' : 'stroke-[1.75]'
                   }`}
                   aria-hidden="true"
                 />
               </div>
               <span
-                className={`mt-0.5 text-[11px] leading-tight tracking-tight ${
-                  isActive ? 'font-bold' : 'font-medium'
+                className={`mt-1 text-xs leading-tight ${
+                  isActive ? 'font-bold text-blue-700 dark:text-blue-400' : 'font-semibold text-slate-600 dark:text-slate-400'
                 }`}
               >
                 {item.label}

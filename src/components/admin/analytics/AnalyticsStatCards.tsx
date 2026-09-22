@@ -22,7 +22,7 @@ export function AnalyticsStatCards({
           <span className="text-xs font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
             Total Pengaduan Warga
           </span>
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
             <Inbox className="h-4 w-4" />
           </div>
         </div>
@@ -53,7 +53,7 @@ export function AnalyticsStatCards({
           <span className="text-xs font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
             Rata-rata Waktu Resolusi (ATTR)
           </span>
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
             <Clock className="h-4 w-4" />
           </div>
         </div>
@@ -70,7 +70,7 @@ export function AnalyticsStatCards({
             <span className="text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
               Setara {avgDays} hari kerja
             </span>
-            <span className="rounded-md bg-teal-50 px-2 py-0.5 font-bold text-teal-800 dark:bg-teal-950/60 dark:text-teal-300">
+            <span className="rounded-md bg-blue-50 px-2 py-0.5 font-bold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
               Target SLA &lt; 48 Jam
             </span>
           </div>
@@ -83,13 +83,13 @@ export function AnalyticsStatCards({
           <span className="text-xs font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
             Kepatuhan SLA Desa
           </span>
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
             <ShieldCheck className="h-4 w-4" />
           </div>
         </div>
         <div className="mt-3">
           <div className="flex items-baseline gap-1">
-            <div className="text-3xl font-extrabold tracking-tight text-emerald-800 dark:text-emerald-400">
+            <div className="text-3xl font-extrabold tracking-tight text-blue-600 dark:text-blue-400">
               {metrics.slaComplianceRatePercent}%
             </div>
           </div>
@@ -97,7 +97,7 @@ export function AnalyticsStatCards({
             <span className="text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
               Selesai sesuai target
             </span>
-            <span className="rounded-md bg-emerald-50 px-2 py-0.5 font-bold text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+            <span className="rounded-md bg-blue-50 px-2 py-0.5 font-bold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
               Kinerja Optimal
             </span>
           </div>

@@ -165,14 +165,14 @@ function LayananHubPage() {
     <div className="page-wrap px-4 py-6 sm:py-10">
       {/* Header Identitas Desa Tegal Tugu */}
       <div className="mb-6">
-        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-600/20 bg-emerald-600/10 px-3 py-1 text-xs font-bold text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+        <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold text-blue-800 dark:border-blue-900/50 dark:bg-blue-950/60 dark:text-blue-300">
           <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
           <span>Pemerintah Desa Tegal Tugu, Gianyar</span>
         </div>
-        <h1 className="display-title mt-3 text-2xl font-extrabold tracking-tight text-[var(--sea-ink)] sm:text-4xl">
+        <h1 className="display-title mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
           Pelayanan Surat Mandiri Warga
         </h1>
-        <p className="mt-2 max-w-2xl text-xs leading-relaxed text-[var(--sea-ink-soft)] sm:text-base">
+        <p className="mt-2 max-w-2xl text-xs leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
           Ajukan permohonan administrasi surat desa secara online dari HP Anda.
           Bebas antrean fisik, verifikasi transparan, dan tanpa pungutan biaya
           (Gratis Rp 0).
@@ -180,14 +180,14 @@ function LayananHubPage() {
       </div>
 
       {/* Navigation Tabs (Katalog, Formulir, Lacak) */}
-      <div className="mb-8 flex gap-2 border-b border-[var(--line)] pb-2 overflow-x-auto scrollbar-none">
+      <div className="mb-8 flex gap-2 border-b border-slate-200 pb-2 overflow-x-auto scrollbar-none dark:border-slate-800">
         <button
           type="button"
           onClick={() => setActiveTab('katalog')}
           className={`inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition sm:text-sm ${
             activeTab === 'katalog'
-              ? 'bg-emerald-700 text-white shadow-sm dark:bg-emerald-600'
-              : 'text-[var(--sea-ink-soft)] hover:bg-black/5 dark:hover:bg-white/5'
+              ? 'bg-blue-700 text-white shadow-xs dark:bg-blue-600'
+              : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'
           }`}
         >
           <FileText className="h-4 w-4" aria-hidden="true" />
@@ -202,8 +202,8 @@ function LayananHubPage() {
           }}
           className={`inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition sm:text-sm ${
             activeTab === 'form'
-              ? 'bg-emerald-700 text-white shadow-sm dark:bg-emerald-600'
-              : 'text-[var(--sea-ink-soft)] hover:bg-black/5 dark:hover:bg-white/5'
+              ? 'bg-blue-700 text-white shadow-xs dark:bg-blue-600'
+              : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'
           }`}
         >
           <PenTool className="h-4 w-4" aria-hidden="true" />
@@ -215,8 +215,8 @@ function LayananHubPage() {
           onClick={() => setActiveTab('lacak')}
           className={`inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition sm:text-sm ${
             activeTab === 'lacak'
-              ? 'bg-emerald-700 text-white shadow-sm dark:bg-emerald-600'
-              : 'text-[var(--sea-ink-soft)] hover:bg-black/5 dark:hover:bg-white/5'
+              ? 'bg-blue-700 text-white shadow-xs dark:bg-blue-600'
+              : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'
           }`}
         >
           <Search className="h-4 w-4" aria-hidden="true" />
@@ -231,34 +231,34 @@ function LayananHubPage() {
             {SERVICE_ITEMS.map((service) => (
               <article
                 key={service.id}
-                className="island-shell flex flex-col justify-between rounded-2xl p-5 transition-shadow hover:shadow-md sm:p-6"
+                className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-xs transition hover:border-blue-300 sm:p-6 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-700"
               >
                 <div>
                   <div className="flex items-start justify-between gap-3">
-                    <span className="rounded-md border border-[var(--line)] bg-[var(--chip-bg)] px-2.5 py-0.5 text-xs font-medium text-[var(--sea-ink-soft)]">
+                    <span className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-xs font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
                       {service.category}
                     </span>
-                    <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                    <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 dark:border-blue-900/50 dark:bg-blue-950/60 dark:text-blue-300">
                       {service.fee}
                     </span>
                   </div>
 
-                  <h2 className="mt-3 text-lg font-bold text-[var(--sea-ink)] sm:text-xl">
+                  <h2 className="mt-3 text-lg font-bold text-slate-900 sm:text-xl dark:text-white">
                     {service.title}
                   </h2>
-                  <p className="mt-1.5 text-xs leading-relaxed text-[var(--sea-ink-soft)] sm:text-sm">
+                  <p className="mt-1.5 text-xs leading-relaxed text-slate-600 sm:text-sm dark:text-slate-400">
                     {service.description}
                   </p>
 
-                  <div className="mt-4 rounded-xl border border-[var(--line)] bg-black/[0.02] p-3 dark:bg-white/[0.02]">
-                    <p className="mb-2 text-xs font-bold text-[var(--sea-ink)]">
+                  <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50/70 p-3.5 dark:border-slate-800 dark:bg-slate-800/40">
+                    <p className="mb-2 text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
                       Persyaratan Dokumen:
                     </p>
-                    <ul className="space-y-1.5 text-xs text-[var(--sea-ink-soft)]">
+                    <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                       {service.requirements.map((req, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <CheckCircle2
-                            className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600 dark:text-emerald-400"
+                            className="mt-0.5 h-4 w-4 shrink-0 text-blue-600 dark:text-blue-400"
                             aria-hidden="true"
                           />
                           <span>{req}</span>
@@ -268,10 +268,10 @@ function LayananHubPage() {
                   </div>
                 </div>
 
-                <div className="mt-6 flex flex-col items-stretch gap-3 border-t border-[var(--line)] pt-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-center gap-1.5 text-xs text-[var(--sea-ink-soft)]">
+                <div className="mt-6 flex flex-col items-stretch gap-3 border-t border-slate-100 pt-4 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                     <Clock
-                      className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400"
+                      className="h-4 w-4 text-blue-600 dark:text-blue-400"
                       aria-hidden="true"
                     />
                     <span>Estimasi: {service.sla}</span>
@@ -280,10 +280,10 @@ function LayananHubPage() {
                   <button
                     type="button"
                     onClick={() => handleApplyService(service.code)}
-                    className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-emerald-700 px-4 py-2 text-xs font-bold text-white transition hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500"
+                    className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-xs transition hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
                   >
                     <span>Ajukan Surat Ini</span>
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
               </article>

@@ -32,7 +32,7 @@ export const Route = createRootRoute({
       },
       {
         name: 'theme-color',
-        content: '#2f6a4a',
+        content: '#1d4ed8',
       },
       {
         name: 'mobile-web-app-capable',
@@ -81,9 +81,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
-      <body className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-[rgba(79,184,178,0.24)]">
+      <body className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-blue-100 selection:text-blue-900">
         <Header />
-        <main className="min-h-[calc(100vh-140px)]">
+        <main className="min-h-[calc(100vh-140px)] pb-20 sm:pb-0">
           {children}
         </main>
         <Footer />

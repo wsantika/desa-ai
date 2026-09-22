@@ -204,7 +204,7 @@ function AdminKnowledgeDeskPage() {
           <div className="flex items-center gap-2">
             <Link
               to="/admin"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 hover:text-emerald-950 dark:text-emerald-300"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               <span>Kembali ke Ringkasan Eksekutif</span>
@@ -215,7 +215,7 @@ function AdminKnowledgeDeskPage() {
             <h2 className="m-0 text-xl font-bold tracking-tight text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
               Pusat Regulasi & Basis Pengetahuan AI Desa
             </h2>
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-bold text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300">
+            <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-0.5 text-[11px] font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
               <BookOpen className="h-3 w-3" />
               <span>RAG Knowledge Base</span>
             </span>
@@ -232,10 +232,10 @@ function AdminKnowledgeDeskPage() {
           <button
             type="button"
             onClick={() => setIsTestModalOpen(true)}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-700/20 bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-800 hover:bg-emerald-100 dark:border-emerald-500/30 dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:bg-emerald-900/60"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-xs font-semibold text-blue-700 hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/60"
             title="Uji coba jawaban AI secara langsung berdasarkan dokumen terbaru"
           >
-            <Sparkles className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400" />
+            <Sparkles className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
             <span>Uji Coba Asisten AI</span>
           </button>
 
@@ -255,7 +255,7 @@ function AdminKnowledgeDeskPage() {
           <button
             type="button"
             onClick={handleOpenCreate}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-800 px-3.5 py-2 text-xs font-bold text-white shadow-xs hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-600"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
           >
             <Plus className="h-4 w-4" />
             <span>Tambah Dokumen Baru</span>

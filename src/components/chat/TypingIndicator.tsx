@@ -9,7 +9,7 @@ export default function TypingIndicator({
 }: TypingIndicatorProps) {
   return (
     <div className="flex items-start gap-3" aria-live="polite" aria-label="Mengetik respons">
-      <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-700 text-white shadow-sm dark:bg-emerald-600">
+      <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-sm dark:bg-blue-600">
         <Bot className="h-4 w-4" aria-hidden="true" />
       </div>
 
@@ -18,15 +18,15 @@ export default function TypingIndicator({
           {/* Animated 3 Dots */}
           <div className="flex items-center gap-1">
             <span
-              className="inline-block h-2 w-2 animate-bounce rounded-full bg-emerald-600 dark:bg-emerald-400"
+              className="inline-block h-2 w-2 animate-bounce rounded-full bg-blue-600 dark:bg-blue-400"
               style={{ animationDelay: '0ms' }}
             />
             <span
-              className="inline-block h-2 w-2 animate-bounce rounded-full bg-emerald-600 dark:bg-emerald-400"
+              className="inline-block h-2 w-2 animate-bounce rounded-full bg-blue-600 dark:bg-blue-400"
               style={{ animationDelay: '150ms' }}
             />
             <span
-              className="inline-block h-2 w-2 animate-bounce rounded-full bg-emerald-600 dark:bg-emerald-400"
+              className="inline-block h-2 w-2 animate-bounce rounded-full bg-blue-600 dark:bg-blue-400"
               style={{ animationDelay: '300ms' }}
             />
           </div>

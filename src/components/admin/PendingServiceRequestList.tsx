@@ -27,11 +27,11 @@ export default function PendingServiceRequestList({
     },
     APPROVED: {
       label: 'DISETUJUI',
-      badge: 'bg-emerald-700 text-white dark:bg-emerald-600',
+      badge: 'bg-emerald-600 text-white dark:bg-emerald-500',
     },
     REJECTED: {
       label: 'DITOLAK',
-      badge: 'bg-stone-600 text-white dark:bg-stone-500',
+      badge: 'bg-slate-600 text-white dark:bg-slate-500',
     },
   }
 
@@ -49,17 +49,17 @@ export default function PendingServiceRequestList({
   }
 
   return (
-    <div className="rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-5 shadow-xs dark:border-[#22352f] dark:bg-[#121c19]">
-      <div className="flex items-center justify-between gap-4 border-b border-[var(--line,#d5ded9)] pb-4 dark:border-[#22352f]">
+    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex items-center justify-between gap-4 border-b border-slate-100 pb-4 dark:border-slate-800">
         <div className="flex items-center gap-2.5">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-300">
             <FileCheck className="h-4 w-4" aria-hidden="true" />
           </span>
           <div>
-            <h2 className="m-0 text-sm font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+            <h2 className="m-0 text-sm font-bold text-slate-900 dark:text-white">
               Antrean Verifikasi Surat Layanan
             </h2>
-            <p className="m-0 text-xs text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+            <p className="m-0 text-xs text-slate-500 dark:text-slate-400">
               Permohonan surat warga mandiri yang menunggu pemeriksaan berkas
             </p>
           </div>
@@ -67,7 +67,7 @@ export default function PendingServiceRequestList({
 
         <Link
           to="/admin/layanan"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-950 dark:text-emerald-300 dark:hover:text-emerald-100"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
         >
           <span>Buka Meja Layanan</span>
           <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -77,30 +77,30 @@ export default function PendingServiceRequestList({
       {requests.length === 0 ? (
         /* Empty State (R-27) */
         <div className="flex flex-col items-center justify-center py-10 text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
             <CheckCircle className="h-6 w-6" aria-hidden="true" />
           </div>
-          <p className="mt-3 mb-1 text-sm font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+          <p className="mt-3 mb-1 text-sm font-bold text-slate-900 dark:text-white">
             Semua Permohonan Terproses
           </p>
-          <p className="m-0 max-w-sm text-xs text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+          <p className="m-0 max-w-sm text-xs text-slate-500 dark:text-slate-400">
             Tidak ada berkas permohonan surat yang sedang menunggu verifikasi saat ini.
           </p>
         </div>
       ) : (
         /* List of Pending Requests */
-        <div className="mt-4 divide-y divide-[var(--line,#d5ded9)] dark:divide-[#22352f]">
+        <div className="mt-4 divide-y divide-slate-100 dark:divide-slate-800">
           {requests.map((item) => {
             const config = statusStyles[item.status] || statusStyles.PENDING
 
             return (
               <div
                 key={item.id}
-                className="py-3.5 first:pt-0 last:pb-0 transition-colors hover:bg-black/[0.01] dark:hover:bg-white/[0.01]"
+                className="py-3.5 first:pt-0 last:pb-0 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-emerald-800 dark:text-emerald-300">
+                    <span className="font-mono text-xs font-bold text-blue-700 dark:text-blue-400">
                       {item.trackingCode}
                     </span>
                     <span
@@ -110,24 +110,24 @@ export default function PendingServiceRequestList({
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-1.5 text-xs text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+                  <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
                     <Clock className="h-3.5 w-3.5" aria-hidden="true" />
                     <span>{formatRelativeTime(item.createdAt)}</span>
                   </div>
                 </div>
 
                 <div className="mt-1.5 flex items-center justify-between gap-2">
-                  <p className="m-0 text-sm font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+                  <p className="m-0 text-sm font-bold text-slate-900 dark:text-white">
                     {item.serviceName}
                   </p>
-                  <span className="inline-flex items-center gap-1 text-xs text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
-                    <User className="h-3 w-3 text-emerald-700 dark:text-emerald-400" aria-hidden="true" />
+                  <span className="inline-flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+                    <User className="h-3 w-3 text-blue-700 dark:text-blue-400" aria-hidden="true" />
                     <span className="font-medium">{item.applicantName}</span>
                   </span>
                 </div>
 
-                <p className="mt-1 mb-0 text-xs text-[var(--sea-ink-soft,#576c64)] line-clamp-1 dark:text-stone-400">
-                  <span className="font-medium text-[var(--sea-ink,#1b2a26)] dark:text-stone-300">Keperluan:</span> {item.purpose}
+                <p className="mt-1 mb-0 text-xs text-slate-500 line-clamp-1 dark:text-slate-400">
+                  <span className="font-medium text-slate-700 dark:text-slate-300">Keperluan:</span> {item.purpose}
                 </p>
               </div>
             )

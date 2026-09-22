@@ -34,7 +34,7 @@ export class TrackServiceRequestUseCase {
       case 'REVISION':
         return 'Perlu Perbaikan Dokumen'
       case 'APPROVED':
-        return 'Disetujui — Surat Siap Diambil'
+        return 'Disetujui - Surat Siap Diambil'
       case 'REJECTED':
         return 'Permohonan Ditolak'
       default:
