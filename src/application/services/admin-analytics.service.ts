@@ -94,6 +94,15 @@ export async function fetchAdminAnalyticsData(
         createdAt: now,
         updatedAt: now,
       },
+      {
+        id: 'banjar-kauh',
+        name: 'Banjar Kauh',
+        dusun: 'Dusun Kawan',
+        leaderName: 'I Wayan Gede Ardana',
+        leaderPhone: '081234567895',
+        createdAt: now,
+        updatedAt: now,
+      },
     ]
   }
 
