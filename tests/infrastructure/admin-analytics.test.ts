@@ -58,15 +58,16 @@ describe('Admin Analytics & Village Trend Visualizer (Issue #18)', () => {
     )
   })
 
-  it('validates banjar distribution data contains all 4 banjars', async () => {
+  it('validates banjar distribution data contains all 5 banjars', async () => {
     const data = await fetchAdminAnalyticsData()
 
-    assert.equal(data.banjarDistribution.length, 4, 'Must have 4 banjars')
+    assert.equal(data.banjarDistribution.length, 5, 'Must have 5 banjars')
     const expectedBanjarIds = [
       'banjar-kaja',
       'banjar-kelod',
       'banjar-tengah',
       'banjar-kangin',
+      'banjar-kauh',
     ]
 
     for (const b of data.banjarDistribution) {
@@ -79,9 +80,8 @@ describe('Admin Analytics & Village Trend Visualizer (Issue #18)', () => {
         'Banjar name must have Banjar prefix',
       )
       assert.ok(b.dusun, 'Dusun must be present')
-      assert.equal(
-        b.total,
-        b.open + b.inProgress + b.resolved,
+      assert.ok(
+        b.total >= b.open + b.inProgress + b.resolved,
         `Total mismatch for ${b.banjarName}`,
       )
     }

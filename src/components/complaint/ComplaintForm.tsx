@@ -26,6 +26,7 @@ const BANJAR_LIST = [
   { id: 'banjar-kelod', name: 'Banjar Kelod' },
   { id: 'banjar-tengah', name: 'Banjar Tengah' },
   { id: 'banjar-kangin', name: 'Banjar Kangin' },
+  { id: 'banjar-kauh', name: 'Banjar Kauh' },
 ]
 
 export default function ComplaintForm({ onSuccess }: ComplaintFormProps) {

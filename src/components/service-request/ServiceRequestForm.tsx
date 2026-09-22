@@ -44,6 +44,7 @@ const BANJAR_OPTIONS = [
   'Banjar Kelod',
   'Banjar Tengah',
   'Banjar Kangin',
+  'Banjar Kauh',
 ]
 
 interface UploadedFilePreview {
