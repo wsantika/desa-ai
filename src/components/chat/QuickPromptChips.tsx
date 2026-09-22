@@ -49,7 +49,7 @@ export default function QuickPromptChips({ onSelectPrompt, disabled }: QuickProm
   return (
     <div className="py-2">
       <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-[var(--sea-ink-soft)]">
-        <Sparkles className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+        <Sparkles className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
         <span>Pertanyaan Populer Warga:</span>
       </div>
 
@@ -60,7 +60,7 @@ export default function QuickPromptChips({ onSelectPrompt, disabled }: QuickProm
             type="button"
             disabled={disabled}
             onClick={() => onSelectPrompt(prompt.query)}
-            className="inline-flex min-h-[40px] shrink-0 items-center rounded-xl border border-[var(--line)] bg-[var(--chip-bg)] px-3.5 py-1.5 text-xs font-medium text-[var(--sea-ink)] shadow-sm transition hover:border-emerald-600/40 hover:bg-emerald-500/10 active:scale-95 disabled:opacity-50"
+            className="inline-flex min-h-[40px] shrink-0 items-center rounded-xl border border-[var(--line)] bg-[var(--chip-bg)] px-3.5 py-1.5 text-xs font-medium text-[var(--sea-ink)] shadow-sm transition hover:border-blue-300 hover:bg-blue-50/60 active:scale-95 disabled:opacity-50 dark:hover:border-blue-700 dark:hover:bg-blue-950/40"
           >
             {prompt.label}
           </button>

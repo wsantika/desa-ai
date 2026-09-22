@@ -210,7 +210,7 @@ export function ServiceVerificationDetailModal({
         <div className="flex items-start justify-between border-b border-[var(--line,#d5ded9)] p-4 sm:p-5 dark:border-[#22352f]">
           <div className="space-y-1">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-xs font-bold text-emerald-800 dark:text-emerald-400">
+              <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
                 {request.trackingCode}
               </span>
               <span
@@ -253,7 +253,7 @@ export function ServiceVerificationDetailModal({
               onClick={() => setActiveTab('berkas')}
               className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold whitespace-nowrap transition min-h-[44px] ${
                 activeTab === 'berkas'
-                  ? 'bg-emerald-800 text-white dark:bg-emerald-600'
+                  ? 'bg-blue-600 text-white dark:bg-blue-600'
                   : 'text-[var(--sea-ink-soft,#576c64)] hover:bg-black/5 dark:text-stone-400 dark:hover:bg-white/5'
               }`}
             >
@@ -265,7 +265,7 @@ export function ServiceVerificationDetailModal({
               onClick={() => setActiveTab('tindakan')}
               className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold whitespace-nowrap transition min-h-[44px] ${
                 activeTab === 'tindakan'
-                  ? 'bg-emerald-800 text-white dark:bg-emerald-600'
+                  ? 'bg-blue-600 text-white dark:bg-blue-600'
                   : 'text-[var(--sea-ink-soft,#576c64)] hover:bg-black/5 dark:text-stone-400 dark:hover:bg-white/5'
               }`}
             >
@@ -277,7 +277,7 @@ export function ServiceVerificationDetailModal({
               onClick={() => setActiveTab('draf')}
               className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold whitespace-nowrap transition min-h-[44px] ${
                 activeTab === 'draf'
-                  ? 'bg-emerald-800 text-white dark:bg-emerald-600'
+                  ? 'bg-blue-600 text-white dark:bg-blue-600'
                   : 'text-[var(--sea-ink-soft,#576c64)] hover:bg-black/5 dark:text-stone-400 dark:hover:bg-white/5'
               }`}
             >
@@ -289,7 +289,7 @@ export function ServiceVerificationDetailModal({
               onClick={() => setActiveTab('riwayat')}
               className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold whitespace-nowrap transition min-h-[44px] ${
                 activeTab === 'riwayat'
-                  ? 'bg-emerald-800 text-white dark:bg-emerald-600'
+                  ? 'bg-blue-600 text-white dark:bg-blue-600'
                   : 'text-[var(--sea-ink-soft,#576c64)] hover:bg-black/5 dark:text-stone-400 dark:hover:bg-white/5'
               }`}
             >
@@ -311,7 +311,7 @@ export function ServiceVerificationDetailModal({
                 </h3>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   <div className="flex items-start gap-2.5">
-                    <User className="mt-0.5 h-4 w-4 text-emerald-700 dark:text-emerald-400" />
+                    <User className="mt-0.5 h-4 w-4 text-blue-600 dark:text-blue-400" />
                     <div>
                       <div className="text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">Nama Warga</div>
                       <div className="text-xs font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
@@ -321,7 +321,7 @@ export function ServiceVerificationDetailModal({
                   </div>
 
                   <div className="flex items-start gap-2.5">
-                    <ShieldCheck className="mt-0.5 h-4 w-4 text-emerald-700 dark:text-emerald-400" />
+                    <ShieldCheck className="mt-0.5 h-4 w-4 text-blue-600 dark:text-blue-400" />
                     <div>
                       <div className="text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">NIK (16 Digit)</div>
                       <div className="font-mono text-xs font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
@@ -331,7 +331,7 @@ export function ServiceVerificationDetailModal({
                   </div>
 
                   <div className="flex items-start gap-2.5">
-                    <Phone className="mt-0.5 h-4 w-4 text-emerald-700 dark:text-emerald-400" />
+                    <Phone className="mt-0.5 h-4 w-4 text-blue-600 dark:text-blue-400" />
                     <div>
                       <div className="text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">Nomor WhatsApp</div>
                       <div className="text-xs font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
@@ -341,7 +341,7 @@ export function ServiceVerificationDetailModal({
                   </div>
 
                   <div className="flex items-start gap-2.5">
-                    <MapPin className="mt-0.5 h-4 w-4 text-emerald-700 dark:text-emerald-400" />
+                    <MapPin className="mt-0.5 h-4 w-4 text-blue-600 dark:text-blue-400" />
                     <div>
                       <div className="text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">Banjar / Lingkungan</div>
                       <div className="text-xs font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
@@ -351,7 +351,7 @@ export function ServiceVerificationDetailModal({
                   </div>
 
                   <div className="flex items-start gap-2.5">
-                    <Calendar className="mt-0.5 h-4 w-4 text-emerald-700 dark:text-emerald-400" />
+                    <Calendar className="mt-0.5 h-4 w-4 text-blue-600 dark:text-blue-400" />
                     <div>
                       <div className="text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">Waktu Pengajuan</div>
                       <div className="text-xs font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
@@ -361,7 +361,7 @@ export function ServiceVerificationDetailModal({
                   </div>
 
                   <div className="flex items-start gap-2.5">
-                    <Clock className="mt-0.5 h-4 w-4 text-emerald-700 dark:text-emerald-400" />
+                    <Clock className="mt-0.5 h-4 w-4 text-blue-600 dark:text-blue-400" />
                     <div>
                       <div className="text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">Estimasi Selesai</div>
                       <div className="text-xs font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
@@ -389,7 +389,7 @@ export function ServiceVerificationDetailModal({
                     Daftar Dokumen Persyaratan Wajib ({request.requiredDocs.length})
                   </h3>
                   <span className="text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
-                    Terunggah: <strong className="text-emerald-700 dark:text-emerald-400">{request.attachments.length} berkas</strong>
+                    Terunggah: <strong className="text-blue-600 dark:text-blue-400">{request.attachments.length} berkas</strong>
                   </span>
                 </div>
 
@@ -400,7 +400,7 @@ export function ServiceVerificationDetailModal({
                       key={idx}
                       className="flex items-center gap-2.5 rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-3 text-xs dark:border-[#22352f] dark:bg-[#121c19]"
                     >
-                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="font-semibold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
@@ -428,7 +428,7 @@ export function ServiceVerificationDetailModal({
                           className="flex items-center justify-between gap-3 rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-3 dark:border-[#22352f] dark:bg-[#121c19]"
                         >
                           <div className="flex items-center gap-3 overflow-hidden">
-                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
                               <FileText className="h-4 w-4" />
                             </div>
                             <div className="truncate">
@@ -586,7 +586,7 @@ export function ServiceVerificationDetailModal({
                         ? 'Tuliskan alasan resmi penolakan permohonan surat ini...'
                         : 'Catatan opsional untuk arsip layanan atau pesan konfirmasi ke pemohon...'
                   }
-                  className="mt-2 w-full rounded-xl border border-[var(--line,#d5ded9)] bg-black/[0.02] p-3 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-emerald-700 focus:outline-hidden dark:border-[#22352f] dark:bg-white/[0.02] dark:text-stone-100"
+                  className="mt-2 w-full rounded-xl border border-[var(--line,#d5ded9)] bg-black/[0.02] p-3 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-blue-600 focus:outline-hidden dark:border-[#22352f] dark:bg-white/[0.02] dark:text-stone-100"
                 />
               </div>
 
@@ -602,7 +602,7 @@ export function ServiceVerificationDetailModal({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-800 px-5 py-2.5 text-xs font-bold text-white shadow-xs transition hover:bg-emerald-900 disabled:opacity-50 min-h-[44px] dark:bg-emerald-700 dark:hover:bg-emerald-600"
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-xs font-bold text-white shadow-xs transition hover:bg-blue-700 disabled:opacity-50 min-h-[44px] dark:bg-blue-600 dark:hover:bg-blue-500"
                 >
                   {isSubmitting ? (
                     <>
@@ -636,7 +636,7 @@ export function ServiceVerificationDetailModal({
                 <button
                   type="button"
                   onClick={handlePrintDraft}
-                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-800 px-4 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-emerald-900 min-h-[44px] dark:bg-emerald-700"
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-blue-700 min-h-[44px] dark:bg-blue-600 dark:hover:bg-blue-500"
                 >
                   <Printer className="h-4 w-4" />
                   <span>Cetak / Unduh PDF</span>
@@ -767,13 +767,13 @@ export function ServiceVerificationDetailModal({
                   Belum ada riwayat perubahan status pada berkas ini.
                 </div>
               ) : (
-                <div className="relative space-y-4 border-l-2 border-emerald-700/30 pl-4 ml-2 dark:border-emerald-500/30">
+                <div className="relative space-y-4 border-l-2 border-blue-200 pl-4 ml-2 dark:border-blue-800">
                   {request.statusLogs.map((log) => {
                     const logBadge = getStatusBadge(log.newStatus)
                     const LogIcon = logBadge.icon
                     return (
                       <div key={log.id} className="relative">
-                        <div className="absolute -left-[25px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-800 text-white dark:bg-emerald-500">
+                        <div className="absolute -left-[25px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-600 text-white dark:bg-blue-500">
                           <LogIcon className="h-2.5 w-2.5" />
                         </div>
 

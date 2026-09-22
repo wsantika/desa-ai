@@ -146,7 +146,7 @@ export function ServiceVerificationTable({
                   >
                     {/* Tiket & Tanggal */}
                     <td className="py-3.5 px-4 align-top">
-                      <div className="font-mono text-xs font-bold text-emerald-800 dark:text-emerald-300">
+                      <div className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
                         {item.trackingCode}
                       </div>
                       <div className="mt-0.5 flex items-center gap-1 text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
@@ -158,14 +158,14 @@ export function ServiceVerificationTable({
                     {/* Pemohon */}
                     <td className="py-3.5 px-4 align-top">
                       <div className="flex items-center gap-1.5 font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
-                        <User className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400 shrink-0" />
+                        <User className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
                         <span>{item.applicantName}</span>
                       </div>
                       <div className="mt-0.5 font-mono text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
                         NIK: {item.applicantNik}
                       </div>
                       {item.applicantBanjarName && (
-                        <div className="mt-0.5 text-[11px] text-emerald-800 dark:text-emerald-300 font-semibold">
+                        <div className="mt-0.5 text-[11px] text-blue-600 dark:text-blue-400 font-semibold">
                           {item.applicantBanjarName}
                         </div>
                       )}
@@ -181,7 +181,7 @@ export function ServiceVerificationTable({
                         {item.serviceTypeTitle}
                       </span>
                       <div className="mt-1 flex items-center gap-1 text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
-                        <Clock className="h-3 w-3 text-emerald-600" />
+                        <Clock className="h-3 w-3 text-blue-600 dark:text-blue-400" />
                         <span>Estimasi {item.estimatedDays} hari kerja</span>
                       </div>
                     </td>
@@ -196,7 +196,7 @@ export function ServiceVerificationTable({
                     {/* Berkas */}
                     <td className="py-3.5 px-4 align-top">
                       <div className="inline-flex items-center gap-1 rounded-md border border-[var(--line,#d5ded9)] bg-black/[0.02] px-2 py-1 text-[11px] font-semibold text-[var(--sea-ink-soft,#576c64)] dark:border-[#22352f] dark:bg-white/[0.02] dark:text-stone-300">
-                        <Paperclip className="h-3 w-3 text-emerald-600" />
+                        <Paperclip className="h-3 w-3 text-blue-600 dark:text-blue-400" />
                         <span>{item.attachments.length} Berkas</span>
                       </div>
                     </td>
@@ -216,7 +216,7 @@ export function ServiceVerificationTable({
                       <button
                         type="button"
                         onClick={() => onSelectRequest(item)}
-                        className="inline-flex items-center gap-1 rounded-lg bg-emerald-800 px-3 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-600"
+                        className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
                       >
                         <Eye className="h-3.5 w-3.5" />
                         <span>Periksa Berkas</span>
@@ -248,7 +248,7 @@ export function ServiceVerificationTable({
             >
               <div className="flex items-start justify-between gap-2 border-b border-[var(--line,#d5ded9)] pb-3 dark:border-[#22352f]">
                 <div>
-                  <span className="font-mono text-xs font-bold text-emerald-800 dark:text-emerald-300">
+                  <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
                     {item.trackingCode}
                   </span>
                   <p className="m-0 mt-0.5 text-sm font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
@@ -276,7 +276,7 @@ export function ServiceVerificationTable({
                     {item.serviceTypeTitle}
                   </span>
                   <div className="flex items-center gap-1 text-[11px] text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
-                    <Paperclip className="h-3 w-3 text-emerald-600" />
+                    <Paperclip className="h-3 w-3 text-blue-600 dark:text-blue-400" />
                     <span>{item.attachments.length} Berkas</span>
                   </div>
                 </div>
@@ -294,7 +294,7 @@ export function ServiceVerificationTable({
                   <button
                     type="button"
                     onClick={() => onSelectRequest(item)}
-                    className="inline-flex items-center gap-1 rounded-lg bg-emerald-800 px-3 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-emerald-900 dark:bg-emerald-700"
+                    className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
                   >
                     <Eye className="h-3.5 w-3.5" />
                     <span>Periksa Berkas</span>

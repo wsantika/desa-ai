@@ -23,7 +23,7 @@ function AdminLayout() {
   const pendingRequestsCount = data?.metrics?.pendingServiceRequests || 0
 
   return (
-    <div className="min-h-screen bg-[var(--surface-secondary,#f4f7f5)] text-[var(--sea-ink,#1b2a26)] dark:bg-[#0c1412] dark:text-stone-100">
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       {/* Sidebar Navigation */}
       <AdminSidebar
         urgentComplaintsCount={urgentCount}

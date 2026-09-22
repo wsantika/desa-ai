@@ -186,7 +186,7 @@ function AsistenChatPage() {
       {/* Top Header Room Bar */}
       <div className="island-shell mb-3 flex items-center justify-between rounded-2xl px-4 py-3 sm:px-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600/15 text-emerald-700 dark:text-emerald-400">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400">
             <Bot className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
@@ -229,7 +229,7 @@ function AsistenChatPage() {
               >
                 {/* Assistant Avatar */}
                 {isBot && (
-                  <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-700 text-white shadow-sm dark:bg-emerald-600">
+                  <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-sm dark:bg-blue-600">
                     <Bot className="h-4 w-4" aria-hidden="true" />
                   </div>
                 )}
@@ -239,7 +239,7 @@ function AsistenChatPage() {
                   className={`group relative max-w-[88%] rounded-2xl px-4 py-3 text-xs leading-relaxed sm:max-w-[78%] sm:text-sm ${
                     isBot
                       ? 'rounded-tl-sm border border-[var(--line)] bg-[var(--header-bg)] text-[var(--sea-ink)] shadow-sm'
-                      : 'rounded-tr-sm bg-emerald-700 text-white shadow dark:bg-emerald-600'
+                      : 'rounded-tr-sm bg-blue-600 text-white shadow dark:bg-blue-600'
                   }`}
                 >
                   {/* Content with Markdown Rendering */}
@@ -256,7 +256,7 @@ function AsistenChatPage() {
                         <a
                           key={i}
                           href={link.url}
-                          className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-emerald-600/30 bg-emerald-600/10 px-3 py-1.5 text-xs font-bold text-emerald-800 transition hover:bg-emerald-600/20 dark:text-emerald-300"
+                          className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50/80 px-3 py-1.5 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
                         >
                           <span>{link.label}</span>
                           <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
@@ -269,7 +269,7 @@ function AsistenChatPage() {
                   {msg.groundingSources && msg.groundingSources.length > 0 && (
                     <div className="mt-2.5 flex items-center justify-between border-t border-[var(--line)]/60 pt-2 text-[10px] text-[var(--sea-ink-soft)]">
                       <div className="flex items-center gap-1">
-                        <BookOpen className="h-3 w-3 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                        <BookOpen className="h-3 w-3 text-blue-600 dark:text-blue-400" aria-hidden="true" />
                         <span>Rujukan: {msg.groundingSources[0].title}</span>
                       </div>
                       <span className="rounded bg-black/5 px-1.5 py-0.2 dark:bg-white/5">
@@ -289,8 +289,8 @@ function AsistenChatPage() {
                       >
                         {copiedId === msg.id ? (
                           <>
-                            <Check className="h-3 w-3 text-emerald-600" aria-hidden="true" />
-                            <span className="text-emerald-600">Tersalin</span>
+                            <Check className="h-3 w-3 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+                            <span className="text-blue-600 dark:text-blue-400">Tersalin</span>
                           </>
                         ) : (
                           <>
@@ -305,7 +305,7 @@ function AsistenChatPage() {
 
                 {/* Citizen / User Avatar */}
                 {!isBot && (
-                  <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-600/20 text-emerald-800 dark:bg-emerald-400/20 dark:text-emerald-300">
+                  <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
                     <User className="h-4 w-4" aria-hidden="true" />
                   </div>
                 )}
@@ -343,7 +343,7 @@ function AsistenChatPage() {
         <button
           type="submit"
           disabled={!input.trim() || loading}
-          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-emerald-700 text-white transition hover:bg-emerald-800 disabled:opacity-40 dark:bg-emerald-600 dark:hover:bg-emerald-500"
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-blue-600 text-white transition hover:bg-blue-700 disabled:opacity-40 dark:bg-blue-600 dark:hover:bg-blue-500"
           aria-label="Kirim Pertanyaan"
         >
           <Send className="h-4 w-4" aria-hidden="true" />

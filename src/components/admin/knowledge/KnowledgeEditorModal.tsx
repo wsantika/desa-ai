@@ -289,7 +289,7 @@ export function KnowledgeEditorModal({
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Contoh: Standar Operasional Prosedur Pelayanan Surat Domisili"
-                  className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-900 placeholder-stone-400 focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-emerald-500 dark:focus:bg-[#14201d]"
+                  className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-900 placeholder-stone-400 focus:border-blue-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-blue-500 dark:focus:bg-[#14201d]"
                 />
               </div>
 
@@ -307,7 +307,7 @@ export function KnowledgeEditorModal({
                   onChange={(e) =>
                     setCategory(e.target.value as KnowledgeCategory)
                   }
-                  className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-800 focus:border-emerald-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-emerald-500"
+                  className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-800 focus:border-blue-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-blue-500"
                 >
                   <option value="SOP_LAYANAN">SOP Layanan</option>
                   <option value="REGULASI">Regulasi Desa (Perdes/SK)</option>
@@ -330,7 +330,7 @@ export function KnowledgeEditorModal({
                   value={sourceUrl}
                   onChange={(e) => setSourceUrl(e.target.value)}
                   placeholder="https://jdih.desa-tehaltugu.id/perdes-04-2026 atau No. Dokumen"
-                  className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs text-stone-900 placeholder-stone-400 focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-emerald-500 dark:focus:bg-[#14201d]"
+                  className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs text-stone-900 placeholder-stone-400 focus:border-blue-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-blue-500 dark:focus:bg-[#14201d]"
                 />
               </div>
 
@@ -346,10 +346,10 @@ export function KnowledgeEditorModal({
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-800 hover:bg-black/5 dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:hover:bg-[#20322d]"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-800 hover:bg-slate-100 dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:hover:bg-[#20322d]"
                   title="Muat teks dari berkas .md atau .txt"
                 >
-                  <Upload className="h-3.5 w-3.5 text-emerald-800 dark:text-emerald-400" />
+                  <Upload className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
                   <span>Unggah Berkas .md / .txt</span>
                 </button>
               </div>
@@ -363,7 +363,7 @@ export function KnowledgeEditorModal({
               <button
                 type="button"
                 onClick={() => handleApplyTemplate(SOP_TEMPLATE)}
-                className="inline-flex items-center gap-1 rounded-md border border-[var(--line,#d5ded9)] bg-emerald-50/50 px-2 py-1 text-[11px] font-semibold text-emerald-800 hover:bg-emerald-100 dark:border-[#22352f] dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:bg-emerald-950"
+                className="inline-flex items-center gap-1 rounded-md border border-[var(--line,#d5ded9)] bg-blue-50/60 px-2 py-1 text-[11px] font-semibold text-blue-700 hover:bg-blue-100 dark:border-[#22352f] dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900"
               >
                 <FileCode className="h-3 w-3" />
                 <span>Template SOP</span>
@@ -487,7 +487,7 @@ export function KnowledgeEditorModal({
                     onClick={() => setEditorTab('WRITE')}
                     className={`rounded-md px-2.5 py-1 transition ${
                       editorTab === 'WRITE'
-                        ? 'bg-emerald-800 text-white shadow-2xs dark:bg-emerald-700'
+                        ? 'bg-blue-600 text-white shadow-2xs dark:bg-blue-600'
                         : 'text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100'
                     }`}
                   >
@@ -498,7 +498,7 @@ export function KnowledgeEditorModal({
                     onClick={() => setEditorTab('PREVIEW')}
                     className={`rounded-md px-2.5 py-1 transition ${
                       editorTab === 'PREVIEW'
-                        ? 'bg-emerald-800 text-white shadow-2xs dark:bg-emerald-700'
+                        ? 'bg-blue-600 text-white shadow-2xs dark:bg-blue-600'
                         : 'text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100'
                     }`}
                   >
@@ -509,7 +509,7 @@ export function KnowledgeEditorModal({
                     onClick={() => setEditorTab('SPLIT')}
                     className={`hidden lg:inline-block rounded-md px-2.5 py-1 transition ${
                       editorTab === 'SPLIT'
-                        ? 'bg-emerald-800 text-white shadow-2xs dark:bg-emerald-700'
+                        ? 'bg-blue-600 text-white shadow-2xs dark:bg-blue-600'
                         : 'text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100'
                     }`}
                   >
@@ -560,7 +560,7 @@ export function KnowledgeEditorModal({
                   {contentText.length} karakter •{' '}
                   {contentText.trim().split(/\s+/).filter(Boolean).length} kata
                 </span>
-                <span className="text-emerald-800 dark:text-emerald-400 font-semibold">
+                <span className="text-blue-600 dark:text-blue-400 font-semibold">
                   Estimasi: {estimatedChunks} Potongan Vektor RAG
                 </span>
               </div>
@@ -573,7 +573,7 @@ export function KnowledgeEditorModal({
                 type="checkbox"
                 checked={isPublished}
                 onChange={(e) => setIsPublished(e.target.checked)}
-                className="h-4 w-4 rounded-sm text-emerald-800 focus:ring-emerald-600"
+                className="h-4 w-4 rounded-sm text-blue-600 focus:ring-blue-600"
               />
               <label
                 htmlFor="doc-publish-toggle"
@@ -591,14 +591,14 @@ export function KnowledgeEditorModal({
               type="button"
               onClick={onClose}
               disabled={isSaving}
-              className="rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] px-4 py-2 text-xs font-semibold text-stone-800 hover:bg-black/5 disabled:opacity-50 dark:border-[#22352f] dark:bg-[#121c19] dark:text-stone-200 dark:hover:bg-[#20322d]"
+              className="rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] px-4 py-2 text-xs font-semibold text-stone-800 hover:bg-slate-100 disabled:opacity-50 dark:border-[#22352f] dark:bg-[#121c19] dark:text-stone-200 dark:hover:bg-[#20322d]"
             >
               Batal
             </button>
             <button
               type="submit"
               disabled={isSaving}
-              className="inline-flex items-center gap-2 rounded-lg bg-emerald-800 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-emerald-900 disabled:opacity-50 dark:bg-emerald-700 dark:hover:bg-emerald-600"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-500"
             >
               {isSaving ? (
                 <>

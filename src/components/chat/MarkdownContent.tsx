@@ -139,7 +139,7 @@ function renderInline(text: string): React.ReactNode[] {
       parts.push(
         <code
           key={`c-${match.index}`}
-          className="rounded bg-black/10 px-1.5 py-0.5 font-mono text-[11px] text-emerald-800 dark:bg-white/10 dark:text-emerald-300"
+          className="rounded bg-black/10 px-1.5 py-0.5 font-mono text-[11px] text-blue-800 dark:bg-white/10 dark:text-blue-300"
         >
           {token.slice(1, -1)}
         </code>

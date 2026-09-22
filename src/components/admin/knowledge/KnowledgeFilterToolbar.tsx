@@ -65,8 +65,8 @@ export function KnowledgeFilterToolbar({
               onClick={() => onFilterChange({ category: tab.id })}
               className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
                 isActive
-                  ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-700'
-                  : 'bg-[var(--surface-secondary,#f4f7f5)] text-stone-700 hover:bg-black/5 dark:bg-[#182622] dark:text-stone-300 dark:hover:bg-[#20322d]'
+                  ? 'bg-blue-600 text-white shadow-xs dark:bg-blue-600'
+                  : 'bg-[var(--surface-secondary,#f4f7f5)] text-stone-700 hover:bg-slate-100 dark:bg-[#182622] dark:text-stone-300 dark:hover:bg-[#20322d]'
               }`}
             >
               <span>{tab.label}</span>
@@ -97,7 +97,7 @@ export function KnowledgeFilterToolbar({
             value={filter.search}
             onChange={(e) => onFilterChange({ search: e.target.value })}
             placeholder="Cari judul dokumen, perdes, nomor SOP, atau isi acuan..."
-            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] py-2 pr-8 pl-9 text-xs text-stone-900 placeholder-stone-400 focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-emerald-500 dark:focus:bg-[#14201d]"
+            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] py-2 pr-8 pl-9 text-xs text-stone-900 placeholder-stone-400 focus:border-blue-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-blue-500 dark:focus:bg-[#14201d]"
           />
           {filter.search && (
             <button
@@ -124,7 +124,7 @@ export function KnowledgeFilterToolbar({
                 status: e.target.value as KnowledgeFilterDTO['status'],
               })
             }
-            className="rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-800 focus:border-emerald-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-emerald-500"
+            className="rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-800 focus:border-blue-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-blue-500"
           >
             <option value="ALL">Semua Status</option>
             <option value="PUBLISHED">Aktif Digunakan AI</option>

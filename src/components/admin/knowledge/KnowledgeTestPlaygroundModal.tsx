@@ -84,7 +84,7 @@ export function KnowledgeTestPlaygroundModal({
         {/* Header */}
         <div className="flex items-center justify-between border-b border-[var(--line,#d5ded9)] px-5 py-4 dark:border-[#22352f]">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
               <Sparkles className="h-5 w-5" />
             </div>
             <div>
@@ -103,7 +103,7 @@ export function KnowledgeTestPlaygroundModal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-1.5 text-stone-400 hover:bg-black/5 hover:text-stone-700 dark:hover:bg-white/5 dark:hover:text-stone-200"
+            className="rounded-lg p-1.5 text-stone-400 hover:bg-slate-100 hover:text-stone-700 dark:hover:bg-white/5 dark:hover:text-stone-200"
             aria-label="Tutup uji coba"
           >
             <X className="h-5 w-5" />
@@ -137,7 +137,7 @@ export function KnowledgeTestPlaygroundModal({
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Ketik pertanyaan warga untuk menguji grounding dokumen..."
-                  className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] py-2 pr-3 pl-9 text-xs text-stone-900 placeholder-stone-400 focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-emerald-500 dark:focus:bg-[#14201d]"
+                  className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] py-2 pr-3 pl-9 text-xs text-stone-900 placeholder-stone-400 focus:border-blue-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-blue-500 dark:focus:bg-[#14201d]"
                 />
               </div>
 
@@ -146,7 +146,7 @@ export function KnowledgeTestPlaygroundModal({
                 onChange={(e) =>
                   setCategory(e.target.value as 'ALL' | KnowledgeCategory)
                 }
-                className="rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-800 focus:border-emerald-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-emerald-500"
+                className="rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-semibold text-stone-800 focus:border-blue-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-blue-500"
               >
                 <option value="ALL">Semua Kategori</option>
                 <option value="SOP_LAYANAN">SOP Layanan</option>
@@ -158,7 +158,7 @@ export function KnowledgeTestPlaygroundModal({
               <button
                 type="submit"
                 disabled={isLoading}
-                className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-emerald-800 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-900 disabled:opacity-50 dark:bg-emerald-700 dark:hover:bg-emerald-600"
+                className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-500"
               >
                 {isLoading ? (
                   <>
@@ -184,7 +184,7 @@ export function KnowledgeTestPlaygroundModal({
                   key={idx}
                   type="button"
                   onClick={() => handleChipClick(sq)}
-                  className="rounded-md border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-2 py-0.5 text-[11px] text-stone-700 hover:border-emerald-600 hover:text-emerald-800 dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-300 dark:hover:border-emerald-500 dark:hover:text-emerald-300 transition"
+                  className="rounded-md border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-2 py-0.5 text-[11px] text-stone-700 hover:border-blue-500 hover:text-blue-600 dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-300 dark:hover:border-blue-400 dark:hover:text-blue-300 transition"
                 >
                   {sq}
                 </button>
@@ -196,15 +196,15 @@ export function KnowledgeTestPlaygroundModal({
           {result && (
             <div className="space-y-4 pt-2 border-t border-[var(--line,#d5ded9)] dark:border-[#22352f]">
               {/* 1. AI Grounded Answer Preview */}
-              <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-4 dark:border-emerald-900/60 dark:bg-emerald-950/20">
+              <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-4 dark:border-blue-900/60 dark:bg-blue-950/20">
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-800 text-white dark:bg-emerald-600">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white dark:bg-blue-600">
                     <Bot className="h-3.5 w-3.5" />
                   </div>
-                  <span className="font-bold text-xs text-emerald-950 dark:text-emerald-200">
+                  <span className="font-bold text-xs text-blue-950 dark:text-blue-200">
                     Simulasi Jawaban Asisten AI Made
                   </span>
-                  <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300">
+                  <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
                     <CheckCircle2 className="h-3 w-3" />
                     <span>Grounded ({result.groundedSourceCount} Sumber)</span>
                   </span>
@@ -237,7 +237,7 @@ export function KnowledgeTestPlaygroundModal({
                           <span className="font-bold text-stone-900 dark:text-stone-100 truncate pr-2">
                             {rc.documentTitle} (Chunk #{rc.chunkIndex})
                           </span>
-                          <span className="inline-flex items-center gap-1 rounded-md bg-emerald-100 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 shrink-0">
+                          <span className="inline-flex items-center gap-1 rounded-md bg-blue-100 px-2 py-0.5 font-mono text-[10px] font-bold text-blue-800 dark:bg-blue-950 dark:text-blue-300 shrink-0">
                             <Layers className="h-3 w-3" />
                             <span>
                               Kecocokan: {Math.round(rc.similarityScore * 100)}%

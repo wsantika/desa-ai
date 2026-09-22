@@ -44,23 +44,23 @@ export default function ComplaintSuccessReceipt({
       case 'HIGH':
         return 'bg-amber-500 text-white border-amber-600'
       case 'MEDIUM':
-        return 'bg-blue-500 text-white border-blue-600'
+        return 'bg-blue-600 text-white border-blue-700'
       default:
-        return 'bg-emerald-600 text-white border-emerald-700'
+        return 'bg-slate-600 text-white border-slate-700'
     }
   }
 
   return (
-    <div className="island-shell mx-auto max-w-xl rounded-3xl p-6 text-center sm:p-10">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-600/15 text-emerald-700 dark:text-emerald-400">
+    <div className="island-shell mx-auto max-w-xl rounded-2xl p-6 text-center sm:p-10">
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400">
         <CheckCircle2 className="h-8 w-8" aria-hidden="true" />
       </div>
 
-      <span className="mt-3 inline-block rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-800 dark:text-emerald-300">
+      <span className="mt-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-950/50 dark:text-blue-300">
         Pemerintah Desa Tegal Tugu
       </span>
 
-      <h2 className="mt-2 text-xl font-extrabold text-[var(--sea-ink)] sm:text-2xl">
+      <h2 className="mt-2 text-xl font-bold tracking-tight text-[var(--sea-ink)] sm:text-2xl">
         Laporan Pengaduan Berhasil Dikirim!
       </h2>
       <p className="mt-1 text-xs text-[var(--sea-ink-soft)] sm:text-sm">
@@ -68,24 +68,24 @@ export default function ComplaintSuccessReceipt({
       </p>
 
       {/* Ticket Box */}
-      <div className="mt-6 rounded-2xl border-2 border-rose-500/30 bg-rose-500/10 p-5">
-        <span className="text-xs font-semibold text-[var(--sea-ink-soft)]">
+      <div className="mt-6 rounded-xl border-2 border-blue-200 bg-blue-50/70 p-5 dark:border-blue-800 dark:bg-blue-950/30">
+        <span className="text-xs font-medium text-[var(--sea-ink-soft)]">
           Nomor Tiket Pengaduan Resmi:
         </span>
         <div className="mt-1 flex items-center justify-center gap-3">
-          <span className="font-mono text-2xl font-black tracking-wider text-rose-800 dark:text-rose-300 sm:text-3xl">
+          <span className="font-mono text-2xl font-bold tracking-wider text-blue-800 dark:text-blue-300 sm:text-3xl">
             {complaint.ticketCode}
           </span>
           <button
             type="button"
             onClick={handleCopy}
-            className="inline-flex min-h-[38px] items-center gap-1.5 rounded-xl border border-[var(--line)] bg-[var(--chip-bg)] px-3 py-1.5 text-xs font-bold text-[var(--sea-ink)] shadow-sm transition hover:bg-black/5 active:scale-95 dark:hover:bg-white/5"
+            className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-[var(--line)] bg-[var(--chip-bg)] px-3 py-1.5 text-xs font-semibold text-[var(--sea-ink)] shadow-sm transition hover:bg-slate-100 active:scale-95 dark:hover:bg-slate-800"
             title="Salin Nomor Tiket"
           >
             {copied ? (
               <>
-                <Check className="h-3.5 w-3.5 text-emerald-600" aria-hidden="true" />
-                <span className="text-emerald-600">Tersalin!</span>
+                <Check className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+                <span className="text-blue-600 dark:text-blue-400">Tersalin!</span>
               </>
             ) : (
               <>
@@ -98,10 +98,10 @@ export default function ComplaintSuccessReceipt({
       </div>
 
       {/* Hasil Analisis Cerdas AI */}
-      <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--header-bg)] p-4 text-left text-xs sm:text-sm">
+      <div className="mt-6 rounded-xl border border-[var(--line)] bg-[var(--header-bg)] p-4 text-left text-xs sm:text-sm">
         <div className="mb-3 flex items-center justify-between border-b border-[var(--line)] pb-2.5">
           <div className="flex items-center gap-1.5 font-bold text-[var(--sea-ink)]">
-            <Sparkles className="h-4 w-4 text-emerald-600" aria-hidden="true" />
+            <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" aria-hidden="true" />
             <span>Hasil Triage Evaluasi AI:</span>
           </div>
           <span
@@ -116,7 +116,7 @@ export default function ComplaintSuccessReceipt({
         <div className="space-y-2">
           <div>
             <span className="text-xs text-[var(--sea-ink-soft)]">Kategori Terdeteksi:</span>
-            <p className="font-bold text-[var(--sea-ink)]">
+            <p className="font-semibold text-[var(--sea-ink)]">
               {evaluation?.category || complaint.category || 'INFRASTRUKTUR'}
             </p>
           </div>
@@ -129,8 +129,8 @@ export default function ComplaintSuccessReceipt({
           </div>
 
           {evaluation?.recommendedAction && (
-            <div className="rounded-xl border border-emerald-600/20 bg-emerald-600/10 p-2.5">
-              <span className="block text-[11px] font-bold text-emerald-800 dark:text-emerald-300">
+            <div className="rounded-lg border border-blue-200 bg-blue-50/60 p-2.5 dark:border-blue-800 dark:bg-blue-950/30">
+              <span className="block text-[11px] font-bold text-blue-800 dark:text-blue-300">
                 Rekomendasi Disposisi:
               </span>
               <p className="mt-0.5 text-xs text-[var(--sea-ink)]">
@@ -146,7 +146,7 @@ export default function ComplaintSuccessReceipt({
         <button
           type="button"
           onClick={() => onTrackNow(complaint.ticketCode)}
-          className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-emerald-700 px-6 py-2.5 text-xs font-bold text-white shadow-md transition hover:bg-emerald-800 dark:bg-emerald-600 sm:text-sm"
+          className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-700 active:scale-[0.99] dark:bg-blue-600 dark:hover:bg-blue-500 sm:text-sm"
         >
           <Search className="h-4 w-4" aria-hidden="true" />
           <span>Lacak Status Pengaduan</span>
@@ -155,7 +155,7 @@ export default function ComplaintSuccessReceipt({
         <button
           type="button"
           onClick={onNewComplaint}
-          className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-[var(--chip-bg)] px-6 py-2.5 text-xs font-bold text-[var(--sea-ink)] transition hover:bg-black/5 dark:hover:bg-white/5 sm:text-sm"
+          className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-[var(--chip-bg)] px-6 py-2.5 text-xs font-semibold text-[var(--sea-ink)] shadow-sm transition hover:bg-slate-100 active:scale-[0.99] dark:hover:bg-slate-800 sm:text-sm"
         >
           <PlusCircle className="h-4 w-4" aria-hidden="true" />
           <span>Laporkan Kendala Lain</span>

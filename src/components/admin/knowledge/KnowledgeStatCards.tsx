@@ -30,7 +30,7 @@ export function KnowledgeStatCards({
           <span className="text-xs font-semibold text-stone-600 dark:text-stone-400">
             Total Dokumen Acuan
           </span>
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
             <BookOpen className="h-4 w-4" aria-hidden="true" />
           </div>
         </div>
@@ -54,12 +54,12 @@ export function KnowledgeStatCards({
           <span className="text-xs font-semibold text-stone-600 dark:text-stone-400">
             Aktif Digunakan AI
           </span>
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
           </div>
         </div>
         <div className="mt-2 flex items-baseline gap-2">
-          <span className="font-mono text-2xl font-bold tracking-tight text-emerald-800 dark:text-emerald-300">
+          <span className="font-mono text-2xl font-bold tracking-tight text-blue-600 dark:text-blue-400">
             {metrics.publishedDocuments}
           </span>
           <span className="text-[11px] font-medium text-stone-500 dark:text-stone-400">
@@ -79,12 +79,12 @@ export function KnowledgeStatCards({
           <span className="text-xs font-semibold text-stone-600 dark:text-stone-400">
             Potongan Vektor (Chunks)
           </span>
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-50 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
             <Layers className="h-4 w-4" aria-hidden="true" />
           </div>
         </div>
         <div className="mt-2 flex items-baseline gap-2">
-          <span className="font-mono text-2xl font-bold tracking-tight text-teal-900 dark:text-teal-200">
+          <span className="font-mono text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-100">
             {metrics.totalChunks}
           </span>
           <span className="text-[11px] font-medium text-stone-500 dark:text-stone-400">
@@ -107,7 +107,7 @@ export function KnowledgeStatCards({
               type="button"
               onClick={onSyncAll}
               disabled={isSyncing}
-              className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 hover:bg-emerald-50 disabled:opacity-50 dark:text-emerald-300 dark:hover:bg-emerald-950/50"
+              className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-bold text-blue-600 hover:bg-blue-50 disabled:opacity-50 dark:text-blue-400 dark:hover:bg-blue-950/50"
               title="Perbarui seluruh vektor embedding RAG sekarang"
             >
               <RefreshCw
@@ -123,7 +123,7 @@ export function KnowledgeStatCards({
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600" />
           </span>
-          <span className="font-bold text-sm text-emerald-900 dark:text-emerald-200">
+          <span className="font-bold text-sm text-stone-900 dark:text-stone-100">
             {isSyncing ? 'Sedang Sinkronisasi...' : 'Terkalibrasi Aktif'}
           </span>
         </div>

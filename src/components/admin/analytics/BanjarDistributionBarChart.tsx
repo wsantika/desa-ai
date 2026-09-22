@@ -32,7 +32,7 @@ export function BanjarDistributionBarChart({
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line,#d5ded9)] pb-4 dark:border-[#22352f]">
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
             <BarChart3 className="h-4 w-4" />
           </div>
           <div>
@@ -48,7 +48,7 @@ export function BanjarDistributionBarChart({
         {/* Legend */}
         <div className="flex flex-wrap items-center gap-3 text-xs">
           <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-xs bg-emerald-600" />
+            <span className="h-2.5 w-2.5 rounded-xs bg-blue-600" />
             <span className="text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
               Selesai
             </span>
@@ -143,7 +143,7 @@ export function BanjarDistributionBarChart({
                       height={180}
                       rx={6}
                       fill="currentColor"
-                      className="text-emerald-500/10 dark:text-emerald-400/10"
+                      className="text-blue-500/10 dark:text-blue-400/10"
                     />
                   )}
 
@@ -158,7 +158,7 @@ export function BanjarDistributionBarChart({
                       fill="none"
                       stroke="currentColor"
                       strokeDasharray="2 2"
-                      className="text-stone-300 dark:text-stone-700"
+                      className="text-slate-300 dark:text-slate-700"
                     />
                   )}
 
@@ -171,7 +171,7 @@ export function BanjarDistributionBarChart({
                       width={50}
                       height={resolvedHeight}
                       rx={inProgressHeight === 0 && openHeight === 0 ? 4 : 0}
-                      fill="#15803d" // Emerald 700
+                      fill="#2563eb" // Blue 600
                       className="transition-all hover:brightness-110"
                     />
                   )}
@@ -258,38 +258,38 @@ export function BanjarDistributionBarChart({
       </div>
 
       {/* Active Bar Detail Box */}
-      <div className="mt-4 rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f8faf9)] p-3 text-xs dark:border-[#22352f] dark:bg-[#182522]">
+      <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs dark:border-slate-800 dark:bg-slate-900/50">
         {activeItem ? (
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-emerald-800 dark:text-emerald-400" />
+              <MapPin className="h-4 w-4 text-blue-600 dark:text-blue-400" />
               <div>
-                <span className="font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+                <span className="font-bold text-slate-900 dark:text-slate-100">
                   {activeItem.banjarName} ({activeItem.dusun})
                 </span>
-                <span className="ml-2 text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+                <span className="ml-2 text-slate-500 dark:text-slate-400">
                   Topik Utama: {activeItem.topCategory || 'Belum Ada Aduan'}
                 </span>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="font-semibold text-emerald-700 dark:text-emerald-400">
+              <span className="font-semibold text-blue-600 dark:text-blue-400">
                 {activeItem.resolved} Selesai
               </span>
-              <span className="font-semibold text-amber-700 dark:text-amber-400">
+              <span className="font-semibold text-amber-600 dark:text-amber-400">
                 {activeItem.inProgress} Proses
               </span>
-              <span className="font-semibold text-rose-700 dark:text-rose-400">
+              <span className="font-semibold text-rose-600 dark:text-rose-400">
                 {activeItem.open} Terbuka
               </span>
-              <span className="rounded bg-black/5 px-2 py-0.5 font-mono font-bold dark:bg-white/10">
+              <span className="rounded bg-slate-200/60 px-2 py-0.5 font-mono font-bold text-slate-800 dark:bg-slate-800 dark:text-slate-200">
                 ATTR: {activeItem.avgResolutionHours} Jam
               </span>
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-1.5 text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
-            <AlertCircle className="h-3.5 w-3.5 text-emerald-800 dark:text-emerald-400" />
+          <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+            <AlertCircle className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
             <span>
               Arahkan kursor atau klik pada salah satu batang banjar untuk
               melihat rincian penyelesaian masalah.

@@ -79,8 +79,8 @@ export function TriageFilterToolbar({
                 isActive
                   ? isEmergencyTab
                     ? 'bg-red-600 text-white shadow-xs dark:bg-red-700'
-                    : 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-700'
-                  : 'bg-[var(--surface-secondary,#f4f7f5)] text-[var(--sea-ink,#1b2a26)] hover:bg-black/5 dark:bg-[#182622] dark:text-stone-300 dark:hover:bg-[#20322d]'
+                    : 'bg-blue-600 text-white shadow-xs dark:bg-blue-600'
+                  : 'bg-[var(--surface-secondary,#f4f7f5)] text-[var(--sea-ink,#1b2a26)] hover:bg-slate-100 dark:bg-[#182622] dark:text-stone-300 dark:hover:bg-[#20322d]'
               }`}
             >
               {isEmergencyTab && <AlertTriangle className="h-3.5 w-3.5" />}
@@ -111,7 +111,7 @@ export function TriageFilterToolbar({
             value={filter.search}
             onChange={(e) => onFilterChange({ search: e.target.value })}
             placeholder="Cari tiket, judul, warga, atau lokasi..."
-            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] py-2 pr-8 pl-9 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-emerald-500 dark:focus:bg-[#14201d]"
+            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] py-2 pr-8 pl-9 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-blue-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-500 dark:focus:border-blue-500 dark:focus:bg-[#14201d]"
           />
           {filter.search && (
             <button
@@ -134,7 +134,7 @@ export function TriageFilterToolbar({
             id="filter-banjar"
             value={filter.banjarId}
             onChange={(e) => onFilterChange({ banjarId: e.target.value })}
-            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-medium text-[var(--sea-ink,#1b2a26)] focus:border-emerald-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-emerald-500"
+            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-medium text-[var(--sea-ink,#1b2a26)] focus:border-blue-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-blue-500"
           >
             <option value="ALL">Semua Banjar / Dusun</option>
             {banjars.map((b) => (
@@ -158,7 +158,7 @@ export function TriageFilterToolbar({
                 priority: e.target.value as TriageFilterDTO['priority'],
               })
             }
-            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-medium text-[var(--sea-ink,#1b2a26)] focus:border-emerald-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-emerald-500"
+            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-medium text-[var(--sea-ink,#1b2a26)] focus:border-blue-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-blue-500"
           >
             <option value="ALL">Semua Prioritas AI</option>
             <option value="EMERGENCY">Darurat (Emergency)</option>
@@ -181,7 +181,7 @@ export function TriageFilterToolbar({
                 category: e.target.value as TriageFilterDTO['category'],
               })
             }
-            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-medium text-[var(--sea-ink,#1b2a26)] focus:border-emerald-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-emerald-500"
+            className="w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs font-medium text-[var(--sea-ink,#1b2a26)] focus:border-blue-600 focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-200 dark:focus:border-blue-500"
           >
             <option value="ALL">Semua Kategori</option>
             <option value="INFRASTRUKTUR">Infrastruktur</option>
@@ -204,7 +204,7 @@ export function TriageFilterToolbar({
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 hover:underline dark:text-emerald-300"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline dark:text-blue-400"
           >
             <X className="h-3 w-3" />
             <span>Reset Semua Filter</span>

@@ -113,7 +113,7 @@ export function TriageDetailModal({
         <div className="flex items-start justify-between border-b border-[var(--line,#d5ded9)] p-5 dark:border-[#22352f]">
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-mono text-sm font-bold text-emerald-800 dark:text-emerald-400">
+              <span className="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
                 {complaint.ticketCode}
               </span>
               <span
@@ -132,13 +132,16 @@ export function TriageDetailModal({
             >
               {complaint.title}
             </h3>
+            <p className="mt-0.5 mb-0 text-xs text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+              Dilaporkan pada {new Date(complaint.createdAt).toLocaleString('id-ID')} WITA
+            </p>
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-1.5 text-[var(--sea-ink-soft,#576c64)] hover:bg-black/5 hover:text-black dark:text-stone-400 dark:hover:bg-white/5 dark:hover:text-white"
-            aria-label="Tutup dialog"
+            className="rounded-lg p-1 text-[var(--sea-ink-soft,#576c64)] hover:bg-black/5 dark:text-stone-400 dark:hover:bg-white/5"
+            aria-label="Tutup jendela"
           >
             <X className="h-5 w-5" />
           </button>
@@ -147,14 +150,14 @@ export function TriageDetailModal({
         {/* Scrollable Content */}
         <div className="flex-1 space-y-5 overflow-y-auto p-5 text-xs">
           {/* Section 1: AI Evaluation Insights */}
-          <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 dark:border-emerald-900/60 dark:bg-emerald-950/20">
+          <div className="rounded-xl border border-blue-200 bg-blue-50/70 p-4 dark:border-blue-900/40 dark:bg-blue-950/20">
             <div className="flex items-center justify-between gap-2">
-              <div className="inline-flex items-center gap-1.5 font-bold text-emerald-900 dark:text-emerald-300">
-                <Sparkles className="h-4 w-4" />
+              <div className="inline-flex items-center gap-1.5 font-bold text-blue-900 dark:text-blue-300">
+                <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                 <span>Analisis Kecerdasan Buatan (AI Evaluator)</span>
               </div>
               {complaint.aiEvaluation && (
-                <span className="rounded-full bg-emerald-200/80 px-2 py-0.5 text-[10px] font-bold text-emerald-950 dark:bg-emerald-900 dark:text-emerald-200">
+                <span className="rounded-full bg-blue-200/80 px-2 py-0.5 text-[10px] font-bold text-blue-950 dark:bg-blue-900 dark:text-blue-200">
                   {Math.round(complaint.aiEvaluation.confidenceScore * 100)}% Keyakinan
                 </span>
               )}
@@ -162,10 +165,10 @@ export function TriageDetailModal({
 
             <div className="mt-3 space-y-2">
               <div>
-                <span className="font-semibold text-emerald-950 dark:text-emerald-200">
+                <span className="font-semibold text-blue-950 dark:text-blue-200">
                   Ringkasan Eksekutif:
                 </span>
-                <p className="mt-0.5 mb-0 text-emerald-900 dark:text-emerald-300">
+                <p className="mt-0.5 mb-0 text-blue-900 dark:text-blue-300">
                   {complaint.aiSummary ||
                     complaint.aiEvaluation?.executiveSummary ||
                     'Tidak ada ringkasan otomatis.'}
@@ -173,11 +176,11 @@ export function TriageDetailModal({
               </div>
 
               {complaint.aiEvaluation?.recommendedAction && (
-                <div className="border-t border-emerald-200/60 pt-2 dark:border-emerald-900/40">
-                  <span className="font-semibold text-emerald-950 dark:text-emerald-200">
+                <div className="border-t border-blue-200/60 pt-2 dark:border-blue-900/40">
+                  <span className="font-semibold text-blue-950 dark:text-blue-200">
                     Saran Tindakan Petugas:
                   </span>
-                  <p className="mt-0.5 mb-0 text-emerald-900 dark:text-emerald-300">
+                  <p className="mt-0.5 mb-0 text-blue-900 dark:text-blue-300">
                     {complaint.aiEvaluation.recommendedAction}
                   </p>
                 </div>
@@ -206,7 +209,7 @@ export function TriageDetailModal({
                   No. Telepon / Kontak:
                 </span>
                 <div className="flex items-center gap-1 font-semibold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
-                  <Phone className="h-3 w-3 text-emerald-700" />
+                  <Phone className="h-3 w-3 text-blue-600 dark:text-blue-400" />
                   <span>{complaint.reporterPhone || 'Tidak dicantumkan'}</span>
                 </div>
               </div>
@@ -216,7 +219,7 @@ export function TriageDetailModal({
                   Wilayah Banjar:
                 </span>
                 <div className="flex items-center gap-1 font-semibold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
-                  <MapPin className="h-3 w-3 text-emerald-700" />
+                  <MapPin className="h-3 w-3 text-blue-600 dark:text-blue-400" />
                   <span>{complaint.banjarName}</span>
                 </div>
               </div>
@@ -250,7 +253,7 @@ export function TriageDetailModal({
                     href={complaint.photoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 font-semibold text-emerald-800 hover:underline dark:text-emerald-400"
+                    className="inline-flex items-center gap-1 font-semibold text-blue-600 hover:underline dark:text-blue-400"
                   >
                     <span>Lihat Foto Bukti</span>
                     <ExternalLink className="h-3 w-3" />
@@ -264,7 +267,7 @@ export function TriageDetailModal({
           {complaint.statusLogs.length > 0 && (
             <div className="space-y-2">
               <div className="flex items-center gap-1.5 font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
-                <History className="h-4 w-4 text-emerald-700" />
+                <History className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                 <span>Riwayat Penanganan & Log Audit</span>
               </div>
 
@@ -273,7 +276,7 @@ export function TriageDetailModal({
                   <div key={log.id} className="p-3">
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-1.5">
-                        <span className="font-semibold text-emerald-800 dark:text-emerald-400">
+                        <span className="font-semibold text-blue-600 dark:text-blue-400">
                           {log.newStatus}
                         </span>
                         {log.previousStatus && (
@@ -297,7 +300,7 @@ export function TriageDetailModal({
                           href={log.proofPhotoUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-emerald-800 hover:underline dark:text-emerald-400"
+                          className="text-blue-600 hover:underline dark:text-blue-400"
                         >
                           Bukti penanganan terlampir
                         </a>
@@ -312,7 +315,7 @@ export function TriageDetailModal({
           {/* Section 4: Officer Action Form */}
           <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-4 dark:border-[#22352f] dark:bg-[#121c19]">
             <div className="flex items-center gap-1.5 font-bold text-[var(--sea-ink,#1b2a26)] dark:text-stone-200">
-              <ShieldCheck className="h-4 w-4 text-emerald-700" />
+              <ShieldCheck className="h-4 w-4 text-blue-600 dark:text-blue-400" />
               <span>Tindakan & Disposisi Petugas Desa</span>
             </div>
 
@@ -383,7 +386,7 @@ export function TriageDetailModal({
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Contoh: Tim satgas banjar telah diterjunkan ke lokasi untuk perbaikan kabel lampu jalan."
-                className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] p-2.5 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-400 dark:focus:border-emerald-500 dark:focus:bg-[#14201d]"
+                className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] p-2.5 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-blue-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-400 dark:focus:border-blue-500 dark:focus:bg-[#14201d]"
                 required
               />
             </div>
@@ -402,7 +405,7 @@ export function TriageDetailModal({
                 value={proofPhotoUrl}
                 onChange={(e) => setProofPhotoUrl(e.target.value)}
                 placeholder="https://..."
-                className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-emerald-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-400 dark:focus:border-emerald-500 dark:focus:bg-[#14201d]"
+                className="mt-1 w-full rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-secondary,#f4f7f5)] px-3 py-2 text-xs text-[var(--sea-ink,#1b2a26)] placeholder-[var(--sea-ink-soft,#576c64)] focus:border-blue-600 focus:bg-white focus:outline-hidden dark:border-[#22352f] dark:bg-[#182622] dark:text-stone-100 dark:placeholder-stone-400 dark:focus:border-blue-500 dark:focus:bg-[#14201d]"
               />
             </div>
 
@@ -432,7 +435,7 @@ export function TriageDetailModal({
               <button
                 type="submit"
                 disabled={isSubmitting || notes.trim().length < 3}
-                className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-emerald-800 px-5 py-2 text-xs font-bold text-white shadow-xs hover:bg-emerald-900 disabled:opacity-50 dark:bg-emerald-700"
+                className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-blue-600 px-5 py-2 text-xs font-bold text-white shadow-xs hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-500"
               >
                 {isSubmitting ? (
                   <>
