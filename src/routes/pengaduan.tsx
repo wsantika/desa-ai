@@ -175,7 +175,7 @@ function PengaduanHubPage() {
               <h2 className="mt-2 text-xl font-bold text-slate-900 sm:text-2xl dark:text-white">
                 Ada Fasilitas Rusak di Lingkungan Anda?
               </h2>
-              <p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm dark:text-slate-300">
+              <p className="mt-1 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
                 Ambil foto bukti, tuliskan lokasi banjar dan kendalanya. Sistem
                 AI Desa Tegal Tugu akan langsung menilai tingkat kedaruratan
                 untuk penanganan petugas.
@@ -184,29 +184,29 @@ function PengaduanHubPage() {
             <button
               type="button"
               onClick={handleStartReport}
-              className="inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-700 px-6 py-3 text-xs font-bold text-white shadow-xs transition hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500 sm:text-sm"
+              className="inline-flex min-h-[50px] shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm sm:text-base font-bold text-white shadow-xs transition hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
             >
-              <AlertTriangle className="h-4 w-4" aria-hidden="true" />
+              <AlertTriangle className="h-5 w-5" aria-hidden="true" />
               <span>Buat Pengaduan Sekarang</span>
             </button>
           </div>
 
           {/* Quick Tracking Search Box */}
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs sm:p-6 dark:border-slate-800 dark:bg-slate-900">
-            <h3 className="text-sm font-bold text-slate-900 sm:text-base dark:text-white">
+            <h3 className="text-base font-bold text-slate-900 sm:text-lg dark:text-white">
               Sudah Pernah Mengajukan Pengaduan?
             </h3>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
               Cek perkembangan penanganan aduan Anda secara transparan dengan
-              memasukkan kode tiket pengaduan (CMP-YYYYMM-XXXX).
+              memasukkan kode tiket pengaduan (contoh: CMP-202609-0001).
             </p>
-            <div className="mt-3 flex max-w-md gap-2">
+            <div className="mt-3 flex flex-col sm:flex-row max-w-lg gap-3">
               <input
                 type="text"
                 placeholder="Contoh: CMP-202609-0001"
                 aria-label="Nomor Tiket Pengaduan Warga"
                 id="quick-ticket-input"
-                className="flex-1 rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 py-2 font-mono text-xs uppercase text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="flex-1 rounded-xl border-2 border-slate-300 bg-slate-50 px-4 py-3 font-mono text-base uppercase text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     const input = e.currentTarget
@@ -226,7 +226,7 @@ function PengaduanHubPage() {
                     handleTrackDirect(el.value.trim().toUpperCase())
                   }
                 }}
-                className="inline-flex min-h-[40px] items-center justify-center rounded-xl bg-blue-700 px-4 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-blue-700 px-6 py-3 text-sm sm:text-base font-bold text-white shadow-xs transition hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500"
               >
                 <span>Lacak</span>
               </button>

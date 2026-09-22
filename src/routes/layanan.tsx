@@ -250,15 +250,15 @@ function LayananHubPage() {
                     {service.description}
                   </p>
 
-                  <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50/70 p-3 dark:border-slate-800 dark:bg-slate-800/40">
-                    <p className="mb-2 text-xs font-bold text-slate-900 dark:text-white">
+                  <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50/70 p-3.5 dark:border-slate-800 dark:bg-slate-800/40">
+                    <p className="mb-2 text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
                       Persyaratan Dokumen:
                     </p>
-                    <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+                    <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                       {service.requirements.map((req, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <CheckCircle2
-                            className="mt-0.5 h-3.5 w-3.5 shrink-0 text-blue-600 dark:text-blue-400"
+                            className="mt-0.5 h-4 w-4 shrink-0 text-blue-600 dark:text-blue-400"
                             aria-hidden="true"
                           />
                           <span>{req}</span>
@@ -269,9 +269,9 @@ function LayananHubPage() {
                 </div>
 
                 <div className="mt-6 flex flex-col items-stretch gap-3 border-t border-slate-100 pt-4 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                     <Clock
-                      className="h-3.5 w-3.5 text-blue-700 dark:text-blue-400"
+                      className="h-4 w-4 text-blue-600 dark:text-blue-400"
                       aria-hidden="true"
                     />
                     <span>Estimasi: {service.sla}</span>
@@ -280,10 +280,10 @@ function LayananHubPage() {
                   <button
                     type="button"
                     onClick={() => handleApplyService(service.code)}
-                    className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-blue-700 px-4 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500"
+                    className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-xs transition hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
                   >
                     <span>Ajukan Surat Ini</span>
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
               </article>

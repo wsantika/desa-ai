@@ -236,9 +236,9 @@ function AsistenChatPage() {
 
                 {/* Message Bubble */}
                 <div
-                  className={`group relative max-w-[88%] rounded-2xl px-4 py-3 text-xs leading-relaxed sm:max-w-[78%] sm:text-sm ${
+                  className={`group relative max-w-[88%] rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[78%] sm:text-base ${
                     isBot
-                      ? 'rounded-tl-sm border border-[var(--line)] bg-[var(--header-bg)] text-[var(--sea-ink)] shadow-sm'
+                      ? 'rounded-tl-sm border border-slate-200 bg-white text-slate-900 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-white'
                       : 'rounded-tr-sm bg-blue-600 text-white shadow dark:bg-blue-600'
                   }`}
                 >
@@ -329,7 +329,7 @@ function AsistenChatPage() {
           e.preventDefault()
           handleSend()
         }}
-        className="island-shell mt-2 flex items-center gap-2 rounded-2xl p-2 sm:p-2.5"
+        className="island-shell mt-2 flex items-center gap-2 rounded-2xl p-2 sm:p-3 border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"
       >
         <input
           type="text"
@@ -338,15 +338,15 @@ function AsistenChatPage() {
           placeholder="Ketik pertanyaan untuk Made Tegal Tugu..."
           aria-label="Ketik pertanyaan untuk Made Tegal Tugu"
           disabled={loading}
-          className="flex-1 rounded-xl bg-transparent px-3 py-2 text-xs text-[var(--sea-ink)] placeholder-[var(--sea-ink-soft)] focus:outline-none sm:text-sm"
+          className="flex-1 rounded-xl bg-transparent px-3 py-2.5 text-sm sm:text-base text-slate-900 placeholder:text-slate-400 focus:outline-none dark:text-white"
         />
         <button
           type="submit"
           disabled={!input.trim() || loading}
-          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-blue-600 text-white transition hover:bg-blue-700 disabled:opacity-40 dark:bg-blue-600 dark:hover:bg-blue-500"
+          className="inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl bg-blue-600 text-white transition hover:bg-blue-700 disabled:opacity-40 dark:bg-blue-600 dark:hover:bg-blue-500 shadow-xs"
           aria-label="Kirim Pertanyaan"
         >
-          <Send className="h-4 w-4" aria-hidden="true" />
+          <Send className="h-5 w-5" aria-hidden="true" />
         </button>
       </form>
     </div>

@@ -81,8 +81,8 @@ export default function BottomNav() {
                 />
               </div>
               <span
-                className={`mt-0.5 text-[11px] leading-tight tracking-tight ${
-                  isActive ? 'font-bold text-blue-700 dark:text-blue-400' : 'font-medium'
+                className={`mt-1 text-xs leading-tight ${
+                  isActive ? 'font-bold text-blue-700 dark:text-blue-400' : 'font-semibold text-slate-600 dark:text-slate-400'
                 }`}
               >
                 {item.label}
