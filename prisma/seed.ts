@@ -181,7 +181,7 @@ async function main() {
     if (existing) {
       await prisma.complaint.update({
         where: { ticketCode: c.ticketCode },
-        update: {
+        data: {
           title: c.title,
           description: c.description,
           status: c.status,
@@ -266,7 +266,7 @@ async function main() {
     if (existing) {
       await prisma.serviceRequest.update({
         where: { trackingCode: req.trackingCode },
-        update: {
+        data: {
           status: req.status,
           applicantName: req.applicantName,
           applicantNik: req.applicantNik,
