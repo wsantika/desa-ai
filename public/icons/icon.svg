@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <!-- Background with rounded corners -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  
+  <!-- Subtle inner border -->
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="#93c5fd" stroke-opacity="0.3" stroke-width="6" />
+
+  <!-- Village Crown / Balai Desa Gateway Roof Motif -->
+  <g transform="translate(0, 8)">
+    <!-- Top ornamental spire -->
+    <polygon points="256,90 270,126 242,126" fill="url(#accentGrad)" />
+    
+    <!-- Upper roof tier -->
+    <path d="M190 150 C210 135, 302 135, 322 150 L346 178 C310 166, 202 166, 166 178 Z" fill="#FFFFFF" opacity="0.95" />
+    
+    <!-- Middle roof tier -->
+    <path d="M148 200 C180 182, 332 182, 364 200 L394 236 C340 220, 172 220, 118 236 Z" fill="#FFFFFF" opacity="0.95" />
+    
+    <!-- Lower main roof tier -->
+    <path d="M106 260 C150 238, 362 238, 406 260 L436 304 C360 282, 152 282, 76 304 Z" fill="url(#accentGrad)" />
+
+    <!-- Pillars / Candi Bentar Gates -->
+    <rect x="156" y="318" width="36" height="96" rx="6" fill="#FFFFFF" opacity="0.9" />
+    <rect x="320" y="318" width="36" height="96" rx="6" fill="#FFFFFF" opacity="0.9" />
+    <rect x="224" y="338" width="64" height="76" rx="4" fill="#FFFFFF" opacity="0.4" />
+    
+    <!-- Base foundation -->
+    <rect x="116" y="414" width="280" height="18" rx="9" fill="#FFFFFF" opacity="0.9" />
+  </g>
+</svg>

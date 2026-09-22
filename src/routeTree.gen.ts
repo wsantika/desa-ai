@@ -10,206 +10,186 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as DemoAiChatRouteImport } from './routes/demo/ai-chat'
-import { Route as DemoAiImageRouteImport } from './routes/demo/ai-image'
-import { Route as DemoAiStructuredRouteImport } from './routes/demo/ai-structured'
-import { Route as DemoPrismaRouteImport } from './routes/demo/prisma'
-import { Route as DemoStoreRouteImport } from './routes/demo/store'
-import { Route as DemoGuitarsIndexRouteImport } from './routes/demo/guitars/index'
-import { Route as DemoGuitarsGuitarIdRouteImport } from './routes/demo/guitars/$guitarId'
-import { Route as DemoApiAiChatRouteImport } from './routes/demo/api.ai.chat'
-import { Route as DemoApiAiImageRouteImport } from './routes/demo/api.ai.image'
-import { Route as DemoApiAiStructuredRouteImport } from './routes/demo/api.ai.structured'
-import { Route as DemoApiAiTranscriptionRouteImport } from './routes/demo/api.ai.transcription'
-import { Route as DemoApiAiTtsRouteImport } from './routes/demo/api.ai.tts'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AsistenRouteImport } from './routes/asisten'
+import { Route as LayananRouteImport } from './routes/layanan'
+import { Route as PelacakanRouteImport } from './routes/pelacakan'
+import { Route as PengaduanRouteImport } from './routes/pengaduan'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminAnalitikRouteImport } from './routes/admin/analitik'
+import { Route as AdminKnowledgeRouteImport } from './routes/admin/knowledge'
+import { Route as AdminLayananRouteImport } from './routes/admin/layanan'
+import { Route as AdminPengaduanRouteImport } from './routes/admin/pengaduan'
+import { Route as LayananPengajuanRouteImport } from './routes/layanan_.pengajuan'
+import { Route as PengaduanBaruRouteImport } from './routes/pengaduan_.baru'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoAiChatRoute = DemoAiChatRouteImport.update({
-  id: '/demo/ai-chat',
-  path: '/demo/ai-chat',
+const AsistenRoute = AsistenRouteImport.update({
+  id: '/asisten',
+  path: '/asisten',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoAiImageRoute = DemoAiImageRouteImport.update({
-  id: '/demo/ai-image',
-  path: '/demo/ai-image',
+const LayananRoute = LayananRouteImport.update({
+  id: '/layanan',
+  path: '/layanan',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoAiStructuredRoute = DemoAiStructuredRouteImport.update({
-  id: '/demo/ai-structured',
-  path: '/demo/ai-structured',
+const PelacakanRoute = PelacakanRouteImport.update({
+  id: '/pelacakan',
+  path: '/pelacakan',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoPrismaRoute = DemoPrismaRouteImport.update({
-  id: '/demo/prisma',
-  path: '/demo/prisma',
+const PengaduanRoute = PengaduanRouteImport.update({
+  id: '/pengaduan',
+  path: '/pengaduan',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoStoreRoute = DemoStoreRouteImport.update({
-  id: '/demo/store',
-  path: '/demo/store',
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalitikRoute = AdminAnalitikRouteImport.update({
+  id: '/analitik',
+  path: '/analitik',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminKnowledgeRoute = AdminKnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLayananRoute = AdminLayananRouteImport.update({
+  id: '/layanan',
+  path: '/layanan',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPengaduanRoute = AdminPengaduanRouteImport.update({
+  id: '/pengaduan',
+  path: '/pengaduan',
+  getParentRoute: () => AdminRoute,
+} as any)
+const LayananPengajuanRoute = LayananPengajuanRouteImport.update({
+  id: '/layanan_/pengajuan',
+  path: '/layanan/pengajuan',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoGuitarsIndexRoute = DemoGuitarsIndexRouteImport.update({
-  id: '/demo/guitars/',
-  path: '/demo/guitars/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoGuitarsGuitarIdRoute = DemoGuitarsGuitarIdRouteImport.update({
-  id: '/demo/guitars/$guitarId',
-  path: '/demo/guitars/$guitarId',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoApiAiChatRoute = DemoApiAiChatRouteImport.update({
-  id: '/demo/api/ai/chat',
-  path: '/demo/api/ai/chat',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoApiAiImageRoute = DemoApiAiImageRouteImport.update({
-  id: '/demo/api/ai/image',
-  path: '/demo/api/ai/image',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoApiAiStructuredRoute = DemoApiAiStructuredRouteImport.update({
-  id: '/demo/api/ai/structured',
-  path: '/demo/api/ai/structured',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoApiAiTranscriptionRoute = DemoApiAiTranscriptionRouteImport.update({
-  id: '/demo/api/ai/transcription',
-  path: '/demo/api/ai/transcription',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoApiAiTtsRoute = DemoApiAiTtsRouteImport.update({
-  id: '/demo/api/ai/tts',
-  path: '/demo/api/ai/tts',
+const PengaduanBaruRoute = PengaduanBaruRouteImport.update({
+  id: '/pengaduan_/baru',
+  path: '/pengaduan/baru',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/demo/ai-chat': typeof DemoAiChatRoute
-  '/demo/ai-image': typeof DemoAiImageRoute
-  '/demo/ai-structured': typeof DemoAiStructuredRoute
-  '/demo/prisma': typeof DemoPrismaRoute
-  '/demo/store': typeof DemoStoreRoute
-  '/demo/guitars/$guitarId': typeof DemoGuitarsGuitarIdRoute
-  '/demo/guitars/': typeof DemoGuitarsIndexRoute
-  '/demo/api/ai/chat': typeof DemoApiAiChatRoute
-  '/demo/api/ai/image': typeof DemoApiAiImageRoute
-  '/demo/api/ai/structured': typeof DemoApiAiStructuredRoute
-  '/demo/api/ai/transcription': typeof DemoApiAiTranscriptionRoute
-  '/demo/api/ai/tts': typeof DemoApiAiTtsRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/asisten': typeof AsistenRoute
+  '/layanan': typeof LayananRoute
+  '/pelacakan': typeof PelacakanRoute
+  '/pengaduan': typeof PengaduanRoute
+  '/admin/analitik': typeof AdminAnalitikRoute
+  '/admin/knowledge': typeof AdminKnowledgeRoute
+  '/admin/layanan': typeof AdminLayananRoute
+  '/admin/pengaduan': typeof AdminPengaduanRoute
+  '/layanan/pengajuan': typeof LayananPengajuanRoute
+  '/pengaduan/baru': typeof PengaduanBaruRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/demo/ai-chat': typeof DemoAiChatRoute
-  '/demo/ai-image': typeof DemoAiImageRoute
-  '/demo/ai-structured': typeof DemoAiStructuredRoute
-  '/demo/prisma': typeof DemoPrismaRoute
-  '/demo/store': typeof DemoStoreRoute
-  '/demo/guitars/$guitarId': typeof DemoGuitarsGuitarIdRoute
-  '/demo/guitars': typeof DemoGuitarsIndexRoute
-  '/demo/api/ai/chat': typeof DemoApiAiChatRoute
-  '/demo/api/ai/image': typeof DemoApiAiImageRoute
-  '/demo/api/ai/structured': typeof DemoApiAiStructuredRoute
-  '/demo/api/ai/transcription': typeof DemoApiAiTranscriptionRoute
-  '/demo/api/ai/tts': typeof DemoApiAiTtsRoute
+  '/asisten': typeof AsistenRoute
+  '/layanan': typeof LayananRoute
+  '/pelacakan': typeof PelacakanRoute
+  '/pengaduan': typeof PengaduanRoute
+  '/admin/analitik': typeof AdminAnalitikRoute
+  '/admin/knowledge': typeof AdminKnowledgeRoute
+  '/admin/layanan': typeof AdminLayananRoute
+  '/admin/pengaduan': typeof AdminPengaduanRoute
+  '/layanan/pengajuan': typeof LayananPengajuanRoute
+  '/pengaduan/baru': typeof PengaduanBaruRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/demo/ai-chat': typeof DemoAiChatRoute
-  '/demo/ai-image': typeof DemoAiImageRoute
-  '/demo/ai-structured': typeof DemoAiStructuredRoute
-  '/demo/prisma': typeof DemoPrismaRoute
-  '/demo/store': typeof DemoStoreRoute
-  '/demo/guitars/$guitarId': typeof DemoGuitarsGuitarIdRoute
-  '/demo/guitars/': typeof DemoGuitarsIndexRoute
-  '/demo/api/ai/chat': typeof DemoApiAiChatRoute
-  '/demo/api/ai/image': typeof DemoApiAiImageRoute
-  '/demo/api/ai/structured': typeof DemoApiAiStructuredRoute
-  '/demo/api/ai/transcription': typeof DemoApiAiTranscriptionRoute
-  '/demo/api/ai/tts': typeof DemoApiAiTtsRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/asisten': typeof AsistenRoute
+  '/layanan': typeof LayananRoute
+  '/pelacakan': typeof PelacakanRoute
+  '/pengaduan': typeof PengaduanRoute
+  '/admin/analitik': typeof AdminAnalitikRoute
+  '/admin/knowledge': typeof AdminKnowledgeRoute
+  '/admin/layanan': typeof AdminLayananRoute
+  '/admin/pengaduan': typeof AdminPengaduanRoute
+  '/layanan_/pengajuan': typeof LayananPengajuanRoute
+  '/pengaduan_/baru': typeof PengaduanBaruRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
-    | '/demo/ai-chat'
-    | '/demo/ai-image'
-    | '/demo/ai-structured'
-    | '/demo/prisma'
-    | '/demo/store'
-    | '/demo/guitars/$guitarId'
-    | '/demo/guitars/'
-    | '/demo/api/ai/chat'
-    | '/demo/api/ai/image'
-    | '/demo/api/ai/structured'
-    | '/demo/api/ai/transcription'
-    | '/demo/api/ai/tts'
+    | '/admin'
+    | '/asisten'
+    | '/layanan'
+    | '/pelacakan'
+    | '/pengaduan'
+    | '/admin/analitik'
+    | '/admin/knowledge'
+    | '/admin/layanan'
+    | '/admin/pengaduan'
+    | '/layanan/pengajuan'
+    | '/pengaduan/baru'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
-    | '/demo/ai-chat'
-    | '/demo/ai-image'
-    | '/demo/ai-structured'
-    | '/demo/prisma'
-    | '/demo/store'
-    | '/demo/guitars/$guitarId'
-    | '/demo/guitars'
-    | '/demo/api/ai/chat'
-    | '/demo/api/ai/image'
-    | '/demo/api/ai/structured'
-    | '/demo/api/ai/transcription'
-    | '/demo/api/ai/tts'
+    | '/asisten'
+    | '/layanan'
+    | '/pelacakan'
+    | '/pengaduan'
+    | '/admin/analitik'
+    | '/admin/knowledge'
+    | '/admin/layanan'
+    | '/admin/pengaduan'
+    | '/layanan/pengajuan'
+    | '/pengaduan/baru'
+    | '/admin'
   id:
     | '__root__'
     | '/'
-    | '/about'
-    | '/demo/ai-chat'
-    | '/demo/ai-image'
-    | '/demo/ai-structured'
-    | '/demo/prisma'
-    | '/demo/store'
-    | '/demo/guitars/$guitarId'
-    | '/demo/guitars/'
-    | '/demo/api/ai/chat'
-    | '/demo/api/ai/image'
-    | '/demo/api/ai/structured'
-    | '/demo/api/ai/transcription'
-    | '/demo/api/ai/tts'
+    | '/admin'
+    | '/asisten'
+    | '/layanan'
+    | '/pelacakan'
+    | '/pengaduan'
+    | '/admin/analitik'
+    | '/admin/knowledge'
+    | '/admin/layanan'
+    | '/admin/pengaduan'
+    | '/layanan_/pengajuan'
+    | '/pengaduan_/baru'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  DemoAiChatRoute: typeof DemoAiChatRoute
-  DemoAiImageRoute: typeof DemoAiImageRoute
-  DemoAiStructuredRoute: typeof DemoAiStructuredRoute
-  DemoPrismaRoute: typeof DemoPrismaRoute
-  DemoStoreRoute: typeof DemoStoreRoute
-  DemoGuitarsGuitarIdRoute: typeof DemoGuitarsGuitarIdRoute
-  DemoGuitarsIndexRoute: typeof DemoGuitarsIndexRoute
-  DemoApiAiChatRoute: typeof DemoApiAiChatRoute
-  DemoApiAiImageRoute: typeof DemoApiAiImageRoute
-  DemoApiAiStructuredRoute: typeof DemoApiAiStructuredRoute
-  DemoApiAiTranscriptionRoute: typeof DemoApiAiTranscriptionRoute
-  DemoApiAiTtsRoute: typeof DemoApiAiTtsRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  AsistenRoute: typeof AsistenRoute
+  LayananRoute: typeof LayananRoute
+  PelacakanRoute: typeof PelacakanRoute
+  PengaduanRoute: typeof PengaduanRoute
+  LayananPengajuanRoute: typeof LayananPengajuanRoute
+  PengaduanBaruRoute: typeof PengaduanBaruRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -221,116 +201,130 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/ai-chat': {
-      id: '/demo/ai-chat'
-      path: '/demo/ai-chat'
-      fullPath: '/demo/ai-chat'
-      preLoaderRoute: typeof DemoAiChatRouteImport
+    '/asisten': {
+      id: '/asisten'
+      path: '/asisten'
+      fullPath: '/asisten'
+      preLoaderRoute: typeof AsistenRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/ai-image': {
-      id: '/demo/ai-image'
-      path: '/demo/ai-image'
-      fullPath: '/demo/ai-image'
-      preLoaderRoute: typeof DemoAiImageRouteImport
+    '/layanan': {
+      id: '/layanan'
+      path: '/layanan'
+      fullPath: '/layanan'
+      preLoaderRoute: typeof LayananRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/ai-structured': {
-      id: '/demo/ai-structured'
-      path: '/demo/ai-structured'
-      fullPath: '/demo/ai-structured'
-      preLoaderRoute: typeof DemoAiStructuredRouteImport
+    '/pelacakan': {
+      id: '/pelacakan'
+      path: '/pelacakan'
+      fullPath: '/pelacakan'
+      preLoaderRoute: typeof PelacakanRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/prisma': {
-      id: '/demo/prisma'
-      path: '/demo/prisma'
-      fullPath: '/demo/prisma'
-      preLoaderRoute: typeof DemoPrismaRouteImport
+    '/pengaduan': {
+      id: '/pengaduan'
+      path: '/pengaduan'
+      fullPath: '/pengaduan'
+      preLoaderRoute: typeof PengaduanRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/store': {
-      id: '/demo/store'
-      path: '/demo/store'
-      fullPath: '/demo/store'
-      preLoaderRoute: typeof DemoStoreRouteImport
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analitik': {
+      id: '/admin/analitik'
+      path: '/analitik'
+      fullPath: '/admin/analitik'
+      preLoaderRoute: typeof AdminAnalitikRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/knowledge': {
+      id: '/admin/knowledge'
+      path: '/knowledge'
+      fullPath: '/admin/knowledge'
+      preLoaderRoute: typeof AdminKnowledgeRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/layanan': {
+      id: '/admin/layanan'
+      path: '/layanan'
+      fullPath: '/admin/layanan'
+      preLoaderRoute: typeof AdminLayananRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pengaduan': {
+      id: '/admin/pengaduan'
+      path: '/pengaduan'
+      fullPath: '/admin/pengaduan'
+      preLoaderRoute: typeof AdminPengaduanRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/layanan_/pengajuan': {
+      id: '/layanan_/pengajuan'
+      path: '/layanan/pengajuan'
+      fullPath: '/layanan/pengajuan'
+      preLoaderRoute: typeof LayananPengajuanRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/guitars/': {
-      id: '/demo/guitars/'
-      path: '/demo/guitars'
-      fullPath: '/demo/guitars/'
-      preLoaderRoute: typeof DemoGuitarsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/guitars/$guitarId': {
-      id: '/demo/guitars/$guitarId'
-      path: '/demo/guitars/$guitarId'
-      fullPath: '/demo/guitars/$guitarId'
-      preLoaderRoute: typeof DemoGuitarsGuitarIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/api/ai/chat': {
-      id: '/demo/api/ai/chat'
-      path: '/demo/api/ai/chat'
-      fullPath: '/demo/api/ai/chat'
-      preLoaderRoute: typeof DemoApiAiChatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/api/ai/image': {
-      id: '/demo/api/ai/image'
-      path: '/demo/api/ai/image'
-      fullPath: '/demo/api/ai/image'
-      preLoaderRoute: typeof DemoApiAiImageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/api/ai/structured': {
-      id: '/demo/api/ai/structured'
-      path: '/demo/api/ai/structured'
-      fullPath: '/demo/api/ai/structured'
-      preLoaderRoute: typeof DemoApiAiStructuredRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/api/ai/transcription': {
-      id: '/demo/api/ai/transcription'
-      path: '/demo/api/ai/transcription'
-      fullPath: '/demo/api/ai/transcription'
-      preLoaderRoute: typeof DemoApiAiTranscriptionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/api/ai/tts': {
-      id: '/demo/api/ai/tts'
-      path: '/demo/api/ai/tts'
-      fullPath: '/demo/api/ai/tts'
-      preLoaderRoute: typeof DemoApiAiTtsRouteImport
+    '/pengaduan_/baru': {
+      id: '/pengaduan_/baru'
+      path: '/pengaduan/baru'
+      fullPath: '/pengaduan/baru'
+      preLoaderRoute: typeof PengaduanBaruRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
+interface AdminRouteChildren {
+  AdminAnalitikRoute: typeof AdminAnalitikRoute
+  AdminKnowledgeRoute: typeof AdminKnowledgeRoute
+  AdminLayananRoute: typeof AdminLayananRoute
+  AdminPengaduanRoute: typeof AdminPengaduanRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnalitikRoute: AdminAnalitikRoute,
+  AdminKnowledgeRoute: AdminKnowledgeRoute,
+  AdminLayananRoute: AdminLayananRoute,
+  AdminPengaduanRoute: AdminPengaduanRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  DemoAiChatRoute: DemoAiChatRoute,
-  DemoAiImageRoute: DemoAiImageRoute,
-  DemoAiStructuredRoute: DemoAiStructuredRoute,
-  DemoPrismaRoute: DemoPrismaRoute,
-  DemoStoreRoute: DemoStoreRoute,
-  DemoGuitarsGuitarIdRoute: DemoGuitarsGuitarIdRoute,
-  DemoGuitarsIndexRoute: DemoGuitarsIndexRoute,
-  DemoApiAiChatRoute: DemoApiAiChatRoute,
-  DemoApiAiImageRoute: DemoApiAiImageRoute,
-  DemoApiAiStructuredRoute: DemoApiAiStructuredRoute,
-  DemoApiAiTranscriptionRoute: DemoApiAiTranscriptionRoute,
-  DemoApiAiTtsRoute: DemoApiAiTtsRoute,
+  AdminRoute: AdminRouteWithChildren,
+  AsistenRoute: AsistenRoute,
+  LayananRoute: LayananRoute,
+  PelacakanRoute: PelacakanRoute,
+  PengaduanRoute: PengaduanRoute,
+  LayananPengajuanRoute: LayananPengajuanRoute,
+  PengaduanBaruRoute: PengaduanBaruRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

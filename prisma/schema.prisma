@@ -7,8 +7,284 @@ datasource db {
   provider = "postgresql"
 }
 
-model Todo {
-  id        Int      @id @default(autoincrement())
-  title     String
+// ------------------------------------------------------
+// ENUMERATIONS
+// ------------------------------------------------------
+
+enum Role {
+  CITIZEN
+  VILLAGE_OFFICER
+  ADMIN
+}
+
+enum ServiceRequestStatus {
+  PENDING
+  IN_REVIEW
+  REVISION
+  APPROVED
+  REJECTED
+}
+
+enum ComplaintStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  REJECTED
+}
+
+enum ComplaintCategory {
+  INFRASTRUKTUR
+  KEBERSIHAN_LINGKUNGAN
+  KEAMANAN_KETERTIBAN
+  PELAYANAN_PUBLIK
+  BANTUAN_SOSIAL
+  LAINNYA
+}
+
+enum AIComplaintPriority {
+  LOW
+  MEDIUM
+  HIGH
+  EMERGENCY
+}
+
+enum KnowledgeCategory {
+  REGULASI
+  SOP_LAYANAN
+  FAQ
+  PROFIL_DESA
+}
+
+
+// ------------------------------------------------------
+// USER & IDENTITY MANAGEMENT
+// ------------------------------------------------------
+
+model User {
+  id           String          @id @default(cuid())
+  email        String?         @unique
+  phone        String?         @unique
+  passwordHash String
+  role         Role            @default(CITIZEN)
+  profile      CitizenProfile?
+
+  // Relations
+  serviceRequests ServiceRequest[]
+  complaints      Complaint[]
+  complaintLogs   ComplaintLog[]
+
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([role])
+}
+
+model CitizenProfile {
+  id         String    @id @default(cuid())
+  userId     String    @unique
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  nik        String    @unique
+  fullName   String
+  gender     String // "L" | "P"
+  birthPlace String?
+  birthDate  DateTime?
+  occupation String?
+  address    String?
+  banjarId   String?
+  banjar     Banjar?   @relation(fields: [banjarId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([nik])
+  @@index([banjarId])
+}
+
+model Banjar {
+  id          String           @id @default(cuid())
+  name        String // Contoh: "Banjar Kaja", "Banjar Kelod"
+  dusun       String // Contoh: "Dusun Kangin"
+  leaderName  String? // Kelian Banjar / Kepala Lingkungan
+  leaderPhone String?
+  citizens    CitizenProfile[]
+  complaints  Complaint[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ------------------------------------------------------
+// DIGITAL SERVICE REQUEST (LAYANAN SURAT)
+// ------------------------------------------------------
+
+model ServiceType {
+  id            String           @id @default(cuid())
+  code          String           @unique // "DOMISILI", "SKU", "SKCK", "SKTM"
+  title         String // "Surat Keterangan Domisili"
+  description   String
+  requiredDocs  Json // Daftar berkas yang diwajibkan: string[]
+  estimatedDays Int              @default(1)
+  isActive      Boolean          @default(true)
+  requests      ServiceRequest[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ServiceRequest {
+  id             String               @id @default(cuid())
+  trackingCode   String               @unique // Contoh: "REQ-202609-0001"
+  userId         String
+  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  serviceTypeId  String
+  serviceType    ServiceType          @relation(fields: [serviceTypeId], references: [id])
+  status         ServiceRequestStatus @default(PENDING)
+  applicantName  String
+  applicantNik   String
+  applicantPhone String
+  purpose        String // Keperluan surat
+  officerNotes   String? // Catatan tindak lanjut perangkat desa
+
+  attachments ServiceAttachment[]
+  statusLogs  ServiceStatusLog[]
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  completedAt DateTime?
+
+  @@index([trackingCode])
+  @@index([status])
+  @@index([userId])
+  @@index([serviceTypeId])
+}
+
+model ServiceAttachment {
+  id        String         @id @default(cuid())
+  requestId String
+  request   ServiceRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  fileName  String
+  fileUrl   String
+  fileType  String
+
+  createdAt DateTime @default(now())
+
+  @@index([requestId])
+}
+
+model ServiceStatusLog {
+  id             String                @id @default(cuid())
+  requestId      String
+  request        ServiceRequest        @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  previousStatus ServiceRequestStatus?
+  newStatus      ServiceRequestStatus
+  actorId        String?
+  notes          String?
+
+  createdAt DateTime @default(now())
+
+  @@index([requestId])
+}
+
+// ------------------------------------------------------
+// CITIZEN COMPLAINT & AI TRIAGE INTELLIGENCE
+// ------------------------------------------------------
+
+model Complaint {
+  id               String               @id @default(cuid())
+  ticketCode       String               @unique // Contoh: "CMP-202609-0001"
+  citizenId        String?
+  citizen          User?                @relation(fields: [citizenId], references: [id], onDelete: SetNull)
+  reporterName     String
+  reporterPhone    String?
+  title            String
+  description      String
+  banjarId         String
+  banjar           Banjar               @relation(fields: [banjarId], references: [id])
+  specificLocation String // Patokan lokasi fisik
+  photoUrl         String?
+  status           ComplaintStatus      @default(OPEN)
+  category         ComplaintCategory?
+  priority         AIComplaintPriority?
+  aiSummary        String?
+
+  // Relations
+  aiEvaluation ComplaintAIEvaluation?
+  statusLogs   ComplaintLog[]
+
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  resolvedAt DateTime?
+
+  @@index([ticketCode])
+  @@index([status])
+  @@index([category])
+  @@index([priority])
+  @@index([banjarId])
+}
+
+model ComplaintAIEvaluation {
+  id                String              @id @default(cuid())
+  complaintId       String              @unique
+  complaint         Complaint           @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  predictedCategory ComplaintCategory
+  priority          AIComplaintPriority
+  confidenceScore   Float // Skala 0.0 - 1.0
+  executiveSummary  String // Ringkasan 1 kalimat eksekutif
+  recommendedAction String // Rekomendasi tindakan dinas terkait
+  rawAIResponse     Json? // Simpan respons mentah LLM
+
+  evaluatedAt DateTime @default(now())
+
+  @@index([complaintId])
+  @@index([priority])
+}
+
+model ComplaintLog {
+  id             String           @id @default(cuid())
+  complaintId    String
+  complaint      Complaint        @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  previousStatus ComplaintStatus?
+  newStatus      ComplaintStatus
+  actorId        String?
+  actor          User?            @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actionNote     String?
+  proofPhotoUrl  String?
+
+  createdAt DateTime @default(now())
+
+  @@index([complaintId])
+}
+
+// ------------------------------------------------------
+// KNOWLEDGE BASE & RAG PIPELINE
+// ------------------------------------------------------
+
+model KnowledgeDocument {
+  id          String            @id @default(cuid())
+  title       String
+  category    KnowledgeCategory @default(SOP_LAYANAN)
+  sourceUrl   String?
+  contentText String
+  metadata    Json? // Versi dokumen, nomor perdes, dll.
+  isPublished Boolean           @default(true)
+
+  chunks KnowledgeChunk[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+}
+
+model KnowledgeChunk {
+  id           String            @id @default(cuid())
+  documentId   String
+  document     KnowledgeDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  chunkIndex   Int
+  chunkContent String
+  embedding    Float[]           @default([])
+
+  createdAt DateTime @default(now())
+
+  @@index([documentId])
 }

@@ -1,0 +1,116 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [master, dev]
+    types: [opened, synchronize, reopened, edited]
+  push:
+    branches: [master, dev]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-pr-rules:
+    name: Validate PR Branch & Conventional Commit
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Commitlint Dependencies
+        run: npm ci --legacy-peer-deps --ignore-scripts
+
+      - name: Validate PR Target Branch (GitFlow Rule)
+        run: |
+          HEAD_REF="${{ github.head_ref }}"
+          BASE_REF="${{ github.base_ref }}"
+          echo "Source Branch (head_ref): $HEAD_REF"
+          echo "Target Branch (base_ref): $BASE_REF"
+
+          # Rule 1: Branches feat/*, fix/*, chore/*, docs/*, refactor/* MUST target dev, NEVER master directly
+          if [[ "$HEAD_REF" =~ ^(feat|fix|chore|docs|style|refactor|perf)/ ]] && [ "$BASE_REF" = "master" ]; then
+            echo "::error::🚨 Branching Rule Violation: Branch '$HEAD_REF' cannot be merged directly into 'master'!"
+            echo "::error::👉 Feature/Fix branches must be merged into 'dev' first. Please edit this PR and change the base branch to 'dev'."
+            exit 1
+          fi
+
+          # Rule 2: master branch only accepts PRs from dev (or hotfix)
+          if [ "$BASE_REF" = "master" ] && [ "$HEAD_REF" != "dev" ] && [[ ! "$HEAD_REF" =~ ^hotfix/ ]]; then
+            echo "::error::🚨 Master Branch Protection: Only 'dev' or 'hotfix/*' can be merged into 'master'!"
+            echo "::error::Received source branch: '$HEAD_REF'."
+            exit 1
+          fi
+
+          echo "✅ PR Target Branch rule validated successfully."
+
+      - name: Validate PR Title (Conventional Commits)
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          echo "Validating PR Title: '$PR_TITLE'"
+          echo "$PR_TITLE" | npx commitlint
+          echo "✅ PR Title follows Conventional Commits format."
+
+  code-quality-and-build:
+    name: Lint, Typecheck & Production Build
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: desa_ai_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres -d desa_ai_test"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/desa_ai_test?schema=public"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Apply Database Schema
+        run: npx prisma db push --accept-data-loss
+
+      - name: Seed Database
+        run: npx tsx prisma/seed.ts
+        env:
+          PRISMA_USER_CONSENT_FOR_DANGEROUS_AI_ACTION: "yes"
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Run Production Build (TanStack Start / Vite)
+        run: npm run build
+

@@ -11,10 +11,15 @@ export default [
       'sort-imports': 'off',
       '@typescript-eslint/array-type': 'off',
       '@typescript-eslint/require-await': 'off',
+      '@typescript-eslint/no-unnecessary-condition': 'off',
+      '@typescript-eslint/no-inferrable-types': 'off',
+      'no-shadow': 'off',
+      '@typescript-eslint/no-shadow': 'off',
+      '@typescript-eslint/method-signature-style': 'off',
       'pnpm/json-enforce-catalog': 'off',
     },
   },
   {
-    ignores: ['eslint.config.js', 'prettier.config.js'],
+    ignores: ['eslint.config.js', 'prettier.config.js', 'commitlint.config.js', 'scripts/**', 'src/generated/**', 'dist/**', 'public/**'],
   },
 ]
