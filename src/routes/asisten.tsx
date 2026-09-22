@@ -182,7 +182,7 @@ function AsistenChatPage() {
   }
 
   return (
-    <div className="page-wrap flex flex-col px-4 py-3 sm:py-6" style={{ height: 'calc(100vh - 120px)' }}>
+    <div className="page-wrap flex flex-col px-2 sm:px-4 py-2 sm:py-6" style={{ height: 'calc(100dvh - 135px)' }}>
       {/* Top Header Room Bar */}
       <div className="island-shell mb-3 flex items-center justify-between rounded-2xl px-4 py-3 sm:px-6">
         <div className="flex items-center gap-3">

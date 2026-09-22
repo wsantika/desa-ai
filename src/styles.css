@@ -185,8 +185,14 @@ pre code {
 }
 
 .page-wrap {
-  width: min(1120px, calc(100% - 2rem));
+  width: min(1120px, calc(100% - 1.25rem));
   margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .page-wrap {
+    width: min(1120px, calc(100% - 2rem));
+  }
 }
 
 .display-title {
