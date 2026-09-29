@@ -22,11 +22,16 @@ export const AskAssistantSchema = z.object({
 export const askAssistantServerFn = createServerFn({ method: 'POST' })
   .validator((data: unknown) => AskAssistantSchema.parse(data))
   .handler(async ({ data }) => {
-    const knowledgeRepo = new PrismaKnowledgeRepository()
-    const embeddingService = new GeminiEmbeddingService()
-    const searchUseCase = new SearchKnowledgeUseCase(knowledgeRepo, embeddingService)
-    const assistantService = new GeminiAssistantService()
+    try {
+      const knowledgeRepo = new PrismaKnowledgeRepository()
+      const embeddingService = new GeminiEmbeddingService()
+      const searchUseCase = new SearchKnowledgeUseCase(knowledgeRepo, embeddingService)
+      const assistantService = new GeminiAssistantService()
 
-    const useCase = new AskVillageAssistantUseCase(searchUseCase, assistantService)
-    return useCase.execute(data)
+      const useCase = new AskVillageAssistantUseCase(searchUseCase, assistantService)
+      return await useCase.execute(data)
+    } catch (error) {
+      console.error('[askAssistantServerFn] Error during assistant execution:', error)
+      throw error
+    }
   })

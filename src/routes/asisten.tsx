@@ -167,7 +167,8 @@ function AsistenChatPage() {
       }
 
       setMessages((prev) => [...prev, botMessage])
-    } catch {
+    } catch (err) {
+      console.error('[asisten] Failed to call assistant:', err)
       const errorMessage: ChatMessage = {
         id: `bot-err-${Date.now()}`,
         role: 'assistant',

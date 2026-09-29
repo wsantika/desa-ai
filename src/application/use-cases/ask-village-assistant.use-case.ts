@@ -73,26 +73,34 @@ export class AskVillageAssistantUseCase {
     groundingContext: string
     groundingSources: GroundingSource[]
   }> {
-    // 1. Perform semantic search over knowledge base
-    const searchResults = await this.searchKnowledgeUseCase.execute({
-      query,
-      topK: 3,
-      category,
-      minSimilarityThreshold: 0.25,
-    })
+    try {
+      // 1. Perform semantic search over knowledge base
+      const searchResults = await this.searchKnowledgeUseCase.execute({
+        query,
+        topK: 3,
+        category,
+        minSimilarityThreshold: 0.25,
+      })
 
-    // 2. Map to domain GroundingSources
-    const groundingSources: GroundingSource[] = searchResults.map((r) => ({
-      documentId: r.documentId,
-      documentTitle: r.documentTitle,
-      category: r.category,
-      excerpt: r.chunkContent,
-      similarityScore: r.similarityScore,
-    }))
+      // 2. Map to domain GroundingSources
+      const groundingSources: GroundingSource[] = searchResults.map((r) => ({
+        documentId: r.documentId,
+        documentTitle: r.documentTitle,
+        category: r.category,
+        excerpt: r.chunkContent,
+        similarityScore: r.similarityScore,
+      }))
 
-    // 3. Format structured grounding context for LLM prompt
-    const groundingContext = buildGroundingPrompt(groundingSources)
+      // 3. Format structured grounding context for LLM prompt
+      const groundingContext = buildGroundingPrompt(groundingSources)
 
-    return { groundingContext, groundingSources }
+      return { groundingContext, groundingSources }
+    } catch (err) {
+      console.warn(
+        '[AskVillageAssistantUseCase] Knowledge retrieval failed, proceeding with direct query:',
+        err instanceof Error ? err.message : err,
+      )
+      return { groundingContext: '', groundingSources: [] }
+    }
   }
 }
