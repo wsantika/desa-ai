@@ -1,10 +1,14 @@
 export function getDatabaseUrl() {
+  const env = typeof process !== 'undefined' && process.env ? process.env : {}
   const databaseUrl =
-    typeof process !== 'undefined' && process.env ? process.env.DATABASE_URL : undefined
+    env.DATABASE_URL ||
+    env.POSTGRES_PRISMA_URL ||
+    env.POSTGRES_URL ||
+    env.DATABASE_URL_UNPOOLED
 
-  if (!databaseUrl) {
+  if (!databaseUrl || !databaseUrl.trim()) {
     return 'postgresql://postgres:postgres@localhost:5432/desa_ai?schema=public'
   }
 
-  return databaseUrl
+  return databaseUrl.trim()
 }
