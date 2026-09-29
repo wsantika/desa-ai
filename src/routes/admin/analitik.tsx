@@ -83,7 +83,7 @@ function AdminAnalitikDeskPage() {
   return (
     <div className="mx-auto max-w-7xl space-y-6">
       {/* Navigation & Header */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="no-print flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="flex items-center gap-2">
             <Link
@@ -94,10 +94,10 @@ function AdminAnalitikDeskPage() {
               <span>Kembali ke Ringkasan Dashboard</span>
             </Link>
           </div>
-          <h2 className="mt-1.5 mb-0 text-xl sm:text-2xl font-bold tracking-tight text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+          <h2 className="mt-1.5 mb-0 text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
             Analitik Tren Desa dan Sebaran Wilayah Banjar
           </h2>
-          <p className="mt-1 mb-0 text-xs sm:text-sm text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+          <p className="mt-1 mb-0 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
             Visualisasi data agregat pengaduan warga, kepatuhan batas waktu
             (SLA), dan briefing perencanaan Musrenbangdes Desa Tegal Tugu.
           </p>
@@ -107,7 +107,7 @@ function AdminAnalitikDeskPage() {
           <button
             type="button"
             onClick={handlePrintMusrenbangdes}
-            className="inline-flex min-h-[44px] sm:min-h-[38px] items-center gap-1.5 rounded-lg border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] px-3.5 py-2 text-xs font-semibold text-[var(--sea-ink,#1b2a26)] transition-colors hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            className="inline-flex min-h-[44px] sm:min-h-[38px] items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-800 transition-colors hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
             title="Cetak format A4 untuk rapat koordinasi Musrenbangdes"
           >
             <Printer className="h-4 w-4 text-blue-600 dark:text-blue-400" />
@@ -118,7 +118,7 @@ function AdminAnalitikDeskPage() {
 
       {/* Error state */}
       {errorMsg && (
-        <div className="flex items-center justify-between rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/40 dark:text-rose-300">
+        <div className="no-print flex items-center justify-between rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/40 dark:text-rose-300">
           <div className="flex items-center gap-2">
             <AlertCircle className="h-4 w-4 shrink-0" />
             <span>{errorMsg}</span>
@@ -134,26 +134,30 @@ function AdminAnalitikDeskPage() {
       )}
 
       {/* Filter Toolbar */}
-      <AnalyticsFilterBar
-        selectedBanjar={selectedBanjar}
-        onSelectBanjar={handleSelectBanjar}
-        banjars={banjarOptions}
-        timeRange={timeRange}
-        onSelectTimeRange={handleSelectTimeRange}
-        isLoading={isLoading}
-        onRefresh={() => handleFetchData()}
-        onPrint={handlePrintMusrenbangdes}
-      />
+      <div className="no-print">
+        <AnalyticsFilterBar
+          selectedBanjar={selectedBanjar}
+          onSelectBanjar={handleSelectBanjar}
+          banjars={banjarOptions}
+          timeRange={timeRange}
+          onSelectTimeRange={handleSelectTimeRange}
+          isLoading={isLoading}
+          onRefresh={() => handleFetchData()}
+          onPrint={handlePrintMusrenbangdes}
+        />
+      </div>
 
       {/* High-Level Stat Cards */}
-      <AnalyticsStatCards
-        metrics={data.metrics}
-        topBanjarName={topBanjar.name}
-        topBanjarCount={topBanjar.issueCount}
-      />
+      <div className="no-print">
+        <AnalyticsStatCards
+          metrics={data.metrics}
+          topBanjarName={topBanjar.name}
+          topBanjarCount={topBanjar.issueCount}
+        />
+      </div>
 
       {/* Interactive Charts: Banjar Bar Chart & Category Donut Chart */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+      <div className="no-print grid grid-cols-1 gap-6 lg:grid-cols-12">
         {/* Bar Chart: 7 cols on lg */}
         <div className="lg:col-span-7">
           <BanjarDistributionBarChart
@@ -170,7 +174,9 @@ function AdminAnalitikDeskPage() {
       </div>
 
       {/* Average Time to Resolution (ATTR) & SLA Sector Breakdown */}
-      <ResolutionTimeMetricsCard metrics={data.resolutionMetrics} />
+      <div className="no-print">
+        <ResolutionTimeMetricsCard metrics={data.resolutionMetrics} />
+      </div>
 
       {/* Musrenbangdes Executive Briefing Card */}
       <MusrenbangdesExecutiveSummary summary={data.musrenbangdesSummary} />
