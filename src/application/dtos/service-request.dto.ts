@@ -15,11 +15,18 @@ export const SubmitServiceRequestSchema = z.object({
   purpose: z.string().min(5, 'Keperluan pembuatan surat minimal 5 karakter'),
   attachments: z
     .array(
-      z.object({
-        fileName: z.string(),
-        fileUrl: z.string(),
-        fileType: z.string(),
-      }),
+      z.union([
+        z.object({
+          fileName: z.string(),
+          fileUrl: z.string(),
+          fileType: z.string().optional().default('application/octet-stream'),
+        }),
+        z.string().transform((url) => ({
+          fileName: 'berkas-pendukung',
+          fileUrl: url,
+          fileType: 'application/octet-stream',
+        })),
+      ]),
     )
     .optional(),
 })
