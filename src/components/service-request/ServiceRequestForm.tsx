@@ -118,6 +118,12 @@ export default function ServiceRequestForm({
     try {
       setLoading(true)
 
+      const formattedAttachments = attachments.map((a) => ({
+        fileName: a.fileName || 'berkas-pendukung',
+        fileUrl: a.fileUrl,
+        fileType: a.fileType || 'application/octet-stream',
+      }))
+
       const result = await submitServiceRequestServerFn({
         data: {
           serviceTypeCode,
@@ -126,17 +132,28 @@ export default function ServiceRequestForm({
           applicantPhone: applicantPhone.trim(),
           banjarName,
           purpose: purpose.trim(),
-          attachments: attachments.map((a) => a.fileUrl),
+          attachments: formattedAttachments,
         },
       })
 
-      if (result.success && result.data) {
-        onSuccess(result.data)
+      if (result && result.trackingCode) {
+        onSuccess(result)
       } else {
-        setErrorMsg(result.error || 'Terjadi kegagalan saat mengirim permohonan surat.')
+        setErrorMsg('Terjadi kegagalan saat mengirim permohonan surat.')
       }
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Kesalahan jaringan sistem desa.'
+      let msg =
+        err instanceof Error ? err.message : 'Kesalahan jaringan sistem desa.'
+      try {
+        if (msg.startsWith('[') || msg.startsWith('{')) {
+          const parsed = JSON.parse(msg)
+          if (Array.isArray(parsed) && parsed[0]?.message) {
+            msg = parsed.map((p: { message: string }) => p.message).join(', ')
+          }
+        }
+      } catch {
+        // preserve original error string
+      }
       setErrorMsg(msg)
     } finally {
       setLoading(false)
