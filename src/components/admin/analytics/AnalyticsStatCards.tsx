@@ -17,9 +17,9 @@ export function AnalyticsStatCards({
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {/* 1. Total Pengaduan */}
-      <div className="flex flex-col justify-between rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-5 shadow-xs transition-shadow hover:shadow-md dark:border-[#22352f] dark:bg-[#121c19]">
+      <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
             Total Pengaduan Warga
           </span>
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
@@ -27,10 +27,10 @@ export function AnalyticsStatCards({
           </div>
         </div>
         <div className="mt-3">
-          <div className="text-3xl font-extrabold tracking-tight text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+          <div className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
             {metrics.totalComplaints}
           </div>
-          <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+          <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
             <span className="inline-flex items-center gap-1 font-semibold text-emerald-700 dark:text-emerald-400">
               <CheckCircle2 className="h-3 w-3" />
               {metrics.resolvedComplaints} Selesai
@@ -48,9 +48,9 @@ export function AnalyticsStatCards({
       </div>
 
       {/* 2. Average Time to Resolution (ATTR) */}
-      <div className="flex flex-col justify-between rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-5 shadow-xs transition-shadow hover:shadow-md dark:border-[#22352f] dark:bg-[#121c19]">
+      <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
             Rata-rata Waktu Resolusi (ATTR)
           </span>
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
@@ -59,15 +59,15 @@ export function AnalyticsStatCards({
         </div>
         <div className="mt-3">
           <div className="flex items-baseline gap-2">
-            <div className="text-3xl font-extrabold tracking-tight text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+            <div className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
               {metrics.averageResolutionHours}
             </div>
-            <span className="text-sm font-bold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+            <span className="text-sm font-bold text-slate-500 dark:text-slate-400">
               Jam
             </span>
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+            <span className="text-slate-500 dark:text-slate-400">
               Setara {avgDays} hari kerja
             </span>
             <span className="rounded-md bg-blue-50 px-2 py-0.5 font-bold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
@@ -78,9 +78,9 @@ export function AnalyticsStatCards({
       </div>
 
       {/* 3. Tingkat Kepatuhan SLA */}
-      <div className="flex flex-col justify-between rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-5 shadow-xs transition-shadow hover:shadow-md dark:border-[#22352f] dark:bg-[#121c19]">
+      <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
             Kepatuhan SLA Desa
           </span>
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
@@ -94,7 +94,7 @@ export function AnalyticsStatCards({
             </div>
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+            <span className="text-slate-500 dark:text-slate-400">
               Selesai sesuai target
             </span>
             <span className="rounded-md bg-blue-50 px-2 py-0.5 font-bold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
@@ -105,9 +105,9 @@ export function AnalyticsStatCards({
       </div>
 
       {/* 4. Wilayah Banjar Terpadat */}
-      <div className="flex flex-col justify-between rounded-xl border border-[var(--line,#d5ded9)] bg-[var(--surface-primary,#ffffff)] p-5 shadow-xs transition-shadow hover:shadow-md dark:border-[#22352f] dark:bg-[#121c19]">
+      <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-semibold text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
             Wilayah Terpadat Aduan
           </span>
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
@@ -115,11 +115,11 @@ export function AnalyticsStatCards({
           </div>
         </div>
         <div className="mt-3">
-          <div className="truncate text-2xl font-extrabold tracking-tight text-[var(--sea-ink,#1b2a26)] dark:text-stone-100">
+          <div className="truncate text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
             {topBanjarName}
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-[var(--sea-ink-soft,#576c64)] dark:text-stone-400">
+            <span className="text-slate-500 dark:text-slate-400">
               {topBanjarCount} laporan terdata
             </span>
             <span className="rounded-md bg-amber-50 px-2 py-0.5 font-bold text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
